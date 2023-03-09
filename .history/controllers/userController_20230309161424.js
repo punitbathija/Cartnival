@@ -17,10 +17,4 @@ exports.signup = BigPromise(async (req, res, next) => {
   }
 
   let file = req.files.photo;
-
-  const result = await cloudinary.v2.uploader.upload(file.tempFilePath, {
-    folder: "users",
-    width: 150,
-    crop: "scale",
-  });
 });

@@ -1,7 +1,6 @@
 const User = require("../models/user");
 const BigPromise = require("../middlewares/BigPromise");
 const CustomError = require("../utils/customError");
-const cloudinary = require("cloudinary");
 
 exports.signup = BigPromise(async (req, res, next) => {
   const { name, email, password } = req.body;
@@ -17,10 +16,4 @@ exports.signup = BigPromise(async (req, res, next) => {
   }
 
   let file = req.files.photo;
-
-  const result = await cloudinary.v2.uploader.upload(file.tempFilePath, {
-    folder: "users",
-    width: 150,
-    crop: "scale",
-  });
 });

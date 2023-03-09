@@ -1,9 +1,12 @@
 const User = require("../models/user");
 const BigPromise = require("../middlewares/BigPromise");
 const CustomError = require("../utils/customError");
-const cloudinary = require("cloudinary");
 
 exports.signup = BigPromise(async (req, res, next) => {
+  //   if (!req.files) {
+  //     return next(new CustomError("Photo is required for signing up", 400));
+  //   }
+
   const { name, email, password } = req.body;
 
   if (!name || !email || !password) {
@@ -11,16 +14,4 @@ exports.signup = BigPromise(async (req, res, next) => {
       new CustomError("Please enter name, email and password to continue")
     );
   }
-
-  if (!req.files) {
-    return next(new CustomError("Photo is required for signing up", 400));
-  }
-
-  let file = req.files.photo;
-
-  const result = await cloudinary.v2.uploader.upload(file.tempFilePath, {
-    folder: "users",
-    width: 150,
-    crop: "scale",
-  });
 });
