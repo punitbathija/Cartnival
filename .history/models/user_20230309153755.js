@@ -78,5 +78,3 @@ userSchema.methods.getForgotPasswordToken = function () {
 
   return generateForgotPasswordToken;
 };
-
-module.exports = mongoose.model("User", userSchema);

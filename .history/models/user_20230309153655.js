@@ -75,8 +75,4 @@ userSchema.methods.getForgotPasswordToken = function () {
     .digest("hex");
 
   this.forgotPasswordToken = Date.now() + 20 * 60 * 1000;
-
-  return generateForgotPasswordToken;
 };
-
-module.exports = mongoose.model("User", userSchema);

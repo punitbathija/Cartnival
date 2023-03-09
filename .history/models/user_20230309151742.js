@@ -1,8 +1,6 @@
 const mongoose = require("mongoose");
 const validator = require("validator");
 const bcrypt = require("bcryptjs");
-const jwt = require("jsonwebtoken");
-const crypto = require("crypto");
 
 const userSchema = new mongoose.Schema({
   name: {
@@ -44,39 +42,9 @@ const userSchema = new mongoose.Schema({
   },
 });
 
-// HOOKS
-
-//Encrypting the password before saving on the DB
 userSchema.pre("save", async function (next) {
   if (this.isModified("password")) {
     return next();
   }
-  this.password = await bcrypt.hash(this.password, 10);
+  this.password = await bcrypt.hash(this.password);
 });
-
-//Validating the password with registered password
-userSchema.methods.isValidatedPassword = async function (comparePassword) {
-  return await bcrypt.compare(comparePassword, this.password);
-};
-
-//Assigning a JWT to a user
-userSchema.methods.getJWTToken = function () {
-  return jwt.sign({ id: this._id }, process.env.JWT_SECRET, {
-    expiresIn: process.env.JWT_TOKEN_EXPIRY,
-  });
-};
-
-//Generating forgot password token
-userSchema.methods.getForgotPasswordToken = function () {
-  const generateForgotPasswordToken = crypto.randomBytes(20).toString("hex");
-  this.forgotPasswordToken = crypto
-    .createHash("sha256")
-    .update(generateForgotPasswordToken)
-    .digest("hex");
-
-  this.forgotPasswordToken = Date.now() + 20 * 60 * 1000;
-
-  return generateForgotPasswordToken;
-};
-
-module.exports = mongoose.model("User", userSchema);

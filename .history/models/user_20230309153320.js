@@ -68,15 +68,5 @@ userSchema.methods.getJWTToken = function () {
 
 //Generating forgot password token
 userSchema.methods.getForgotPasswordToken = function () {
-  const generateForgotPasswordToken = crypto.randomBytes(20).toString("hex");
-  this.forgotPasswordToken = crypto
-    .createHash("sha256")
-    .update(generateForgotPasswordToken)
-    .digest("hex");
-
-  this.forgotPasswordToken = Date.now() + 20 * 60 * 1000;
-
-  return generateForgotPasswordToken;
+  const forgotPasswordToken = cry;
 };
-
-module.exports = mongoose.model("User", userSchema);
