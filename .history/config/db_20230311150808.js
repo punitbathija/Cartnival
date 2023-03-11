@@ -6,6 +6,7 @@ const connectWithDB = () => {
     .connect(process.env.MONGO_DB_LOCAL, {
       useNewUrlParser: true,
       useUnifiedTopology: true,
+      useCreateIndex: true,
     })
     .then(console.log("DB successfully connected"))
     .catch((error) => {

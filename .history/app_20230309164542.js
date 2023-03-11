@@ -1,8 +1,8 @@
-const express = require("express");
 require("dotenv").config();
+const express = require("express");
 const app = express();
-const cookieParser = require("cookie-parser");
 const fileUpload = require("express-fileupload");
+const cookieParser = require("cookie-parser");
 // Defining Middlewares
 
 // Express middlewares
@@ -18,17 +18,9 @@ app.use(
   })
 );
 
-app.set("view engine", "ejs");
-
 // Importing all routes
-const customer = require("./routes/customer");
-const home = require("./routes/home");
-// Router middleware
-app.use("/api/v1", home);
-app.use("/api/v1", customer);
+const user = require("./routes/user");
 
-app.get("/signup", (req, res) => {
-  res.render("signup");
-});
+// Router middleware
 
 module.exports = app;
