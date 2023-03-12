@@ -2,7 +2,6 @@ const Customer = require("../models/customer");
 const BigPromise = require("../middlewares/BigPromise");
 const CustomError = require("../utils/customError");
 const cookieToken = require("../utils/cookieToken");
-const customer = require("../models/customer");
 
 exports.signup = BigPromise(async (req, res, next) => {
   const { name, email, password } = req.body;
@@ -57,8 +56,4 @@ exports.signout = BigPromise((req, res, next) => {
   });
 });
 
-exports.forgotPassword = BigPromise(async (req, res, next) => {
-  if (!customer) {
-    return next(new CustomError("Email not found as registered"));
-  }
-});
+exports.forgotPassword = BigPromise(async (req, res, next) => {});
