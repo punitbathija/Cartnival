@@ -73,4 +73,4 @@ customerSchema.methods.getForgotPasswordToken = function () {
   return forgotToken;
 };
 
-module.exports = mongoose.model("Customer", customerSchema);
+module.exports = mongoose.model("customer", customerSchema);
