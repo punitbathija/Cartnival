@@ -19,7 +19,7 @@ exports.signup = BigPromise(async (req, res, next) => {
   cookieToken(customer, res);
 });
 
-exports.signin = BigPromise(async (req, res, next) => {
+exports.login = BigPromise(async (req, res, next) => {
   const { email, password } = req.body;
   if (!email || !password) {
     return next(
@@ -40,6 +40,4 @@ exports.signin = BigPromise(async (req, res, next) => {
   if (!isPasswordCorrect) {
     return next(new CustomError("Email or password is incorrect", 400));
   }
-
-  cookieToken(customer, res);
 });

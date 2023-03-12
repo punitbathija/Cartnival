@@ -19,7 +19,7 @@ exports.signup = BigPromise(async (req, res, next) => {
   cookieToken(customer, res);
 });
 
-exports.signin = BigPromise(async (req, res, next) => {
+exports.login = BigPromise(async (req, res, next) => {
   const { email, password } = req.body;
   if (!email || !password) {
     return next(
