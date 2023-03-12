@@ -17,4 +17,9 @@ exports.signup = BigPromise(async (req, res, next) => {
   });
 
   cookieToken(customer, res);
+
+  res.json({
+    success: true,
+    customer,
+  });
 });

@@ -19,9 +19,15 @@ app.use(
 );
 
 // Importing all routes
-const customer = require("./routes/customer");
+const home = require("./routes/home");
 
+const customer = require("./routes/customer");
 // Router middleware
+app.use("/api/v1", home);
 app.use("/api/v1", customer);
+
+app.get("/signup", (req, res) => {
+  res.render("signup");
+});
 
 module.exports = app;

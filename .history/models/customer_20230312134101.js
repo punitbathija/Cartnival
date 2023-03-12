@@ -52,9 +52,9 @@ customerSchema.methods.isValidatedPassword = async function (comparePassword) {
 
 //Assigning a JWT to a customer
 
-customerSchema.methods.getJwtToken = function () {
+customerSchema.methods.getJWTToken = function () {
   return jwt.sign({ id: this._id }, process.env.JWT_SECRET, {
-    expiresIn: process.env.JWT_EXPIRY,
+    expiresIn: process.env.JWT_TOKEN_EXPIRY,
   });
 };
 

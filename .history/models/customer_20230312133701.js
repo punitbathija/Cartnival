@@ -25,6 +25,16 @@ const customerSchema = new mongoose.Schema({
     type: String,
     default: "customer",
   },
+  photo: {
+    id: {
+      type: String,
+      required: true,
+    },
+    secure_url: {
+      type: String,
+      required: true,
+    },
+  },
   forgotPasswordToken: String,
   forgotPasswordExpiry: Date,
   createdAt: {
@@ -36,7 +46,6 @@ const customerSchema = new mongoose.Schema({
 // HOOKS
 
 //Encrypting the password before saving on the DB
-
 customerSchema.pre("save", async function (next) {
   if (this.isModified("password")) {
     return next();
@@ -45,21 +54,18 @@ customerSchema.pre("save", async function (next) {
 });
 
 //Validating the password with registered password
-
 customerSchema.methods.isValidatedPassword = async function (comparePassword) {
   return await bcrypt.compare(comparePassword, this.password);
 };
 
 //Assigning a JWT to a customer
-
-customerSchema.methods.getJwtToken = function () {
+customerSchema.methods.getJWTToken = function () {
   return jwt.sign({ id: this._id }, process.env.JWT_SECRET, {
-    expiresIn: process.env.JWT_EXPIRY,
+    expiresIn: process.env.JWT_TOKEN_EXPIRY,
   });
 };
 
 //Generating forgot password token
-
 customerSchema.methods.getForgotPasswordToken = function () {
   const generateForgotPasswordToken = crypto.randomBytes(20).toString("hex");
   this.forgotPasswordToken = crypto
@@ -72,4 +78,4 @@ customerSchema.methods.getForgotPasswordToken = function () {
   return generateForgotPasswordToken;
 };
 
-module.exports = mongoose.model("Customer", customerSchema);
+module.exports = mongoose.model("customer", customerSchema);

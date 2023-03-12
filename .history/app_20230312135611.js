@@ -22,6 +22,7 @@ app.use(
 const customer = require("./routes/customer");
 
 // Router middleware
+app.use("/api/v1", home);
 app.use("/api/v1", customer);
 
 module.exports = app;

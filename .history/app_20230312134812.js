@@ -18,10 +18,17 @@ app.use(
   })
 );
 
+app.set("view engine", "ejs");
+
 // Importing all routes
 const customer = require("./routes/customer");
-
+const home = require("./routes/home");
 // Router middleware
+app.use("/api/v1", home);
 app.use("/api/v1", customer);
+
+app.get("/signup", (req, res) => {
+  res.render("signup");
+});
 
 module.exports = app;

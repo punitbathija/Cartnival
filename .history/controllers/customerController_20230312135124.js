@@ -6,7 +6,7 @@ const cookieToken = require("../utils/cookieToken");
 exports.signup = BigPromise(async (req, res, next) => {
   const { name, email, password } = req.body;
 
-  if (!name || !email || !password) {
+  if (!email || !name || !password) {
     return next(new CustomError("Please enter all details to continue", 400));
   }
 
@@ -14,6 +14,11 @@ exports.signup = BigPromise(async (req, res, next) => {
     name,
     email,
     password,
+  });
+
+  res.json({
+    success: true,
+    customer,
   });
 
   cookieToken(customer, res);
