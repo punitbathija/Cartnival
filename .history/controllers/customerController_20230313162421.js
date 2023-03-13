@@ -127,7 +127,7 @@ exports.passwordReset = BigPromise(async (req, res, next) => {
 });
 
 exports.getMyProfile = BigPromise(async (req, res, next) => {
-  const customer = await Customer.findById(req.customer.id);
+  const user = await User.findById(req.user.id);
 
   res.status(200).json({
     success: true,
