@@ -4,7 +4,6 @@ const BigPromise = require("../middlewares/BigPromise");
 const CustomError = require("../utils/customError");
 const cookieToken = require("../utils/cookieToken");
 const mailHelper = require("../utils/mailHelper");
-const crypto = require("crypto");
 
 exports.signup = BigPromise(async (req, res, next) => {
   const { name, email, password } = req.body;
@@ -97,31 +96,4 @@ exports.forgotPassword = BigPromise(async (req, res, next) => {
 
 exports.passwordReset = BigPromise(async (req, res, next) => {
   const token = req.params.token;
-
-  const forgotPasswordToken = crypto
-    .createHash("sha256")
-    .update(token)
-    .digest("hex");
-
-  const customer = await Customer.findOne({
-    forgotPasswordToken,
-    forgotPasswordExpiry: { $gt: Date.now() },
-  });
-
-  if (!customer) {
-    return next(new CustomError("Token is invalid or expired"));
-  }
-
-  if (req.body.password !== req.body.confirmPassword) {
-    return next(new CustomError("Password and confirm password do not match"));
-  }
-
-  customer.password = req.body.password;
-
-  customer.forgotPasswordToken = undefined;
-  customer.forgotPasswordExpiry = undefined;
-
-  await customer.save();
-
-  cookieToken(customer, res);
 });

@@ -103,6 +103,8 @@ exports.passwordReset = BigPromise(async (req, res, next) => {
     .update(token)
     .digest("hex");
 
+  console.log(encryptedToken);
+
   const customer = await Customer.findOne({
     forgotPasswordToken,
     forgotPasswordExpiry: { $gt: Date.now() },

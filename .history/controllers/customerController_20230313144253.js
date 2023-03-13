@@ -98,13 +98,13 @@ exports.forgotPassword = BigPromise(async (req, res, next) => {
 exports.passwordReset = BigPromise(async (req, res, next) => {
   const token = req.params.token;
 
-  const forgotPasswordToken = crypto
+  const encryptedToken = crypto
     .createHash("sha256")
     .update(token)
     .digest("hex");
 
   const customer = await Customer.findOne({
-    forgotPasswordToken,
+    encryptedToken,
     forgotPasswordExpiry: { $gt: Date.now() },
   });
 
@@ -123,5 +123,5 @@ exports.passwordReset = BigPromise(async (req, res, next) => {
 
   await customer.save();
 
-  cookieToken(customer, res);
+  cookieToken();
 });
