@@ -74,22 +74,11 @@ exports.forgotPassword = BigPromise(async (req, res, next) => {
 
   const message = `Copy the exact URL below and visit the same to continue futher \n \n ${myUrl}`;
 
-  try {
+  try{
     await mailHelper({
-      email: customer.email,
-      subject: "Cartnival - Password Reset",
-      message,
-    });
-
-    res.status(200).json({
-      success: true,
-      message: "Email sent successfully",
-    });
-  } catch (error) {
-    customer.forgotPasswordToken = undefined;
-    customer.forgotPasswordExpiry = undefined;
-    await customer.save({ validateBeforeSave: false });
-
-    return next(new CustomError(error.message, 500));
+      email : customer.email,
+      subject : "Cartnival - Password Reset",
+      message
+    })
   }
 });

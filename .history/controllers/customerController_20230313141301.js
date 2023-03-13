@@ -3,7 +3,6 @@ const BigPromise = require("../middlewares/BigPromise");
 const CustomError = require("../utils/customError");
 const cookieToken = require("../utils/cookieToken");
 const customer = require("../models/customer");
-const mailHelper = require("../utils/mailHelper");
 
 exports.signup = BigPromise(async (req, res, next) => {
   const { name, email, password } = req.body;
@@ -71,25 +70,4 @@ exports.forgotPassword = BigPromise(async (req, res, next) => {
   const myUrl = `${req.protocol}://${req.get(
     "host"
   )}/api/v1/password/reset/${forgotPassToken}`;
-
-  const message = `Copy the exact URL below and visit the same to continue futher \n \n ${myUrl}`;
-
-  try {
-    await mailHelper({
-      email: customer.email,
-      subject: "Cartnival - Password Reset",
-      message,
-    });
-
-    res.status(200).json({
-      success: true,
-      message: "Email sent successfully",
-    });
-  } catch (error) {
-    customer.forgotPasswordToken = undefined;
-    customer.forgotPasswordExpiry = undefined;
-    await customer.save({ validateBeforeSave: false });
-
-    return next(new CustomError(error.message, 500));
-  }
 });

@@ -9,15 +9,4 @@ const mailHelper = async (option) => {
       pass: process.env.SMTP_PASS,
     },
   });
-
-  const message = {
-    from: "punitbathija@gmail.com",
-    to: option.email,
-    subject: option.subject,
-    text: option.message,
-  };
-
-  await transporter.sendMail(message);
 };
-
-module.exports = mailHelper;

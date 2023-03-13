@@ -83,13 +83,11 @@ exports.forgotPassword = BigPromise(async (req, res, next) => {
 
     res.status(200).json({
       success: true,
-      message: "Email sent successfully",
+      message: "Email successfully sent",
     });
   } catch (error) {
     customer.forgotPasswordToken = undefined;
     customer.forgotPasswordExpiry = undefined;
     await customer.save({ validateBeforeSave: false });
-
-    return next(new CustomError(error.message, 500));
   }
 });
