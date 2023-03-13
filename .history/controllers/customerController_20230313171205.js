@@ -164,7 +164,7 @@ exports.updateProfile = BigPromise(async (req, res, next) => {
 
   res.status(200).json({
     success: true,
-    message: "Profile updated",
+    message: "Details updated",
     customer,
   });
 });

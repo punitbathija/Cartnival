@@ -156,15 +156,9 @@ exports.updatePassword = BigPromise(async (req, res, next) => {
 exports.updateProfile = BigPromise(async (req, res, next) => {
   const newData = { name: req.body.name, email: req.body.email };
 
-  const customer = await Customer.findByIdAndUpdate(req.customer.id, newData, {
+  const customer = await User.findByIdAndUpdate(req.customer.id, newData, {
     new: true,
     runValidators: true,
     useFindAndModify: false,
-  });
-
-  res.status(200).json({
-    success: true,
-    message: "Profile updated",
-    customer,
   });
 });
