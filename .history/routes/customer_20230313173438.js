@@ -10,7 +10,6 @@ const {
   getMyProfile,
   updatePassword,
   updateProfile,
-  adminAllUsers,
 } = require("../controllers/customerController");
 const { isLoggedin, customRole } = require("../middlewares/user");
 
@@ -22,8 +21,5 @@ router.route("/password/reset/:token").post(passwordReset);
 router.route("/myprofile").get(isLoggedin, getMyProfile);
 router.route("/password/update").post(isLoggedin, updatePassword);
 router.route("/profile/update").post(isLoggedin, updateProfile);
-router
-  .route("/admin/getallusers")
-  .get(isLoggedin, customRole("admin"), adminAllUsers);
 
 module.exports = router;

@@ -169,7 +169,7 @@ exports.updateProfile = BigPromise(async (req, res, next) => {
   });
 });
 
-exports.adminAllUsers = BigPromise(async (req, res, next) => {
+exports.adminAllRoutes = BigPromise(async (req, res, next) => {
   const allCustomers = await Customer.find();
   res.status(200).json({
     success: true,
