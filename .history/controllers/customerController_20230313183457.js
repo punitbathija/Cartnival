@@ -222,7 +222,7 @@ exports.deleteUser = BigPromise(async (req, res, next) => {
     next(new CustomError("no user found", 404));
   }
 
-  await customer.deleteOne();
+  await customer.remove();
 
   res.status(200).json({
     success: true,

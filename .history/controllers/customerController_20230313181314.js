@@ -195,6 +195,10 @@ exports.updateRole = BigPromise(async (req, res, next) => {
     role: req.body.role, // dropdown on frontend would be great
   };
 
+  if (!customer) {
+    next(new CustomError("no user found", 404));
+  }
+
   const customer = await Customer.findByIdAndUpdate(
     req.params.id,
     updatedRole,
@@ -204,10 +208,6 @@ exports.updateRole = BigPromise(async (req, res, next) => {
       useFindAndModify: true,
     }
   );
-
-  if (!customer) {
-    next(new CustomError("no user found", 404));
-  }
 
   res.status(200).json({
     success: true,
@@ -222,7 +222,7 @@ exports.deleteUser = BigPromise(async (req, res, next) => {
     next(new CustomError("no user found", 404));
   }
 
-  await customer.deleteOne();
+  await customer.remove();
 
   res.status(200).json({
     success: true,

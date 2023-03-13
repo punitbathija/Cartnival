@@ -190,31 +190,6 @@ exports.getSingleUser = BigPromise(async (req, res, next) => {
   });
 });
 
-exports.updateRole = BigPromise(async (req, res, next) => {
-  const updatedRole = {
-    role: req.body.role, // dropdown on frontend would be great
-  };
-
-  const customer = await Customer.findByIdAndUpdate(
-    req.params.id,
-    updatedRole,
-    {
-      new: true,
-      runValidators: true,
-      useFindAndModify: true,
-    }
-  );
-
-  if (!customer) {
-    next(new CustomError("no user found", 404));
-  }
-
-  res.status(200).json({
-    success: true,
-    customer,
-  });
-});
-
 exports.deleteUser = BigPromise(async (req, res, next) => {
   const customer = await Customer.findById(req.params.id);
 
@@ -222,7 +197,7 @@ exports.deleteUser = BigPromise(async (req, res, next) => {
     next(new CustomError("no user found", 404));
   }
 
-  await customer.deleteOne();
+  await customer.remove();
 
   res.status(200).json({
     success: true,
