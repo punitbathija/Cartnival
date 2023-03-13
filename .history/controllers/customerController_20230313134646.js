@@ -65,7 +65,7 @@ exports.forgotPassword = BigPromise(async (req, res, next) => {
   }
   const forgotPassToken = customer.getForgotPasswordToken();
 
-  await customer.save({ validateBeforeSave: false });
+  await Customer.save({ validateBeforeSave: false });
 
   res.status(200).json({
     success: true,

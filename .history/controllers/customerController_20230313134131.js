@@ -63,13 +63,12 @@ exports.forgotPassword = BigPromise(async (req, res, next) => {
   if (!customer) {
     return next(new CustomError("Email not found as registered"));
   }
-  const forgotPassToken = customer.getForgotPasswordToken();
+  const forgotPassToken = user.getForgotPasswordToken();
 
-  await customer.save({ validateBeforeSave: false });
+  await user.save({ validateBeforeSave: false });
 
   res.status(200).json({
     success: true,
     message: "refer db",
-    forgotPassToken,
   });
 });

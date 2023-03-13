@@ -3,6 +3,7 @@ const BigPromise = require("../middlewares/BigPromise");
 const CustomError = require("../utils/customError");
 const cookieToken = require("../utils/cookieToken");
 const customer = require("../models/customer");
+const customer = require("../models/customer");
 
 exports.signup = BigPromise(async (req, res, next) => {
   const { name, email, password } = req.body;
@@ -65,11 +66,10 @@ exports.forgotPassword = BigPromise(async (req, res, next) => {
   }
   const forgotPassToken = customer.getForgotPasswordToken();
 
-  await customer.save({ validateBeforeSave: false });
+  await user.save({ validateBeforeSave: false });
 
   res.status(200).json({
     success: true,
     message: "refer db",
-    forgotPassToken,
   });
 });
