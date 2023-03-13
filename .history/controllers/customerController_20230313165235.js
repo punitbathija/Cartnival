@@ -148,7 +148,7 @@ exports.updatePassword = BigPromise(async (req, res, next) => {
     return next(new CustomError("please enter correct password"));
   }
 
-  await customer.save();
+  await user.save();
 
-  cookieToken(customer, res);
+  cookieToken(user, res);
 });
