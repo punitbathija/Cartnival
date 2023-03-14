@@ -164,5 +164,40 @@ exports.addReview = BigPromise(async (req, res, next) => {
 
   res.status(200).json({
     success: true,
+    message: "Review successfully added or modified",
+  });
+});
+
+exports.deleteReview = BigPromise(async (req, res, next) => {
+  const { productId } = req.query;
+
+  const product = await Product.findById(productId);
+
+  const reviews = product.reviews.filter(
+    (rev) => rev.customer.toString() === req.customer._id.toString()
+  );
+
+  const numberOfReviews = reviews.length;
+
+  product.ratings =
+    product.reviews.reduce((acc, item) => item.rating + acc, 0) /
+    product.reviews.length;
+
+  await Product.findByIdAndUpdate(
+    productId,
+    {
+      reviews,
+      numberOfReviews,
+    },
+    {
+      new: true,
+      runValidators: true,
+      useFindAndModify: false,
+    }
+  );
+
+  res.status(200).json({
+    success: true,
+    message: "Review successfully deleted",
   });
 });
