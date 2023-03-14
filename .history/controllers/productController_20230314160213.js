@@ -138,7 +138,7 @@ exports.addReview = BigPromise(async (req, res, next) => {
     comment,
   };
 
-  const product = await Product.findById(productId);
+  const product = Product.findById(productId);
 
   const previousReview = product.reviews.find(
     (rev) => rev.customer.toString() === req.customer._id.toString()
@@ -153,10 +153,9 @@ exports.addReview = BigPromise(async (req, res, next) => {
     });
   } else {
     product.reviews.push(review);
-    product.numberOfReviews = product.reviews.length;
+    product.numberOfReviews = previousReview.length;
   }
-
-  product.ratings =
+  product.rating =
     product.reviews.reduce((acc, item) => item.rating + acc, 0) /
     product.reviews.length;
 
@@ -164,5 +163,6 @@ exports.addReview = BigPromise(async (req, res, next) => {
 
   res.status(200).json({
     success: true,
+    message: "Review added",
   });
 });

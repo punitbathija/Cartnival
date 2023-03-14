@@ -128,41 +128,4 @@ exports.adminDeleteProduct = BigPromise(async (req, res, next) => {
   });
 });
 
-exports.addReview = BigPromise(async (req, res, next) => {
-  const { rating, comment, productId } = req.body;
-
-  const review = {
-    customer: req.customer._id,
-    name: req.customer.name,
-    rating: Number(rating),
-    comment,
-  };
-
-  const product = await Product.findById(productId);
-
-  const previousReview = product.reviews.find(
-    (rev) => rev.customer.toString() === req.customer._id.toString()
-  );
-
-  if (previousReview) {
-    product.reviews.forEach((review) => {
-      if (review.customer.toString() === req.customer._id.toString()) {
-        review.comment = comment;
-        review.rating = rating;
-      }
-    });
-  } else {
-    product.reviews.push(review);
-    product.numberOfReviews = product.reviews.length;
-  }
-
-  product.ratings =
-    product.reviews.reduce((acc, item) => item.rating + acc, 0) /
-    product.reviews.length;
-
-  await product.save({ validateBeforeSave: false });
-
-  res.status(200).json({
-    success: true,
-  });
-});
+exports.addReview = BigPromise(async (req, res, next) => {});

@@ -14,7 +14,7 @@ const { customRole, isLoggedin } = require("../middlewares/customer");
 router.route("/producttest").get(productTest);
 router.route("/products").get(getAllProducts);
 router.route("/product/:id").get(getSingleProduct);
-router.route("/add/review").post(isLoggedin, addReview);
+router.route("/add/review").post(addReview);
 
 // Admin Routes
 
