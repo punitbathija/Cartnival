@@ -110,13 +110,14 @@ exports.adminModifyProduct = BigPromise(async (req, res, next) => {
 });
 
 exports.adminDeleteProduct = BigPromise(async (req, res, next) => {
-  let product = await Product.findById(req.params.id);
+  let product = Product.findById(req.params.id);
 
   if (!product) {
-    return next(new CustomError("There are no matching products", 401));
+    return next(new CustomError("There are no matching products", 400));
   }
-  for (let index = 0; index < product.photos.length; index++) {
-    await cloudinary.v2.uploader.destroy(product.photos[index].id);
+
+  for (let index = 0; index < product.photos; index++) {
+    await cloudinary.v2.uploader.destroy(product.photos[index]);
   }
 
   await product.deleteOne();

@@ -109,7 +109,7 @@ exports.adminModifyProduct = BigPromise(async (req, res, next) => {
   }
 });
 
-exports.adminDeleteProduct = BigPromise(async (req, res, next) => {
+exports.adminDeleteProduct = bigPromise(async (req, res, next) => {
   let product = await Product.findById(req.params.id);
 
   if (!product) {
@@ -119,7 +119,7 @@ exports.adminDeleteProduct = BigPromise(async (req, res, next) => {
     await cloudinary.v2.uploader.destroy(product.photos[index].id);
   }
 
-  await product.deleteOne();
+  await product.remove();
 
   res.status(200).json({
     product,

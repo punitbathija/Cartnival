@@ -6,7 +6,6 @@ const {
   getAllProducts,
   getSingleProduct,
   adminModifyProduct,
-  adminDeleteProduct,
 } = require("../controllers/productController");
 const { customRole, isLoggedin } = require("../middlewares/customer");
 
@@ -24,6 +23,6 @@ router
   .post(isLoggedin, customRole("admin"), adminModifyProduct);
 router
   .route("/admin/product/delete/:id")
-  .delete(isLoggedin, customRole("admin"), adminDeleteProduct);
+  .delete(isLoggedin, customRole("admin"), adminModifyProduct);
 
 module.exports = router;

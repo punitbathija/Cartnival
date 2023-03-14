@@ -119,7 +119,7 @@ exports.adminDeleteProduct = BigPromise(async (req, res, next) => {
     await cloudinary.v2.uploader.destroy(product.photos[index].id);
   }
 
-  await product.deleteOne();
+  await product.remove();
 
   res.status(200).json({
     product,
