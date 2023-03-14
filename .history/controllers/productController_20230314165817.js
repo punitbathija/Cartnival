@@ -179,15 +179,14 @@ exports.deleteReview = BigPromise(async (req, res, next) => {
 
   const numberOfReviews = reviews.length;
 
-  const ratings = (product.ratings =
+  product.ratings =
     product.reviews.reduce((acc, item) => item.rating + acc, 0) /
-    product.reviews.length);
+    product.reviews.length;
 
-  await Product.findByIdAndUpdate(
+  await Product.findByIdAndDelete(
     productId,
     {
       reviews,
-      ratings,
       numberOfReviews,
     },
     {
