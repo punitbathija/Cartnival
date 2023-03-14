@@ -27,7 +27,7 @@ const payment = require("./routes/payment");
 // Router middleware
 app.use("/api/v1", customer);
 app.use("/api/v1", product);
-app.use("/api/v1", payment);
+app.use("/api/v1/", payment);
 app.use("/api/v1", order);
 
 module.exports = app;
