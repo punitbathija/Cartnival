@@ -60,9 +60,4 @@ exports.getSingleProduct = BigPromise(async (req, res, next) => {
   if (!product) {
     return next(new CustomError("There are no matching products", 401));
   }
-
-  res.status(200).json({
-    success: true,
-    product,
-  });
 });
