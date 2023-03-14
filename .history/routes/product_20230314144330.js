@@ -18,8 +18,7 @@ router.route("/product/:id").get(getSingleProduct);
 router
   .route("/admin/product/add")
   .post(isLoggedin, customRole("admin"), addProduct);
-router
   .route("/admin/product/modify/:id")
   .post(isLoggedin, customRole("admin"), adminModifyProduct);
 
-module.exports = router;
+  module.exports = router;

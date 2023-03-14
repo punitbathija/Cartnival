@@ -96,15 +96,5 @@ exports.adminModifyProduct = BigPromise(async (req, res, next) => {
       });
     }
     req.body.photos = imageArray;
-
-    product = await Product.findByIdAndUpdate(req.params.id, req.body, {
-      new: true,
-      runValidators: true,
-      useFindAndModify: false,
-    });
-    res.status(200).json({
-      success: true,
-      product,
-    });
   }
 });

@@ -69,42 +69,8 @@ exports.getSingleProduct = BigPromise(async (req, res, next) => {
 
 exports.adminModifyProduct = BigPromise(async (req, res, next) => {
   let product = await Product.findById(req.params.id);
-  let imageArray = [];
 
   if (!product) {
     return next(new CustomError("There are no matching products", 401));
-  }
-
-  if (req.files) {
-    for (let index = 0; index < req.files.photos.length; index++) {
-      let result = await cloudinary.v2.uploader.destroy(
-        product.photos[index].id
-      );
-    }
-
-    for (let index = 0; index < req.files.photos.length; index++) {
-      let result = await cloudinary.v2.uploader.upload(
-        req.files.photos[index].tempFilePath,
-        {
-          folder: "products",
-        }
-      );
-
-      imageArray.push({
-        id: result.public_id,
-        secure_url: result.secure_url,
-      });
-    }
-    req.body.photos = imageArray;
-
-    product = await Product.findByIdAndUpdate(req.params.id, req.body, {
-      new: true,
-      runValidators: true,
-      useFindAndModify: false,
-    });
-    res.status(200).json({
-      success: true,
-      product,
-    });
   }
 });
