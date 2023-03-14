@@ -18,18 +18,16 @@ const productSchema = new mongoose.Schema({
     required: [true, "Please provide a description for the product"],
   },
 
-  photos: [
-    {
-      id: {
-        type: String,
-        required: true,
-      },
-      secure_url: {
-        type: String,
-        required: true,
-      },
+  photos: {
+    id: {
+      type: String,
+      required: true,
     },
-  ],
+    secure_url: {
+      type: String,
+      required: true,
+    },
+  },
 
   category: {
     type: String,
@@ -50,43 +48,4 @@ const productSchema = new mongoose.Schema({
     type: Number,
     default: 0,
   },
-  numberOfReviews: {
-    type: Number,
-    default: 0,
-  },
-
-  reviews: [
-    {
-      customer: {
-        type: mongoose.Schema.ObjectId,
-        ref: "Customer",
-        required: true,
-      },
-      name: {
-        type: String,
-        required: true,
-      },
-      rating: {
-        type: Number,
-        required: true,
-      },
-      comment: {
-        type: String,
-        required: true,
-      },
-    },
-  ],
-
-  customer: {
-    type: mongoose.Schema.ObjectId,
-    ref: "Customer",
-    required: true,
-  },
-
-  createdAt: {
-    type: Date,
-    default: Date.now,
-  },
 });
-
-module.exports = mongoose.model("Product", productSchema);

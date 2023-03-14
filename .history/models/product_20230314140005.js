@@ -19,17 +19,15 @@ const productSchema = new mongoose.Schema({
   },
 
   photos: [
-    {
-      id: {
-        type: String,
-        required: true,
-      },
-      secure_url: {
-        type: String,
-        required: true,
-      },
+    id: {
+      type: String,
+      required: true,
     },
-  ],
+    secure_url: {
+      type: String,
+      required: true,
+    },
+],
 
   category: {
     type: String,

@@ -12,9 +12,8 @@ exports.productTest = async (req, res) => {
 
 exports.addProduct = BigPromise(async (req, res, next) => {
   let imageArray = [];
-
   if (!req.files) {
-    return next(new CustomError("images are required", 401));
+    return next(new CustomError("Please enter images for the product"));
   }
 
   if (req.files) {

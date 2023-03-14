@@ -12,9 +12,8 @@ exports.productTest = async (req, res) => {
 
 exports.addProduct = BigPromise(async (req, res, next) => {
   let imageArray = [];
-
   if (!req.files) {
-    return next(new CustomError("images are required", 401));
+    return next(new CustomError("Please enter images for the product"));
   }
 
   if (req.files) {
@@ -27,19 +26,9 @@ exports.addProduct = BigPromise(async (req, res, next) => {
       );
 
       imageArray.push({
-        id: result.public_id,
+        id: result.public_id
         secure_url: result.secure_url,
       });
     }
   }
-
-  req.body.photos = imageArray;
-  req.body.customer = req.customer.id;
-
-  const product = await Product.create(req.body);
-
-  res.status(200).json({
-    success: true,
-    product,
-  });
 });

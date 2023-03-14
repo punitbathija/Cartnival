@@ -18,18 +18,16 @@ const productSchema = new mongoose.Schema({
     required: [true, "Please provide a description for the product"],
   },
 
-  photos: [
-    {
-      id: {
-        type: String,
-        required: true,
-      },
-      secure_url: {
-        type: String,
-        required: true,
-      },
+  photos: {
+    id: {
+      type: String,
+      required: true,
     },
-  ],
+    secure_url: {
+      type: String,
+      required: true,
+    },
+  },
 
   category: {
     type: String,
@@ -88,5 +86,4 @@ const productSchema = new mongoose.Schema({
     default: Date.now,
   },
 });
-
 module.exports = mongoose.model("Product", productSchema);

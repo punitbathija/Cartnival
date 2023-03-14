@@ -20,9 +20,9 @@ app.use(
 
 // Importing all routes
 const customer = require("./routes/customer");
-const product = require("./routes/product");
+const product = require('./routes/product')
 // Router middleware
 app.use("/api/v1", customer);
-app.use("/api/v1", product);
+app.use("/api/v1", product;
 
 module.exports = app;
