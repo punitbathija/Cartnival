@@ -38,12 +38,12 @@ const productSchema = new mongoose.Schema({
       values: [
         "Electronics",
         "Home and Kitchen",
-        "Clothing and Accessories",
+        "Clothing and accessories",
         "Beauty",
         "Toys and Games",
       ],
       message:
-        "Please select categories from (Electronics, Home and Kitchen, Clothing and Accessories, Beauty, Toys and Games)",
+        "Please select categories from (short-sleeves, long-sleeves, polo-shirts, hoodies, sweat-shirts)",
     },
   },
 

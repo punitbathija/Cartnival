@@ -45,11 +45,9 @@ exports.addProduct = BigPromise(async (req, res, next) => {
 });
 
 exports.getAllProducts = BigPromise(async (req, res, next) => {
+  const resultsPerPage = 6;
+  const countProduct = await Product.countDocuments();
   const allProducts = await Product.find();
 
-  let products = allProducts;
-  res.status(200).json({
-    success: true,
-    products,
-  });
+  allProducts.pager(resultsPerPage, countProduct);
 });
