@@ -28,6 +28,7 @@ const payment = require("./routes/payment");
 app.use("/api/v1", customer);
 app.use("/api/v1", product);
 app.use("/api/v1", order);
+
 app.use("/api/v1", payment);
 
 module.exports = app;
