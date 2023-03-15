@@ -79,7 +79,7 @@ const orderSchema = new mongoose.Schema({
     required: true,
     default: "processing",
     enum: {
-      values: ["processing", "cancelled", "shipped", "delivered"],
+      values: ["processing", "cancelled", "delivered", "shipped"],
       message:
         "Please select categories from (processing, cancelled, delivered, shipped)",
     },

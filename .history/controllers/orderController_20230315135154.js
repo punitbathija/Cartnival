@@ -111,12 +111,12 @@ exports.adminDeleteOrder = BigPromise(async (req, res, next) => {
 
 async function updateProductStock(productId, quantity) {
   const product = await Product.findById(productId);
-  product.quantity = product.quantity - quantity;
+  product.stock = product.stock - quantity;
   await product.save({ validateBeforeSave: false });
 }
 
 async function adjustProductStockOnDelete(productId, quantity) {
   const product = await Product.findById(productId);
-  product.quantity = product.quantity + quantity;
+  product.stock = product.stock + quantity;
   await product.save({ validateBeforeSave: false });
 }
