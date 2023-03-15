@@ -9,9 +9,7 @@ const {
   adminUpdateOrder,
   adminDeleteOrder,
 } = require("../controllers/orderController");
-
 const { isLoggedin, customRole } = require("../middlewares/customer");
-
 router.route("/order/create").post(isLoggedin, createOrder);
 router.route("/myorders").get(isLoggedin, getLoggedinCustomerOrders);
 
