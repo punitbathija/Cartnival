@@ -14,6 +14,8 @@ exports.captureStripePayment = BigPromise(async (req, res, next) => {
   const charge = await stripe.charges.create({
     amount: req.body.amount,
     currency: "inr",
+    source: source,
+    description: description,
   });
 
   res.status(200).json({

@@ -11,16 +11,14 @@ exports.sendStripeKey = BigPromise(async (req, res, next) => {
 });
 
 exports.captureStripePayment = BigPromise(async (req, res, next) => {
-  const charge = await stripe.charges.create({
+  const payment = await stripe.charges.create({
     amount: req.body.amount,
     currency: "inr",
+    metadata: { orderReciept: uuid.v4() },
   });
 
   res.status(200).json({
     success: true,
-    id: charge.id,
-    amount: charge.amount,
-    currency: charge.currency,
-    status: charge.status,
+    client_secret: paymentIntent.client_secret,
   });
 });
