@@ -45,7 +45,7 @@ exports.getSingleOrder = BigPromise(async (req, res, next) => {
   });
 });
 
-exports.getLoggedinCustomerOrders = BigPromise(async (req, res, next) => {
+exports.getLoggedinUserOrders = BigPromise(async (req, res, next) => {
   const order = await Order.find({ customer: req.customer._id });
 
   if (!order) {
