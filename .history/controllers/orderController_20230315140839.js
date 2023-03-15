@@ -102,7 +102,7 @@ exports.adminDeleteOrder = BigPromise(async (req, res, next) => {
     await adjustProductStockOnDelete(prod.product, prod.quantity);
   });
 
-  await order.deleteOne();
+  await order.remove();
   res.status(200).json({
     success: true,
     order,
