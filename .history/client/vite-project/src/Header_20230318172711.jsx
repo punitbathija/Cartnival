@@ -17,14 +17,14 @@ export const Header = () => {
 
   return (
     <>
-      <div className="flex justify-center sticky top-0 z-50 dark:bg-neutral-800 dark:text-white ease-in duration-200 font-mono">
+      <div className="flex justify-center dark:bg-neutral-800 dark:text-white ease-in duration-200 font-mono">
         <nav className="self-center w-full max-w-7xl">
           <div className="flex flex-col justify-around items-center border-b-2 ">
             <h1 className="uppercase py-2 text-2xl md:text-5xl text-center font-sans font-bold px-14 drop-shadow-2xl tracking-widest">
               cartnival
             </h1>
 
-            <ul className="flex  items-center text-sm md:text-[18px] font-bold  md:px-10">
+            <ul className="flex  items-center text-sm md:text-[18px] font-bold  md:px-10 fixed">
               <li>
                 {theme === "light" ? (
                   <svg

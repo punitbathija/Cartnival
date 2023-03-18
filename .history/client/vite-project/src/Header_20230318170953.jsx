@@ -17,10 +17,10 @@ export const Header = () => {
 
   return (
     <>
-      <div className="flex justify-center sticky top-0 z-50 dark:bg-neutral-800 dark:text-white ease-in duration-200 font-mono">
+      <div className="flex justify-center dark:bg-neutral-800 dark:text-white ease-in duration-200">
         <nav className="self-center w-full max-w-7xl">
           <div className="flex flex-col justify-around items-center border-b-2 ">
-            <h1 className="uppercase py-2 text-2xl md:text-5xl text-center font-sans font-bold px-14 drop-shadow-2xl tracking-widest">
+            <h1 className="uppercase py-2 text-2xl font-sans font-bold px-14 drop-shadow-2xl tracking-widest">
               cartnival
             </h1>
 
@@ -67,7 +67,7 @@ export const Header = () => {
                 <a href="#">Shop</a>
               </li>
               <li className="hover:underline underline-offset-4 decoration-2 decoration-cyan-500 py-2 rounded-lg px-2 md:px-5">
-                <a href="#">Categories</a>
+                <a href="#">Shop By category</a>
               </li>
               <li className="hover:underline underline-offset-4 decoration-2 decoration-cyan-500 py-2 rounded-lg px-2 md:px-5">
                 <a href="#">
