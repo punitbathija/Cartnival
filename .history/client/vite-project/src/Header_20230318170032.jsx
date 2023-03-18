@@ -24,7 +24,7 @@ export const Header = () => {
               cartnival
             </h1>
 
-            <ul className="flex  items-center text-sm md:text-[18px] font-bold  md:px-10">
+            <ul className="flex  items-center text-sm md:text-[18px] font-bold  md:px-10 tracking-wider">
               <li>
                 {theme === "light" ? (
                   <svg
@@ -33,7 +33,7 @@ export const Header = () => {
                     viewBox="0 0 24 24"
                     strokeWidth={1.5}
                     stroke="currentColor"
-                    className="w-6 h-6 ease-in duration-500 cursor-pointer"
+                    className="w-6 h-6 ease-in duration-500"
                     onClick={handleThemeSwitch}
                   >
                     <path
@@ -49,7 +49,7 @@ export const Header = () => {
                     viewBox="0 0 24 24"
                     strokeWidth={1.5}
                     stroke="currentColor"
-                    className="w-6 h-6 ease-in duration-500 cursor-pointer"
+                    className="w-6 h-6 ease-in duration-500"
                     onClick={handleThemeSwitch}
                   >
                     <path

@@ -33,7 +33,7 @@ export const Header = () => {
                     viewBox="0 0 24 24"
                     strokeWidth={1.5}
                     stroke="currentColor"
-                    className="w-6 h-6 ease-in duration-500 cursor-pointer"
+                    className="w-6 h-6 ease-in duration-500"
                     onClick={handleThemeSwitch}
                   >
                     <path
@@ -49,7 +49,7 @@ export const Header = () => {
                     viewBox="0 0 24 24"
                     strokeWidth={1.5}
                     stroke="currentColor"
-                    className="w-6 h-6 ease-in duration-500 cursor-pointer"
+                    className="w-6 h-6 ease-in duration-500"
                     onClick={handleThemeSwitch}
                   >
                     <path
