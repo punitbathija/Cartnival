@@ -17,6 +17,7 @@ function App() {
     setTheme(theme === "dark" ? "light" : "dark");
   };
 
+  console.log(process.env.REACT_APP_BACKEND);
   return (
     <>
       <Header />

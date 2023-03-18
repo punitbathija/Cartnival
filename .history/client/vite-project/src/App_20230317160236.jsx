@@ -22,6 +22,7 @@ function App() {
       <Header />
       <div className="App dark:bg-slate-800 dark:text-white ">
         <h1 className="">Hello World!</h1>
+        <h1>App is running at {process.env.REACT_APP_BACKEND}</h1>
       </div>
     </>
   );

@@ -1,9 +1,16 @@
 import "./App.css";
 import { useState, useEffect } from "react";
-import { Header } from "./Header";
 
 function App() {
-  const [theme, setTheme] = useState("light");
+  const [theme, setTheme] = useState(null);
+
+  // useEffect(() => {
+  //   if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
+  //     setTheme("dark");
+  //   } else {
+  //     setTheme("light");
+  //   }
+  // });
 
   useEffect(() => {
     if (theme === "dark") {
@@ -18,12 +25,10 @@ function App() {
   };
 
   return (
-    <>
-      <Header />
-      <div className="App dark:bg-slate-800 dark:text-white ">
-        <h1 className="">Hello World!</h1>
-      </div>
-    </>
+    <div className="App dark:bg-slate-800 text-white">
+      <button onClick={handleThemeSwitch}>Dark Mode</button>
+      <h1 className="">Hello World!</h1>
+    </div>
   );
 }
 
