@@ -9,11 +9,14 @@ const Login = () => {
     e.preventDefault();
     const api = import.meta.env.VITE_REACT_APP_BACKEND;
     console.log(api);
-    const res = await axios.post(`${api}signin`, {
-      email,
-      password,
+    const res = await axios.get(`${api}signin`, {
+      method: "POST",
+      body: JSON.stringify({ email, password }),
+      headers: {
+        "Content-Type": "application/json",
+      },
     });
-    if (res.status === 200) {
+    if (res.ok) {
       window.location.href("/");
     } else {
       alert("invalid credentials");

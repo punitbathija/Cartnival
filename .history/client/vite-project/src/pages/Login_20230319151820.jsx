@@ -15,8 +15,6 @@ const Login = () => {
     });
     if (res.status === 200) {
       window.location.href("/");
-    } else {
-      alert("invalid credentials");
     }
   };
 

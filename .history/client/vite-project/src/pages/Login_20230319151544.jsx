@@ -10,14 +10,13 @@ const Login = () => {
     const api = import.meta.env.VITE_REACT_APP_BACKEND;
     console.log(api);
     const res = await axios.post(`${api}signin`, {
-      email,
-      password,
-    });
-    if (res.status === 200) {
+        email,
+        password
+    })
+    .then(res.ok) {
       window.location.href("/");
-    } else {
-      alert("invalid credentials");
-    }
+    } 
+    
   };
 
   return (

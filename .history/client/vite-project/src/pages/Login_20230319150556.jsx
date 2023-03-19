@@ -8,12 +8,14 @@ const Login = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     const api = import.meta.env.VITE_REACT_APP_BACKEND;
-    console.log(api);
-    const res = await axios.post(`${api}signin`, {
-      email,
-      password,
+    const res = await axios.get("api/signin", {
+      method: "POST",
+      body: JSON.stringify({ email, password }),
+      headers: {
+        "Content-Type": "application/json",
+      },
     });
-    if (res.status === 200) {
+    if (res.ok) {
       window.location.href("/");
     } else {
       alert("invalid credentials");
@@ -23,7 +25,7 @@ const Login = () => {
   return (
     <div className="md:flex justify-center gap-36 text-center align-middle justify-items-center m-auto dark:bg-neutral-800 dark:text-white ease-in duration-200 font-mono">
       <div className="">
-        <form onSubmit={handleSubmit}>
+        <form>
           <p className="text-2xl" onChange={(e) => setEmail(e.target.value)}>
             Email Id
           </p>
@@ -36,10 +38,7 @@ const Login = () => {
           </p>
           <input type="password" className="border-2 p-2" />
           <br />
-          <button
-            className="text-2xl border-2 my-4 p-1 bg-cyan-700"
-            onClick={handleSubmit}
-          >
+          <button className="text-2xl border-2 my-4 p-1 bg-cyan-700">
             SignIn
           </button>
         </form>
