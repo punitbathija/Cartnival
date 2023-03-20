@@ -20,9 +20,12 @@ const Signin = () => {
         setSigninData(res.data.customer);
       })
       .catch((error) => {
-        setError(error);
+        setError("Invalid credentials");
         console.log(error);
       });
+
+    setEmail("");
+    setPassword("");
   };
 
   return (
@@ -30,13 +33,17 @@ const Signin = () => {
       <div className="">
         <h1 className="text-3xl py-6 text-cyan-500">Sign In</h1>
         <form onSubmit={handleSignin} method="post">
-          <p className="md:text-2xl">Email Id</p>
+          <p className="md:text-2xl">
+            Email Id<span className="text-red-500">*</span>
+          </p>
           <input
             type="text"
             className="border-2 p-2 dark:text-black"
             onChange={(e) => setEmail(e.target.value)}
           />
-          <p className="md:text-2xl ">Password</p>
+          <p className="md:text-2xl ">
+            Password<span className="text-red-500">*</span>
+          </p>
           <input
             type="password"
             className="border-2 p-2 dark:text-black"
@@ -49,8 +56,8 @@ const Signin = () => {
           >
             Sign In
           </button>
-          {/* {signinData && <p>Welcome, {signinData.name}</p>}
-          {error && <p>{error}</p>} */}
+          {signinData && <p>Welcome, {signinData.name}</p>}
+          {error && <p>{error}</p>}
         </form>
       </div>
     </div>
