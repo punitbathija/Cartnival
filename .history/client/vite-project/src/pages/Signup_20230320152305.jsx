@@ -21,7 +21,7 @@ export const Signup = () => {
         setSignupData(res.data.customer);
       })
       .catch((error) => {
-        setError("Please enter all the * fields");
+        setError("Please enter all the fields");
         console.log(error);
       });
 
@@ -36,7 +36,7 @@ export const Signup = () => {
 
         <form onSubmit={handleSignup}>
           <p className="md:text-2xl">
-            Name<span className="text-red-500">*</span>
+            Name <span className="text-red-500">*</span>
           </p>
           <input
             type="text"
@@ -45,18 +45,14 @@ export const Signup = () => {
             value={name}
           />
 
-          <p className="md:text-2xl">
-            Email Id<span className="text-red-500">*</span>
-          </p>
+          <p className="md:text-2xl">Email Id *</p>
           <input
             type="text"
             className="border-2 p-2 dark:text-black"
             onChange={(e) => setEmail(e.target.value)}
             email={email}
           />
-          <p className="md:text-2xl ">
-            Password<span className="text-red-500">*</span>
-          </p>
+          <p className="md:text-2xl ">Password *</p>
           <input
             type="password"
             className="border-2 p-2 dark:text-black"

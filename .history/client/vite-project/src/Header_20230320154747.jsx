@@ -9,8 +9,7 @@ export const Header = () => {
     e.preventDefault();
     axios
       .get(`${api}signout`)
-      .then((res) => console.log(res))
-      .then((err) => console.log(err));
+      .then(console.log("user successfully signed out"));
   };
 
   useEffect(() => {
@@ -112,7 +111,6 @@ export const Header = () => {
                 strokeWidth={1.5}
                 stroke="currentColor"
                 className="w-6 h-6 mt-1 cursor-pointer"
-                onClick={signOut}
               >
                 <path
                   strokeLinecap="round"

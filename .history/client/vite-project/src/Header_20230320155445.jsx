@@ -10,7 +10,9 @@ export const Header = () => {
     axios
       .get(`${api}signout`)
       .then((res) => console.log(res))
-      .then((err) => console.log(err));
+      .catch((error) => {
+        console.log(error);
+      });
   };
 
   useEffect(() => {

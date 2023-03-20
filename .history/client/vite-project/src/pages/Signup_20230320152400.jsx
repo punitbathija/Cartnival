@@ -21,7 +21,7 @@ export const Signup = () => {
         setSignupData(res.data.customer);
       })
       .catch((error) => {
-        setError("Please enter all the * fields");
+        setError("Please enter all the fields");
         console.log(error);
       });
 

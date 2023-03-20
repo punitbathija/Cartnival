@@ -1,17 +1,7 @@
 import React, { useState, useEffect } from "react";
-import axios from "axios";
 
 export const Header = () => {
   const [theme, setTheme] = useState("light");
-  const api = import.meta.env.VITE_REACT_APP_BACKEND;
-
-  const signOut = async (e) => {
-    e.preventDefault();
-    axios
-      .get(`${api}signout`)
-      .then((res) => console.log(res))
-      .then((err) => console.log(err));
-  };
 
   useEffect(() => {
     if (theme === "dark") {
@@ -112,7 +102,6 @@ export const Header = () => {
                 strokeWidth={1.5}
                 stroke="currentColor"
                 className="w-6 h-6 mt-1 cursor-pointer"
-                onClick={signOut}
               >
                 <path
                   strokeLinecap="round"

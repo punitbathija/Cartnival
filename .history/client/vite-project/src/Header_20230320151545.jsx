@@ -1,17 +1,7 @@
 import React, { useState, useEffect } from "react";
-import axios from "axios";
 
 export const Header = () => {
   const [theme, setTheme] = useState("light");
-  const api = import.meta.env.VITE_REACT_APP_BACKEND;
-
-  const signOut = async (e) => {
-    e.preventDefault();
-    axios
-      .get(`${api}signout`)
-      .then((res) => console.log(res))
-      .then((err) => console.log(err));
-  };
 
   useEffect(() => {
     if (theme === "dark") {
@@ -98,12 +88,12 @@ export const Header = () => {
                 </a>
               </li>
             </ul>
-            <div className="flex space-x-5 text-sm md:text-[16px]">
+            <div className="flex space-x-5 text-sm md:text-[16px] align-middle text-center justify-center justify-center  m-auto ">
               <h1 className=" py-2 font-semibold hover:underline decoration-cyan-500  cursor-pointer">
-                Sign In
+                SignIn
               </h1>
               <h1 className=" py-2 font-semibold hover:underline decoration-cyan-500  cursor-pointer">
-                Sign Up
+                SignUp
               </h1>
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -111,8 +101,7 @@ export const Header = () => {
                 viewBox="0 0 24 24"
                 strokeWidth={1.5}
                 stroke="currentColor"
-                className="w-6 h-6 mt-1 cursor-pointer"
-                onClick={signOut}
+                className="w-6 h-6"
               >
                 <path
                   strokeLinecap="round"
