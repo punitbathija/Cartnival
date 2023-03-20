@@ -16,14 +16,15 @@ const Signin = () => {
         password: password,
       })
       .then((res) => {
-        console.log(res);
         setSigninData(res.data.customer);
       })
       .catch((error) => {
         setError(error);
         console.log(error);
       });
-  };
+      email('');
+      password(;)
+    };
 
   return (
     <div className="md:flex p-24 justify-center gap-36 text-center align-middle justify-items-center m-auto dark:bg-neutral-800 dark:text-white ease-in duration-200 font-mono h-[85.5vh]">
@@ -49,8 +50,8 @@ const Signin = () => {
           >
             Sign In
           </button>
-          {/* {signinData && <p>Welcome, {signinData.name}</p>}
-          {error && <p>{error}</p>} */}
+          {signinData && <p>Welcome, {signinData.name}</p>}
+          {error && <p>{error}</p>}
         </form>
       </div>
     </div>

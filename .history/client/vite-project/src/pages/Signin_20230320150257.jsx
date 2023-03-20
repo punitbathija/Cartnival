@@ -16,8 +16,9 @@ const Signin = () => {
         password: password,
       })
       .then((res) => {
-        console.log(res);
         setSigninData(res.data.customer);
+        setEmail("");
+        setPassword("");
       })
       .catch((error) => {
         setError(error);
@@ -49,8 +50,8 @@ const Signin = () => {
           >
             Sign In
           </button>
-          {/* {signinData && <p>Welcome, {signinData.name}</p>}
-          {error && <p>{error}</p>} */}
+          {signinData && <p>Welcome, {signinData.name}</p>}
+          {error && <p>{error}</p>}
         </form>
       </div>
     </div>

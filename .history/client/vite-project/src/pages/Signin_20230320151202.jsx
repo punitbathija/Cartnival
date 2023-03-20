@@ -10,6 +10,8 @@ const Signin = () => {
 
   const handleSignin = async (e) => {
     e.preventDefault();
+    setEmail("");
+    setPassword("");
     await axios
       .post(`${api}signin`, {
         email: email,

@@ -10,13 +10,15 @@ const Signin = () => {
 
   const handleSignin = async (e) => {
     e.preventDefault();
+
+    setEmail("");
+    setPassword("");
     await axios
       .post(`${api}signin`, {
         email: email,
         password: password,
       })
       .then((res) => {
-        console.log(res);
         setSigninData(res.data.customer);
       })
       .catch((error) => {
@@ -49,8 +51,8 @@ const Signin = () => {
           >
             Sign In
           </button>
-          {/* {signinData && <p>Welcome, {signinData.name}</p>}
-          {error && <p>{error}</p>} */}
+          {signinData && <p>Welcome, {signinData.name}</p>}
+          {error && <p>{error}</p>}
         </form>
       </div>
     </div>

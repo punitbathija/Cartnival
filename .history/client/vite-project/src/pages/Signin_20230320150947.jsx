@@ -10,13 +10,14 @@ const Signin = () => {
 
   const handleSignin = async (e) => {
     e.preventDefault();
+    setEmail("");
+    setPassword("");
     await axios
       .post(`${api}signin`, {
         email: email,
         password: password,
       })
       .then((res) => {
-        console.log(res);
         setSigninData(res.data.customer);
       })
       .catch((error) => {

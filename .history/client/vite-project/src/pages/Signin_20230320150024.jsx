@@ -16,7 +16,6 @@ const Signin = () => {
         password: password,
       })
       .then((res) => {
-        console.log(res);
         setSigninData(res.data.customer);
       })
       .catch((error) => {
@@ -36,12 +35,13 @@ const Signin = () => {
             className="border-2 p-2 dark:text-black"
             onChange={(e) => setEmail(e.target.value)}
           />
-          <p className="md:text-2xl ">Password</p>
-          <input
-            type="password"
-            className="border-2 p-2 dark:text-black"
+          <p
+            className="md:text-2xl "
             onChange={(e) => setPassword(e.target.value)}
-          />
+          >
+            Password
+          </p>
+          <input type="password" className="border-2 p-2 dark:text-black" />
           <br />
           <button
             className="text-2xl border-2 my-4 p-1 bg-cyan-700"
@@ -49,8 +49,8 @@ const Signin = () => {
           >
             Sign In
           </button>
-          {/* {signinData && <p>Welcome, {signinData.name}</p>}
-          {error && <p>{error}</p>} */}
+          {signinData && <p>Welcome, {signinData.email}</p>}
+          {error && <p>{error}</p>}
         </form>
       </div>
     </div>
