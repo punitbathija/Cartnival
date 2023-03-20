@@ -9,10 +9,9 @@ const ResetPassword = () => {
   const api = import.meta.env.VITE_REACT_APP_BACKEND;
 
   const handleResetPassword = async (e) => {
-    const token = "c7eb050899bf508757c40cef621099ad2e689508";
     e.preventDefault();
     await axios
-      .post(`${api}password/reset/${token}`, {
+      .post(`${api}password/reset/:token`, {
         password: password,
         confirmPassword: confirmPassword,
       })
@@ -25,8 +24,7 @@ const ResetPassword = () => {
         console.log(error);
       });
 
-    setPassword("");
-    setConfirmPassword("");
+    setEmail("");
   };
 
   return (
@@ -47,7 +45,7 @@ const ResetPassword = () => {
           </p>
           <input
             type="password"
-            className="border-2 p-2 dark:text-black my-2"
+            className="border-2 p-2 dark:text-black"
             onChange={(e) => setConfirmPassword(e.target.value)}
           />
           <br />
