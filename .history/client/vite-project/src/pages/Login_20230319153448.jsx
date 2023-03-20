@@ -4,20 +4,16 @@ import axios from "axios";
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const api = import.meta.env.VITE_REACT_APP_BACKEND;
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    const api = import.meta.env.VITE_REACT_APP_BACKEND;
-    console.log(api);
-    const res = await axios.post(`${api}signin`, {
-      email,
-      password,
+  const handleSubmit = async () => {
+    let res = await fetch(`${api}signin`, {
+      method: "POST",
+      body: JSON.stringify({ email, password }),
+      headers: {
+        "Content-Type": "application/json",
+      },
     });
-    if (res.status === 200) {
-      window.location.href("/");
-    } else {
-      alert("invalid credentials");
-    }
   };
 
   return (
