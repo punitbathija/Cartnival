@@ -1,8 +1,9 @@
 import React, { useState } from "react";
 import axios from "axios";
 
-const ForgotPassword = () => {
-  const [email, setEmail] = useState("");
+const ResetPassword = () => {
+  const [password, setPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
   const [tokenData, setTokenData] = useState("");
   const [error, setError] = useState("");
   const api = import.meta.env.VITE_REACT_APP_BACKEND;
@@ -10,15 +11,16 @@ const ForgotPassword = () => {
   const handleForgotPassword = async (e) => {
     e.preventDefault();
     await axios
-      .post(`${api}forgotPassword`, {
-        email: email,
+      .post(`${api}password/reset/:token`, {
+        password: password,
+        confirmPassword: confirmPassword,
       })
       .then((res) => {
         console.log(res);
-        setTokenData("Please check your inbox for futher assistance");
+        setTokenData("Password successfully updated");
       })
       .catch((error) => {
-        setError("Email id does not match our records");
+        setError("Password & confirm password does not match");
         console.log(error);
       });
 
@@ -53,4 +55,4 @@ const ForgotPassword = () => {
   );
 };
 
-export default ForgotPassword;
+export default ResetPassword;

@@ -28,7 +28,7 @@ const ForgotPassword = () => {
   return (
     <div className="md:flex p-24 justify-center gap-36 text-center align-middle justify-items-center m-auto dark:bg-neutral-800 dark:text-white ease-in duration-200 font-mono h-[85.5vh]">
       <div className="">
-        <h1 className="text-3xl py-6 text-cyan-500">Forgot Password</h1>
+        <h1 className="text-3xl py-6 text-cyan-500">Sign In</h1>
         <form onSubmit={handleForgotPassword} method="post">
           <p className="md:text-2xl">
             Email Id<span className="text-red-500">*</span>
@@ -38,9 +38,8 @@ const ForgotPassword = () => {
             className="border-2 p-2 dark:text-black"
             onChange={(e) => setEmail(e.target.value)}
           />
-          <br />
           <button
-            className="text-xl border-2 p-1.5 my-2 bg-cyan-700"
+            className="text-xl border-2 p-1.5 my-2 bg-cyan-700 mb-2"
             onClick={handleForgotPassword}
           >
             GO
