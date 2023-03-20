@@ -10,7 +10,7 @@ const ResetPassword = () => {
 
   const handleResetPassword = async (e) => {
     const token =
-      "5a8d890fb2762f03811084a47abc0113da65ed87" || req.params.token;
+      "c308dd25c6cd947d745dbddd979234b6a2bd45c8" || req.params.token;
     e.preventDefault();
     await axios
       .post(`${api}password/reset/${token}`, {
