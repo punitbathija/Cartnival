@@ -8,9 +8,9 @@ const cookieToken = (customer, res) => {
     httpOnly: true,
   };
 
-  res.cookie("token", token, options);
-
   customer.password = undefined;
+
+  res.cookie("token", token, options);
 
   res.status(200).json({
     success: true,

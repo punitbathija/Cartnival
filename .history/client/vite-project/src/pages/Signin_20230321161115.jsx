@@ -10,9 +10,12 @@ const Signin = () => {
 
   const handleSignin = async (e) => {
     e.preventDefault();
-    await axios
+    const instance = axios.create({
+      withCredentials: true,
+      baseURL: BASE_URL,
+    });
+    await instance
       .post(`${api}signin`, {
-        withCredentials: true,
         email: email,
         password: password,
       })
@@ -21,11 +24,6 @@ const Signin = () => {
         setSigninData(res.data.customer);
         setEmail("");
         setPassword("");
-        let token = res.data.token;
-        if (token) {
-          axios.defaults.headers.common["Authorization"] = `Bearer ${token}`;
-          document.cookie = `token=${token}`;
-        }
       })
       .catch((error) => {
         setError("Invalid credentials");

@@ -11,7 +11,7 @@ const MyProfile = () => {
       const result = await axios.get(`${api}myprofile`);
       console.log(result);
     }
-    // handleMyProfile();
+    handleMyProfile();
   }, []);
 
   return (

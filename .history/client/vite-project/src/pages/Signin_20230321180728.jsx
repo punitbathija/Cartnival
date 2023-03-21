@@ -18,10 +18,11 @@ const Signin = () => {
       })
       .then((res) => {
         console.log(res);
+        let token = res.data.token;
         setSigninData(res.data.customer);
         setEmail("");
         setPassword("");
-        let token = res.data.token;
+
         if (token) {
           axios.defaults.headers.common["Authorization"] = `Bearer ${token}`;
           document.cookie = `token=${token}`;

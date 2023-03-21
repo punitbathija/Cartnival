@@ -9,6 +9,8 @@ const Signin = () => {
   const api = import.meta.env.VITE_REACT_APP_BACKEND;
 
   const handleSignin = async (e) => {
+
+
     e.preventDefault();
     await axios
       .post(`${api}signin`, {
@@ -21,11 +23,6 @@ const Signin = () => {
         setSigninData(res.data.customer);
         setEmail("");
         setPassword("");
-        let token = res.data.token;
-        if (token) {
-          axios.defaults.headers.common["Authorization"] = `Bearer ${token}`;
-          document.cookie = `token=${token}`;
-        }
       })
       .catch((error) => {
         setError("Invalid credentials");

@@ -8,30 +8,38 @@ const Signin = () => {
   const [error, setError] = useState("");
   const api = import.meta.env.VITE_REACT_APP_BACKEND;
 
+  // const handleSignin = async (e) => {
+  //   e.preventDefault();
+  //   await axios
+  //     .post(`${api}signin`, {
+  //       withCredentials: true,
+  //       email: email,
+  //       password: password,
+  //     })
+  //     .then((res) => {
+  //       console.log(res);
+  //       setSigninData(res.data.customer);
+  //       setEmail("");
+  //       setPassword("");
+  //     })
+  //     .catch((error) => {
+  //       setError("Invalid credentials");
+  //       console.log(error);
+  //     });
+
   const handleSignin = async (e) => {
-    e.preventDefault();
-    await axios
-      .post(`${api}signin`, {
-        withCredentials: true,
-        email: email,
-        password: password,
-      })
-      .then((res) => {
-        console.log(res);
-        setSigninData(res.data.customer);
-        setEmail("");
-        setPassword("");
-        let token = res.data.token;
-        if (token) {
-          axios.defaults.headers.common["Authorization"] = `Bearer ${token}`;
-          document.cookie = `token=${token}`;
-        }
-      })
-      .catch((error) => {
-        setError("Invalid credentials");
-        console.log(error);
-      });
+    const res = await fetch(`${api}signin`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        email,
+        password,
+      }),
+    });
   };
+
   return (
     <div className="md:flex p-24 justify-center gap-36 text-center align-middle justify-items-center m-auto dark:bg-neutral-800 dark:text-white ease-in duration-200 font-mono h-[85.5vh]">
       <div className="">
@@ -60,7 +68,7 @@ const Signin = () => {
           >
             Sign In
           </button>
-          {signinData && <p>Welcome, {signinData.name}</p>}
+          {/* {signinData && <p>Welcome, {signinData.name}</p>}
           {error && (
             <p>
               {error}{" "}
@@ -68,7 +76,7 @@ const Signin = () => {
                 Forgot Password?
               </span>
             </p>
-          )}
+          )} */}
         </form>
       </div>
     </div>
