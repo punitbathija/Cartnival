@@ -6,7 +6,8 @@ const cookieToken = (customer, res) => {
       Date.now() + process.env.COOKIE_TIME * 24 * 60 * 60 * 1000
     ),
     httpOnly: true,
-    sameSite: "none",
+    // sameSite: None,
+    SameSite: None,
   };
 
   customer.password = undefined;
@@ -16,5 +17,12 @@ const cookieToken = (customer, res) => {
     customer,
   });
 };
+
+//   res.status(200).setHeader("Set-Cookie", token).json({
+//     success: true,
+//     token,
+//     customer,
+//   });
+// };
 
 module.exports = cookieToken;

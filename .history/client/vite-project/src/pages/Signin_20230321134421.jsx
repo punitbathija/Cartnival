@@ -18,6 +18,7 @@ const Signin = () => {
       .then((res) => {
         console.log(res);
         setSigninData(res.data.customer);
+
         setEmail("");
         setPassword("");
       })

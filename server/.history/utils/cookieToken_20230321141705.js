@@ -17,4 +17,11 @@ const cookieToken = (customer, res) => {
   });
 };
 
+//   res.status(200).setHeader("Set-Cookie", token).json({
+//     success: true,
+//     token,
+//     customer,
+//   });
+// };
+
 module.exports = cookieToken;

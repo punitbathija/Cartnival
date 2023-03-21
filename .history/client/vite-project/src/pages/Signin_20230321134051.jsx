@@ -18,13 +18,19 @@ const Signin = () => {
       .then((res) => {
         console.log(res);
         setSigninData(res.data.customer);
-        setEmail("");
-        setPassword("");
       })
       .catch((error) => {
         setError("Invalid credentials");
         console.log(error);
       });
+
+    async function handleMyProfile() {
+      const result = await axios.get(`${api}myprofile`);
+      console.log(result);
+    }
+
+    setEmail("");
+    setPassword("");
   };
 
   return (

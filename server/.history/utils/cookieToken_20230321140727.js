@@ -6,11 +6,17 @@ const cookieToken = (customer, res) => {
       Date.now() + process.env.COOKIE_TIME * 24 * 60 * 60 * 1000
     ),
     httpOnly: true,
-    sameSite: "none",
+    sameSite: None,
   };
 
   customer.password = undefined;
-  res.status(200).cookie("token", token, options).json({
+  // res.status(200).cookie("token", token, options).json({
+  //   success: true,
+  //   token,
+  //   customer,
+  // });
+
+  res.status(200).setHeader("Set-Cookie", token).json({
     success: true,
     token,
     customer,

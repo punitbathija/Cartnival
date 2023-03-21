@@ -7,9 +7,11 @@ const MyProfile = () => {
   const api = import.meta.env.VITE_REACT_APP_BACKEND;
 
   useEffect(() => {
-    async function handleMyProfile() {
-      const result = await axios.get(`${api}myprofile`);
-      console.log(result);
+  async function handleMyProfile() {
+    const result = await axios.get(`${api}myprofile`);
+    console.log(result);
+  }
+
     }
     handleMyProfile();
   }, []);

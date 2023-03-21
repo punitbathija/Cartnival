@@ -25,6 +25,13 @@ const Signin = () => {
         setError("Invalid credentials");
         console.log(error);
       });
+
+    async function handleMyProfile() {
+      const result = await axios.get(`${api}myprofile`);
+      console.log(result);
+    }
+
+    handleMyProfile();
   };
 
   return (

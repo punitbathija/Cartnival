@@ -18,13 +18,14 @@ const Signin = () => {
       .then((res) => {
         console.log(res);
         setSigninData(res.data.customer);
-        setEmail("");
-        setPassword("");
       })
       .catch((error) => {
         setError("Invalid credentials");
         console.log(error);
       });
+
+    setEmail("");
+    setPassword("");
   };
 
   return (
