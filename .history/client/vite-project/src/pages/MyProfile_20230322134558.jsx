@@ -22,7 +22,7 @@ const MyProfile = () => {
     <div className="md:flex p-24 justify-center gap-36 text-center align-middle justify-items-center m-auto dark:bg-neutral-800 dark:text-white ease-in duration-200 font-mono h-[85.5vh]">
       <div className="my-2">
         <h1 className="text-3xl py-6 text-cyan-500">My Profile</h1>
-        {error && <p>{error}</p>}
+        {error && <p className="text-red-500">{error}</p>}
         {tokenData && (
           <h1 className="flex md:text-xl">
             Name:- {tokenData && <p>{tokenData.data.customer.name}</p>}

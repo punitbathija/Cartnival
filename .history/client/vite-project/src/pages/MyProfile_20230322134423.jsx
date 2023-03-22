@@ -15,7 +15,7 @@ const MyProfile = () => {
         })
         .catch((error) => setError("Cannot fetch user details please sign in"));
     }
-    handleMyProfile();
+    // handleMyProfile();
   }, []);
 
   return (
@@ -28,11 +28,10 @@ const MyProfile = () => {
             Name:- {tokenData && <p>{tokenData.data.customer.name}</p>}
           </h1>
         )}
-        {tokenData && (
-          <h1 className="flex md:text-xl">
-            Email:- {tokenData && <p>{tokenData.data.customer.email}</p>}
-          </h1>
-        )}
+
+        <h1 className="flex md:text-xl">
+          Email:- {tokenData && <p>{tokenData.data.customer.email}</p>}
+        </h1>
       </div>
     </div>
   );

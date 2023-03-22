@@ -13,9 +13,9 @@ const MyProfile = () => {
         .then((res) => {
           setTokenData(res);
         })
-        .catch((error) => setError("Cannot fetch user details please sign in"));
+        .catch((error) => setError(error));
     }
-    handleMyProfile();
+    // handleMyProfile();
   }, []);
 
   return (
@@ -23,16 +23,12 @@ const MyProfile = () => {
       <div className="my-2">
         <h1 className="text-3xl py-6 text-cyan-500">My Profile</h1>
         {error && <p>{error}</p>}
-        {tokenData && (
-          <h1 className="flex md:text-xl">
-            Name:- {tokenData && <p>{tokenData.data.customer.name}</p>}
-          </h1>
-        )}
-        {tokenData && (
-          <h1 className="flex md:text-xl">
-            Email:- {tokenData && <p>{tokenData.data.customer.email}</p>}
-          </h1>
-        )}
+        <h1 className="flex md:text-xl">
+          Name:- {tokenData && <p>{tokenData.data.customer.name}</p>}
+        </h1>
+        <h1 className="flex md:text-xl">
+          Email:- {tokenData && <p>{tokenData.data.customer.email}</p>}
+        </h1>
       </div>
     </div>
   );

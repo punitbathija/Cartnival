@@ -8,12 +8,14 @@ const MyProfile = () => {
 
   useEffect(() => {
     async function handleMyProfile() {
-      const result = await axios
-        .get(`${api}myprofile`)
-        .then((res) => {
-          setTokenData(res);
-        })
-        .catch((error) => setError("Cannot fetch user details please sign in"));
+      const result = await axios.get(`${api}myprofile`);
+      // console.log(result);
+      if (result) {
+        setTokenData(result);
+        // console.log(tokenData);
+      } else {
+        setError("Cannot fetch user please sign in again");
+      }
     }
     handleMyProfile();
   }, []);
@@ -23,16 +25,12 @@ const MyProfile = () => {
       <div className="my-2">
         <h1 className="text-3xl py-6 text-cyan-500">My Profile</h1>
         {error && <p>{error}</p>}
-        {tokenData && (
-          <h1 className="flex md:text-xl">
-            Name:- {tokenData && <p>{tokenData.data.customer.name}</p>}
-          </h1>
-        )}
-        {tokenData && (
-          <h1 className="flex md:text-xl">
-            Email:- {tokenData && <p>{tokenData.data.customer.email}</p>}
-          </h1>
-        )}
+        <h1 className="flex md:text-xl">
+          Name:- {tokenData && <p>{tokenData.data.customer.name}</p>}
+        </h1>
+        <h1 className="flex md:text-xl">
+          Email:- {tokenData && <p>{tokenData.data.customer.email}</p>}
+        </h1>
       </div>
     </div>
   );
