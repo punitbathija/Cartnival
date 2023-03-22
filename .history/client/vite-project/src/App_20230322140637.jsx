@@ -7,7 +7,6 @@ import ForgotPassword from "./pages/ForgotPassword";
 import ResetPassword from "./pages/ResetPassword";
 import MyProfile from "./pages/MyProfile";
 import UpdatePassword from "./pages/UpdatePassword";
-import UpdateUser from "./pages/UpdateUser";
 function App() {
   return (
     <>
@@ -18,7 +17,6 @@ function App() {
       <ResetPassword />
       <MyProfile />
       <UpdatePassword />
-      <UpdateUser />
     </>
   );
 }

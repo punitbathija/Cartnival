@@ -15,7 +15,7 @@ const MyProfile = () => {
         })
         .catch((error) => setError("Cannot fetch user details please sign in"));
     }
-    // handleMyProfile();
+    handleMyProfile();
   }, []);
 
   return (
