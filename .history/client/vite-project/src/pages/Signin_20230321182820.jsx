@@ -24,7 +24,6 @@ const Signin = () => {
         let token = res.data.token;
         if (token) {
           axios.defaults.headers.common["Authorization"] = `Bearer ${token}`;
-          document.cookie = "";
           document.cookie = `token=${token}`;
         }
       })

@@ -13,7 +13,7 @@ const Header = () => {
         console.log(res);
         axios.defaults.headers.common["Authorization"] = null;
         document.cookie =
-          "token=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+          "myCookie=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
       })
       .then((err) => console.log(err));
   };
