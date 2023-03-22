@@ -57,7 +57,7 @@ const MyProfile = () => {
 
         {tokenData && (
           <div className="flex justify-center align-middle justify-items-center m-auto">
-            <button className="flex text-xl border-2 p-1.5 my-2 bg-cyan-700">
+            <button className=" flex text-xl border-2 p-1.5 my-2 bg-cyan-700">
               Update User Details
               <svg
                 xmlns="http://www.w3.org/2000/svg"
