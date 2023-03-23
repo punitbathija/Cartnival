@@ -44,7 +44,6 @@ const FetchSingleUser = () => {
             className="border-2 p-2 dark:text-black my-2"
             onChange={(e) => setSearchQuery(e.target.value)}
           />
-          <br />
           <button
             className="text-xl border-2 p-1.5 my-2 bg-cyan-700"
             onClick={handleFetchSingleUser}
@@ -57,9 +56,9 @@ const FetchSingleUser = () => {
               <p className="md:text-2xl">Email:- {tokenData.email}</p>
               <p className="md:text-2xl">Role:- {tokenData.role}</p>
               <br />
-              <div className="flex flex-col justify-center align-middle justify-items-center m-auto">
+              <div className="flex">
                 <select
-                  className="border-2 text-black text-xl"
+                  className="border-2 p-1 bg-cyan-700 text-2xl"
                   value={role}
                   onChange={(e) => setRole(e.target.value)}
                 >
@@ -72,7 +71,7 @@ const FetchSingleUser = () => {
                 </select>
 
                 <button
-                  className="text-xl border-2 p-1.5 my-2 bg-cyan-700 w-[50%] m-auto"
+                  className="text-xl border-2 p-1.5 my-2 bg-cyan-700"
                   onClick={handleModifyRole}
                 >
                   Modify Role

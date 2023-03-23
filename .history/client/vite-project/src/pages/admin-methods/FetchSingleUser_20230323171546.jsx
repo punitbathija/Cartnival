@@ -44,7 +44,6 @@ const FetchSingleUser = () => {
             className="border-2 p-2 dark:text-black my-2"
             onChange={(e) => setSearchQuery(e.target.value)}
           />
-          <br />
           <button
             className="text-xl border-2 p-1.5 my-2 bg-cyan-700"
             onClick={handleFetchSingleUser}

@@ -38,13 +38,16 @@ const FetchSingleUser = () => {
     <div className="md:flex p-24 justify-center gap-36 text-center align-middle justify-items-center m-auto dark:bg-neutral-800 dark:text-white ease-in duration-200 font-mono h-[85.5vh]">
       <div className="">
         <h1 className="text-3xl py-6 text-cyan-500">User Details</h1>
-        <form onSubmit={handleFetchSingleUser} method="post">
+        <form
+          className="text-center"
+          onSubmit={handleFetchSingleUser}
+          method="post"
+        >
           <input
             type="text"
             className="border-2 p-2 dark:text-black my-2"
             onChange={(e) => setSearchQuery(e.target.value)}
           />
-          <br />
           <button
             className="text-xl border-2 p-1.5 my-2 bg-cyan-700"
             onClick={handleFetchSingleUser}
