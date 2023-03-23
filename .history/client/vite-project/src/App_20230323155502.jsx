@@ -9,7 +9,6 @@ import MyProfile from "./pages/MyProfile";
 import UpdatePassword from "./pages/UpdatePassword";
 import UpdateUser from "./pages/UpdateUser";
 import FetchAllUsers from "./pages/admin-methods/FetchAllUsers";
-import FetchSingleUser from "./pages/admin-methods/FetchSingleUser";
 function App() {
   return (
     <>
@@ -22,7 +21,6 @@ function App() {
       <UpdatePassword />
       <UpdateUser />
       {/* <FetchAllUsers /> */}
-      <FetchSingleUser />
     </>
   );
 }

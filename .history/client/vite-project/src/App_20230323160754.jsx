@@ -21,7 +21,7 @@ function App() {
       <MyProfile />
       <UpdatePassword />
       <UpdateUser />
-      {/* <FetchAllUsers /> */}
+      <FetchAllUsers />
       <FetchSingleUser />
     </>
   );

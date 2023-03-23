@@ -11,7 +11,7 @@ const FetchAllUsers = () => {
       const result = await axios
         .get(`${api}admin/getallusers`)
         .then((res) => {
-          console.log(res.data);
+          setTokenData(res.data);
         })
         .catch((error) => setError("This link is strictly resticted to Admin"));
     }

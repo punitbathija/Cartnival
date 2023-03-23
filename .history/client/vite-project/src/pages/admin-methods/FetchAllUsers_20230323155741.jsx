@@ -11,18 +11,18 @@ const FetchAllUsers = () => {
       const result = await axios
         .get(`${api}admin/getallusers`)
         .then((res) => {
-          console.log(res.data);
+          setTokenData(res.data);
         })
         .catch((error) => setError("This link is strictly resticted to Admin"));
     }
-    handleFetchAllUsers();
+    // handleFetchAllUsers();
   }, []);
 
   return (
     <div className="md:flex p-24 justify-center gap-36 text-center align-middle justify-items-center m-auto dark:bg-neutral-800 dark:text-white ease-in duration-200 font-mono">
       <div className="my-2">
         <h1 className="text-3xl py-6 text-cyan-500">All users</h1>
-        {error && <p>{error}</p>}
+        {/* {error && <p>{error}</p>}
         {tokenData.allCustomers.map((customer) => {
           return (
             <div className="py-4" key={customer._id}>
@@ -33,7 +33,7 @@ const FetchAllUsers = () => {
               <hr />
             </div>
           );
-        })}
+        })} */}
       </div>
     </div>
   );

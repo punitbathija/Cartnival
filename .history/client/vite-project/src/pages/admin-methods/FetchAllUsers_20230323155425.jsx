@@ -6,17 +6,15 @@ const FetchAllUsers = () => {
   const [error, setError] = useState("");
   const api = import.meta.env.VITE_REACT_APP_BACKEND;
 
-  useEffect(() => {
-    async function handleFetchAllUsers() {
-      const result = await axios
-        .get(`${api}admin/getallusers`)
-        .then((res) => {
-          console.log(res.data);
-        })
-        .catch((error) => setError("This link is strictly resticted to Admin"));
-    }
-    handleFetchAllUsers();
-  }, []);
+  async function handleFetchAllUsers() {
+    const result = await axios
+      .get(`${api}admin/getallusers`)
+      .then((res) => {
+        setTokenData(res.data);
+      })
+      .catch((error) => setError("This link is strictly resticted to Admin"));
+  }
+  // handleFetchAllUsers();
 
   return (
     <div className="md:flex p-24 justify-center gap-36 text-center align-middle justify-items-center m-auto dark:bg-neutral-800 dark:text-white ease-in duration-200 font-mono">
