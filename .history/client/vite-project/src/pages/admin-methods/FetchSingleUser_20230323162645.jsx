@@ -5,7 +5,6 @@ const FetchSingleUser = () => {
   const [tokenData, setTokenData] = useState("");
   const [error, setError] = useState("");
   const [searchQuery, setSearchQuery] = useState("");
-  const [role, setRole] = useState("");
   const api = import.meta.env.VITE_REACT_APP_BACKEND;
 
   const handleFetchSingleUser = async (e) => {
@@ -19,18 +18,6 @@ const FetchSingleUser = () => {
       })
       .catch((error) => {
         setError("Cannot find user");
-      });
-  };
-
-  const handleModifyRole = async (e) => {
-    const customer = searchQuery;
-    e.preventDefault();
-    await axios
-      .put(`${api}admin/user/${customer}`, {
-        role,
-      })
-      .then((res) => {
-        console.log(res);
       });
   };
 
@@ -56,28 +43,8 @@ const FetchSingleUser = () => {
               <p className="md:text-2xl">Email:- {tokenData.email}</p>
               <p className="md:text-2xl">Role:- {tokenData.role}</p>
               <br />
-
-              <select
-                className="border-2 p-1 bg-cyan-700 text-2xl"
-                value={role}
-                onChange={(e) => setRole(e.target.value)}
-              >
-                <option className="border-2" value="admin">
-                  admin
-                </option>
-                <option className="border-2" value="customer">
-                  customer
-                </option>
-              </select>
-
-              <button
-                className="text-xl border-2 p-1.5 my-2 bg-cyan-700"
-                onClick={handleModifyRole}
-              >
-                Modify Role
-              </button>
             </div>
-          )}
+          )}{" "}
           {error && <p>{error} </p>}
         </form>
       </div>

@@ -5,8 +5,10 @@ const FetchSingleUser = () => {
   const [tokenData, setTokenData] = useState("");
   const [error, setError] = useState("");
   const [searchQuery, setSearchQuery] = useState("");
-  const [role, setRole] = useState("");
+  const [updatedRole, setUpdatedRole] = useState("");
+
   const api = import.meta.env.VITE_REACT_APP_BACKEND;
+  const role = updatedRole;
 
   const handleFetchSingleUser = async (e) => {
     const customer = searchQuery;
@@ -58,16 +60,11 @@ const FetchSingleUser = () => {
               <br />
 
               <select
-                className="border-2 p-1 bg-cyan-700 text-2xl"
                 value={role}
-                onChange={(e) => setRole(e.target.value)}
+                onChange={(e) => setUpdatedRole(e.target.value)}
               >
-                <option className="border-2" value="admin">
-                  admin
-                </option>
-                <option className="border-2" value="customer">
-                  customer
-                </option>
+                <option value="admin">admin</option>
+                <option value="customer">customer</option>
               </select>
 
               <button

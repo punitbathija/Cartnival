@@ -58,7 +58,7 @@ const FetchSingleUser = () => {
               <br />
 
               <select
-                className="border-2 p-1 bg-cyan-700 text-2xl"
+                className="border-2 p-2 bg-cyan-700"
                 value={role}
                 onChange={(e) => setRole(e.target.value)}
               >

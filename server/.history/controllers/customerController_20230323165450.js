@@ -207,8 +207,6 @@ exports.updateRole = BigPromise(async (req, res, next) => {
     }
   );
 
-  customer.role = req.body.role;
-
   if (!customer) {
     next(new CustomError("no user found", 404));
   }
