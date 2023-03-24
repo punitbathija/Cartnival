@@ -15,24 +15,21 @@ import { useSelector } from "react-redux";
 import { selectUser } from "./userSlice";
 function App() {
   const user = useSelector(selectUser);
+  console.log(user);
+
   return (
     <>
       <Header />
       <Signin />
       <Signup />
-
-      {user && (
-        <>
-          <ForgotPassword />
-          <ResetPassword />
-          <MyProfile />
-          <UpdatePassword />
-          <UpdateUser />
-          {/* <FetchAllUsers /> */}
-          <FetchSingleUser />
-          <DeleteSingleUser />
-        </>
-      )}
+      <ForgotPassword />
+      <ResetPassword />
+      <MyProfile />
+      <UpdatePassword />
+      <UpdateUser />
+      {/* <FetchAllUsers /> */}
+      <FetchSingleUser />
+      <DeleteSingleUser />
     </>
   );
 }

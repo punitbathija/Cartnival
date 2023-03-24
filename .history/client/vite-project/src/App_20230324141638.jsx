@@ -28,11 +28,11 @@ function App() {
           <MyProfile />
           <UpdatePassword />
           <UpdateUser />
-          {/* <FetchAllUsers /> */}
-          <FetchSingleUser />
-          <DeleteSingleUser />
         </>
       )}
+      {/* <FetchAllUsers /> */}
+      <FetchSingleUser />
+      <DeleteSingleUser />
     </>
   );
 }

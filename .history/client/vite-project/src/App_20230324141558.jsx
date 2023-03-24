@@ -20,19 +20,18 @@ function App() {
       <Header />
       <Signin />
       <Signup />
-
+      <ForgotPassword />
+      <ResetPassword />
       {user && (
         <>
-          <ForgotPassword />
-          <ResetPassword />
           <MyProfile />
           <UpdatePassword />
           <UpdateUser />
-          {/* <FetchAllUsers /> */}
-          <FetchSingleUser />
-          <DeleteSingleUser />
         </>
       )}
+      {/* <FetchAllUsers /> */}
+      <FetchSingleUser />
+      <DeleteSingleUser />
     </>
   );
 }
