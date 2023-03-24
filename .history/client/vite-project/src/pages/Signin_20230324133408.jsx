@@ -20,6 +20,10 @@ const Signin = () => {
         password: password,
       })
       .then((res) => {
+        // dispatch(signin({
+        //   email,
+        // }))
+        console.log(res);
         setSigninData(res.data.customer);
         setEmail("");
         setPassword("");
@@ -29,13 +33,6 @@ const Signin = () => {
           document.cookie = "";
           document.cookie = `token=${token}`;
         }
-        dispatch(
-          signin({
-            name: res.data.customer.name,
-            email: res.data.customer.email,
-            role: res.data.customer.role,
-          })
-        );
       })
       .catch((error) => {
         setError("Invalid credentials");

@@ -29,13 +29,10 @@ const Signin = () => {
           document.cookie = "";
           document.cookie = `token=${token}`;
         }
-        dispatch(
-          signin({
-            name: res.data.customer.name,
-            email: res.data.customer.email,
-            role: res.data.customer.role,
-          })
-        );
+        console.log(signinData);
+        // dispatch(signin({
+        //   name : signinData.
+        // }))
       })
       .catch((error) => {
         setError("Invalid credentials");
