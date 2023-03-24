@@ -35,7 +35,7 @@ const DeleteSingleUser = () => {
         >
           GO
         </button>
-        {tokenData && (
+        {?{tokenData && (
           <div>
             <p className="md:text-2xl">Name:- {tokenData.name}</p>
             <p className="md:text-2xl">Email:- {tokenData.email}</p>
@@ -43,8 +43,9 @@ const DeleteSingleUser = () => {
             <br />
             <p>User successfully deleted</p>
           </div>
-        )}
+        )}:
         {error && <p>{error}</p>}
+        }
       </form>
     </div>
   );
