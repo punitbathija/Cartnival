@@ -1,12 +1,10 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { signout } from "./userSlice";
-import { useDispatch } from "react-redux";
 
 const Header = () => {
   const [theme, setTheme] = useState("light");
   const api = import.meta.env.VITE_REACT_APP_BACKEND;
-  const dispatch = useDispatch();
 
   const signOut = async (e) => {
     e.preventDefault();
@@ -14,10 +12,10 @@ const Header = () => {
       .get(`${api}signout`)
       .then((res) => {
         console.log(res);
+
         axios.defaults.headers.common["Authorization"] = null;
         document.cookie =
           "token=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
-        dispatch(signout());
       })
       .then((err) => console.log(err));
   };

@@ -13,8 +13,9 @@ import FetchSingleUser from "./pages/admin-methods/FetchSingleUser";
 import DeleteSingleUser from "./pages/admin-methods/DeleteSingleUser";
 import { useSelector } from "react-redux";
 import { selectUser } from "./userSlice";
+const user = useSelector(selectUser);
+
 function App() {
-  const user = useSelector(selectUser);
   console.log(user);
   return (
     <>
@@ -29,7 +30,7 @@ function App() {
           <MyProfile />
           <UpdatePassword />
           <UpdateUser />
-          <FetchAllUsers />
+          {/* <FetchAllUsers /> */}
           <FetchSingleUser />
           <DeleteSingleUser />
         </>

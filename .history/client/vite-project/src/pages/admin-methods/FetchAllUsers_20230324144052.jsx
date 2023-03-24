@@ -5,7 +5,7 @@ const FetchAllUsers = () => {
   const [tokenData, setTokenData] = useState("");
   const [error, setError] = useState("");
   const api = import.meta.env.VITE_REACT_APP_BACKEND;
-  const allCustomers = tokenData.allCustomers;
+
   useEffect(() => {
     async function handleFetchAllUsers() {
       const result = await axios
@@ -23,19 +23,17 @@ const FetchAllUsers = () => {
       <div className="my-2">
         <h1 className="text-3xl py-6 text-cyan-500">All users</h1>
         {error && <p>{error}</p>}
-
-        {tokenData &&
-          allCustomers.map((customer) => {
-            return (
-              <div className="py-4" key={customer._id}>
-                <p>Name:- {customer.name}</p>
-                <p>Email:- {customer.email}</p>
-                <p>Role:- {customer.role}</p>
-                <p>Date:- {customer.createdAt}</p>
-                <hr />
-              </div>
-            );
-          })}
+        {tokenData.allCustomers.map((customer) => {
+          return (
+            <div className="py-4" key={customer._id}>
+              <p>Name:- {customer.name}</p>
+              <p>Email:- {customer.email}</p>
+              <p>Role:- {customer.role}</p>
+              <p>Date:- {customer.createdAt}</p>
+              <hr />
+            </div>
+          );
+        })}
       </div>
     </div>
   );

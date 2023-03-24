@@ -6,9 +6,9 @@ import { useDispatch } from "react-redux";
 const Header = () => {
   const [theme, setTheme] = useState("light");
   const api = import.meta.env.VITE_REACT_APP_BACKEND;
-  const dispatch = useDispatch();
 
   const signOut = async (e) => {
+    const dispatch = useDispatch();
     e.preventDefault();
     axios
       .get(`${api}signout`)
