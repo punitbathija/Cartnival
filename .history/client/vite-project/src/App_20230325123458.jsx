@@ -49,11 +49,8 @@ function App() {
                 Component={FetchAllUsers}
               />
               <Route exact path="/admin/user/:id" Component={FetchSingleUser} />
-              <Route
-                exact
-                path="/admin/user/:id"
-                Component={DeleteSingleUser}
-              />
+              <FetchSingleUser />
+              <DeleteSingleUser />
             </>
           )}
         </Routes>

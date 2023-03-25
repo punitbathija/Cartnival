@@ -43,17 +43,10 @@ function App() {
                 Component={(UpdatePassword, UpdateUser)}
               />
               <Route exact path="/admin/signin" Component={AdminSignin} />
-              <Route
-                exact
-                path="/admin/getallusers"
-                Component={FetchAllUsers}
-              />
-              <Route exact path="/admin/user/:id" Component={FetchSingleUser} />
-              <Route
-                exact
-                path="/admin/user/:id"
-                Component={DeleteSingleUser}
-              />
+
+              <FetchAllUsers />
+              <FetchSingleUser />
+              <DeleteSingleUser />
             </>
           )}
         </Routes>

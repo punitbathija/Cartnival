@@ -28,8 +28,6 @@ router.route("/myprofile/update").post(isLoggedin, updateProfile);
 
 // Admin Routes
 
-router.route("/admin/signin").post(signin, customRole("admin"));
-
 router
   .route("/admin/getallusers")
   .get(isLoggedin, customRole("admin"), adminAllUsers);
@@ -42,5 +40,6 @@ router
 router
   .route("/admin/user/:id")
   .delete(isLoggedin, customRole("admin"), deleteUser);
+router.route("/admin/signin").post(signin, customRole("admin"));
 
 module.exports = router;
