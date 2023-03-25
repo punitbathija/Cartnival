@@ -13,27 +13,43 @@ import FetchSingleUser from "./pages/admin-methods/FetchSingleUser";
 import DeleteSingleUser from "./pages/admin-methods/DeleteSingleUser";
 import { useSelector } from "react-redux";
 import { selectUser } from "./userSlice";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+
 function App() {
   const user = useSelector(selectUser);
   console.log(user);
   return (
     <>
       <Header />
-      <Signin />
-      <Signup />
+      <Router>
+        <Routes>
+          <Route exact path="/signin" Component={Signin} />
+          <Route exact path="/signup" Component={Signup} />
 
-      {user && (
-        <>
-          <ForgotPassword />
-          <ResetPassword />
-          <MyProfile />
-          <UpdatePassword />
-          <UpdateUser />
-          <FetchAllUsers />
-          <FetchSingleUser />
-          <DeleteSingleUser />
-        </>
-      )}
+          {user && (
+            <>
+              {/* <ForgotPassword /> */}
+              <Route exact path="/forgotpassword" Component={ForgotPassword} />
+              <Route
+                exact
+                path="/password/reset/:token"
+                Component={ResetPassword}
+              />
+              <Route exact path="/myprofile" Component={MyProfile} />
+              <Route
+                exact
+                path="/myprofile/update"
+                Component={(UpdatePassword, UpdateUser)}
+              />
+              <Route exact path="/admin/signin" Component={Signin} />
+
+              <FetchAllUsers />
+              <FetchSingleUser />
+              <DeleteSingleUser />
+            </>
+          )}
+        </Routes>
+      </Router>
     </>
   );
 }
