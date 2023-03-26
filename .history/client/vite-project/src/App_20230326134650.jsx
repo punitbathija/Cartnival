@@ -28,8 +28,6 @@ function App() {
 
           <Route exact path="/signup" Component={Signup} />
 
-          <Route exact path="/admin/signin" Component={AdminSignin} />
-
           {user && (
             <>
               {/* <ForgotPassword /> */}
@@ -45,6 +43,7 @@ function App() {
                 path="/myprofile/update"
                 Component={(UpdatePassword, UpdateUser)}
               />
+              <Route exact path="/admin/signin" Component={AdminSignin} />
               <Route
                 exact
                 path="/admin/getallusers"

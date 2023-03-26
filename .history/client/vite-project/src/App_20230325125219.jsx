@@ -24,11 +24,7 @@ function App() {
       <Router>
         <Routes>
           <Route exact path="/signin" Component={Signin} />
-          <Route exact path="/" Component={Signin} />
-
           <Route exact path="/signup" Component={Signup} />
-
-          <Route exact path="/admin/signin" Component={AdminSignin} />
 
           {user && (
             <>
@@ -45,6 +41,7 @@ function App() {
                 path="/myprofile/update"
                 Component={(UpdatePassword, UpdateUser)}
               />
+              <Route exact path="/admin/signin" Component={AdminSignin} />
               <Route
                 exact
                 path="/admin/getallusers"
