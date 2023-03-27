@@ -28,7 +28,7 @@ const FetchAllUsers = () => {
         {tokenData &&
           allCustomers.map((customer) => {
             return (
-              <div className="py-4" key={customer._id}>
+              <div className="py-4 w-[100%]" key={customer._id}>
                 <p>Name:- {customer.name}</p>
                 <p>Email:- {customer.email}</p>
                 <p>Role:- {customer.role}</p>

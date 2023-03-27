@@ -31,7 +31,7 @@ export const AdminDashboard = () => {
             viewBox="0 0 24 24"
             strokeWidth={1.5}
             stroke="currentColor"
-            className="w-6 h-6 cursor-pointer"
+            className="w-6 h-6 justify-end"
             onClick={closeFetchAllUsers}
           >
             <path

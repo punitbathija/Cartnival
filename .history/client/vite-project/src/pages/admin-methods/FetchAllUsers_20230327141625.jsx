@@ -5,13 +5,12 @@ const FetchAllUsers = () => {
   const [tokenData, setTokenData] = useState("");
   const [error, setError] = useState("");
   const api = import.meta.env.VITE_REACT_APP_BACKEND;
-  let allCustomers = tokenData;
+  const allCustomers = res.data.allCustomers;
   useEffect(() => {
     async function handleFetchAllUsers() {
       const result = await axios
         .get(`${api}admin/getallusers`)
         .then((res) => {
-          console.log(res.data.allCustomers);
           setTokenData(res.data.allCustomers);
         })
         .catch((error) => setError("This link is strictly resticted to Admin"));

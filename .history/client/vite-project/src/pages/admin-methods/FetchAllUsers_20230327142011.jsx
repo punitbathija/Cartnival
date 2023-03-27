@@ -5,7 +5,6 @@ const FetchAllUsers = () => {
   const [tokenData, setTokenData] = useState("");
   const [error, setError] = useState("");
   const api = import.meta.env.VITE_REACT_APP_BACKEND;
-  let allCustomers = tokenData;
   useEffect(() => {
     async function handleFetchAllUsers() {
       const result = await axios
