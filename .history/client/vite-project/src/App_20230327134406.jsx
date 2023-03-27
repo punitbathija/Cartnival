@@ -28,7 +28,7 @@ function App() {
           <Route exact path="/signin" Component={Signin} />
           <Route exact path="/" Component={Signin} />
           <Route exact path="/admin/signin" Component={AdminSignin} />
-          <Route exact path="/admin/dashboard" Component={AdminDashboard} />
+          <Route exact path="/admin/dashboard" Component={AdminDashboard} /> */}
         </Routes>
       </Router>
     </>

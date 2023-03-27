@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import axios from "axios";
 import { useDispatch } from "react-redux";
 import { signin } from "../../userSlice";
-import { useNavigate } from "react-router-dom";
+import { redirect } from "react-router-dom";
 
 const AdminSignin = () => {
   const [email, setEmail] = useState("");
@@ -11,7 +11,6 @@ const AdminSignin = () => {
   const [error, setError] = useState("");
   const api = import.meta.env.VITE_REACT_APP_BACKEND;
   const dispatch = useDispatch();
-  const navigate = useNavigate();
 
   const handleSignin = async (e) => {
     e.preventDefault();
@@ -31,6 +30,8 @@ const AdminSignin = () => {
           document.cookie = "";
           document.cookie = `token=${token}`;
         }
+        redirect("/admin/dashboard");
+
         dispatch(
           signin({
             name: res.data.customer.name,
@@ -43,7 +44,6 @@ const AdminSignin = () => {
         setError("Invalid credentials");
         console.log(error);
       });
-    navigate("/admin/dashboard");
   };
   return (
     <div className="md:flex p-24 justify-center gap-36 text-center align-middle justify-items-center m-auto dark:bg-neutral-800 dark:text-white ease-in duration-200 font-mono h-[85.5vh]">
