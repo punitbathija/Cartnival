@@ -33,7 +33,7 @@ export const AdminDashboard = () => {
         <button className="text-xl" onClick={handleFetchAllUsers}>
           Fetch All Users
         </button>
-        <button className="text-xl" onClick={handleFetchSingleUser}>
+        <button className="text-xl" onClick={handleFetchAllUsers}>
           Fetch Single User By Id
         </button>
       </div>

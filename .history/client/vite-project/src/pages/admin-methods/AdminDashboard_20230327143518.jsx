@@ -2,13 +2,11 @@ import React, { useState } from "react";
 import FetchAllUsers from "./FetchAllUsers";
 import { useSelector } from "react-redux";
 import { selectUser } from "../../userSlice";
-import FetchSingleUser from "./FetchSingleUser";
 
 export const AdminDashboard = () => {
   const user = useSelector(selectUser);
   console.log(user);
   const [showFetchAllUsers, setShowFetchAllUsers] = useState(false);
-  const [showFetchSingleUser, setShowFetchSingleUser] = useState(false);
 
   const handleFetchAllUsers = () => {
     setShowFetchAllUsers(true);
@@ -17,6 +15,8 @@ export const AdminDashboard = () => {
   const closeFetchAllUsers = () => {
     setShowFetchAllUsers(false);
   };
+
+  const [showFetchSingleUser, setShowFetchSingleUser] = useState(false);
 
   const handleFetchSingleUser = () => {
     setShowFetchSingleUser(true);
@@ -33,7 +33,7 @@ export const AdminDashboard = () => {
         <button className="text-xl" onClick={handleFetchAllUsers}>
           Fetch All Users
         </button>
-        <button className="text-xl" onClick={handleFetchSingleUser}>
+        <button className="text-xl" onClick={handleFetchAllUsers}>
           Fetch Single User By Id
         </button>
       </div>
@@ -56,24 +56,6 @@ export const AdminDashboard = () => {
           </svg>
         )}
         {showFetchAllUsers && <FetchAllUsers />}
-        {showFetchSingleUser && (
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            fill="none"
-            viewBox="0 0 24 24"
-            strokeWidth={1.5}
-            stroke="currentColor"
-            className="w-6 h-6 cursor-pointer"
-            onClick={closeFetchSingleUser}
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              d="M6 18L18 6M6 6l12 12"
-            />
-          </svg>
-        )}
-        {showFetchSingleUser && <FetchSingleUser />}
       </div>
     </div>
   );

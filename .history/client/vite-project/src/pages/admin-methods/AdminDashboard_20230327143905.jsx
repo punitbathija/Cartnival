@@ -33,7 +33,7 @@ export const AdminDashboard = () => {
         <button className="text-xl" onClick={handleFetchAllUsers}>
           Fetch All Users
         </button>
-        <button className="text-xl" onClick={handleFetchSingleUser}>
+        <button className="text-xl" onClick={handleFetchAllUsers}>
           Fetch Single User By Id
         </button>
       </div>
@@ -64,7 +64,7 @@ export const AdminDashboard = () => {
             strokeWidth={1.5}
             stroke="currentColor"
             className="w-6 h-6 cursor-pointer"
-            onClick={closeFetchSingleUser}
+            onClick={closeFetchAllUsers}
           >
             <path
               strokeLinecap="round"

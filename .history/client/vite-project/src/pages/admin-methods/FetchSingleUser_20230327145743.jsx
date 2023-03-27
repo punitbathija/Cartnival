@@ -54,7 +54,7 @@ const FetchSingleUser = () => {
         <form onSubmit={handleFetchSingleUser} method="post">
           <input
             type="text"
-            className="py-2 w-full text-center border-2 dark:text-black "
+            className="py-4 w-full border-2 dark:text-black "
             onChange={(e) => setSearchQuery(e.target.value)}
           />
           <br />

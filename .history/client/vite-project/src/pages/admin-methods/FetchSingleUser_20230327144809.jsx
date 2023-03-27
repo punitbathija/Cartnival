@@ -54,12 +54,12 @@ const FetchSingleUser = () => {
         <form onSubmit={handleFetchSingleUser} method="post">
           <input
             type="text"
-            className="py-2 w-full text-center border-2 dark:text-black "
+            className="border-2 dark:text-black "
             onChange={(e) => setSearchQuery(e.target.value)}
           />
           <br />
           <button
-            className="my-2 text-xl border-2 p-1.5 bg-cyan-700"
+            className="text-xl border-2 p-1.5 bg-cyan-700"
             onClick={handleFetchSingleUser}
           >
             <svg
@@ -98,17 +98,10 @@ const FetchSingleUser = () => {
                 </select>
 
                 <button
-                  className="my-4 text-xl border-2 p-1.5 bg-cyan-700 w-[50%] m-auto"
+                  className="text-xl border-2 p-1.5 bg-cyan-700 w-[50%] m-auto"
                   onClick={handleModifyRole}
                 >
                   Modify Role
-                </button>
-
-                <button
-                  className="text-xl border-2 p-1.5 bg-cyan-700 w-[50%] m-auto"
-                  onClick={handleDeleteSingleUser}
-                >
-                  Delete User
                 </button>
               </div>
             </div>

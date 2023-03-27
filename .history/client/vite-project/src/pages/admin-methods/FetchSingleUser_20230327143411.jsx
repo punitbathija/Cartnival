@@ -34,48 +34,22 @@ const FetchSingleUser = () => {
       });
   };
 
-  const handleDeleteSingleUser = async (e) => {
-    const customer = searchQuery;
-    e.preventDefault();
-    await axios
-      .delete(`${api}admin/user/${customer}`)
-      .then((res) => {
-        setTokenData(res.data.customer);
-      })
-      .catch((error) => {
-        setError("Cannot find user");
-      });
-  };
-
   return (
-    <div className="md:flex m-auto dark:bg-neutral-800 dark:text-white ease-in duration-200 font-mono">
+    <div className="md:flex p-24 justify-center gap-36 text-center align-middle justify-items-center m-auto dark:bg-neutral-800 dark:text-white ease-in duration-200 font-mono h-[85.5vh]">
       <div className="">
-        <h1 className="text-3xl text-cyan-500">User Details</h1>
+        <h1 className="text-3xl py-6 text-cyan-500">User Details</h1>
         <form onSubmit={handleFetchSingleUser} method="post">
           <input
             type="text"
-            className="py-2 w-full text-center border-2 dark:text-black "
+            className="border-2 p-2 dark:text-black my-2"
             onChange={(e) => setSearchQuery(e.target.value)}
           />
           <br />
           <button
-            className="my-2 text-xl border-2 p-1.5 bg-cyan-700"
+            className="text-xl border-2 p-1.5 my-2 bg-cyan-700"
             onClick={handleFetchSingleUser}
           >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 24 24"
-              strokeWidth={1.5}
-              stroke="currentColor"
-              className="w-6 h-6"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z"
-              />
-            </svg>
+            GO
           </button>
           {tokenData && (
             <div>
@@ -83,7 +57,7 @@ const FetchSingleUser = () => {
               <p className="md:text-2xl">Email:- {tokenData.email}</p>
               <p className="md:text-2xl">Role:- {tokenData.role}</p>
               <br />
-              <div className="flex flex-col m-auto">
+              <div className="flex flex-col justify-center align-middle justify-items-center m-auto">
                 <select
                   className="border-2 text-black text-xl"
                   value={role}
@@ -98,17 +72,10 @@ const FetchSingleUser = () => {
                 </select>
 
                 <button
-                  className="my-4 text-xl border-2 p-1.5 bg-cyan-700 w-[50%] m-auto"
+                  className="text-xl border-2 p-1.5 my-2 bg-cyan-700 w-[50%] m-auto"
                   onClick={handleModifyRole}
                 >
                   Modify Role
-                </button>
-
-                <button
-                  className="text-xl border-2 p-1.5 bg-cyan-700 w-[50%] m-auto"
-                  onClick={handleDeleteSingleUser}
-                >
-                  Delete User
                 </button>
               </div>
             </div>

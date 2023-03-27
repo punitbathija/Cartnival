@@ -33,7 +33,7 @@ const FetchAllUsers = () => {
                 <p>Email:- {customer.email}</p>
                 <p>Role:- {customer.role}</p>
                 <p>Date:- {customer.createdAt}</p>
-                <p>Id:- {customer._id}</p>
+                <p>Date:- {customer._id}</p>
 
                 <hr />
               </div>

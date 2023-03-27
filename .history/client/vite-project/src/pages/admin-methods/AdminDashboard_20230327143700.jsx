@@ -33,12 +33,12 @@ export const AdminDashboard = () => {
         <button className="text-xl" onClick={handleFetchAllUsers}>
           Fetch All Users
         </button>
-        <button className="text-xl" onClick={handleFetchSingleUser}>
+        <button className="text-xl" onClick={handleFetchAllUsers}>
           Fetch Single User By Id
         </button>
       </div>
       <div className="flex">
-        {showFetchAllUsers && (
+        {showFetchAllUsers && showFetchSingleUser && (
           <svg
             xmlns="http://www.w3.org/2000/svg"
             fill="none"
@@ -56,23 +56,6 @@ export const AdminDashboard = () => {
           </svg>
         )}
         {showFetchAllUsers && <FetchAllUsers />}
-        {showFetchSingleUser && (
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            fill="none"
-            viewBox="0 0 24 24"
-            strokeWidth={1.5}
-            stroke="currentColor"
-            className="w-6 h-6 cursor-pointer"
-            onClick={closeFetchSingleUser}
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              d="M6 18L18 6M6 6l12 12"
-            />
-          </svg>
-        )}
         {showFetchSingleUser && <FetchSingleUser />}
       </div>
     </div>
