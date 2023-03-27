@@ -19,14 +19,9 @@ export const AdminDashboard = () => {
   return (
     <div className="flex flex-col gap-4 p-24 text-center align-middle justify-items-center m-auto dark:bg-neutral-800 dark:text-white ease-in duration-200 font-mono">
       <h1 className="text-2xl text-cyan-500">Admin Dashboard</h1>
-      <div className="md:flex justify-around">
-        <button className="text-xl" onClick={handleFetchAllUsers}>
-          Fetch All Users
-        </button>
-        <button className="text-xl" onClick={handleFetchAllUsers}>
-          Fetch Single User By Id
-        </button>
-      </div>
+      <button className="text-xl" onClick={handleFetchAllUsers}>
+        Fetch All Users
+      </button>
       <div className="flex">
         {showFetchAllUsers && (
           <svg
