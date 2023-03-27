@@ -1,0 +1,20 @@
+[
+    {
+        "image": "https://images.pexels.com/photos/13989110/pexels-photo-13989110.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+        "title": "Visionary of our team",
+        "subTitle": "We are set to challange the industry to accept the new way to ride in style.",
+        "interval": 500
+    },
+    {
+        "image": "https://images.pexels.com/photos/15022763/pexels-photo-15022763.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+        "title": "Perfectly engineered ",
+        "subTitle": "The modern world is complicated and so are it's problems we are here to solve them.",
+        "interval": 500
+    },
+    {
+        "image": "https://images.pexels.com/photos/13738417/pexels-photo-13738417.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+        "title": "Stylish than any other",
+        "subTitle": "This stylish bike on the street can catch a lot of eyes.",
+        "interval": 2500
+    }
+]

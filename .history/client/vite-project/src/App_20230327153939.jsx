@@ -23,9 +23,11 @@ function App() {
   return (
     <>
       <Header />
+
       <Router>
         <Routes>
           <Route exact path="/" Component={Home} />
+
           <Route exact path="/signin" Component={Signin} />
           <Route exact path="/admin/signin" Component={AdminSignin} />
           <Route exact path="/admin/dashboard" Component={AdminDashboard} />
