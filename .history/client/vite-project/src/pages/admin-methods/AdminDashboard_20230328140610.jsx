@@ -10,7 +10,6 @@ export const AdminDashboard = () => {
   console.log(user);
   const [showFetchAllUsers, setShowFetchAllUsers] = useState(false);
   const [showFetchSingleUser, setShowFetchSingleUser] = useState(false);
-  const [showAddProduct, setShowAddProduct] = useState(false);
 
   const handleFetchAllUsers = () => {
     setShowFetchAllUsers(true);
@@ -45,9 +44,6 @@ export const AdminDashboard = () => {
         </button>
         <button className="text-xl" onClick={handleFetchSingleUser}>
           Fetch Single User By Id
-        </button>
-        <button className="text-xl" onClick={handleAddProduct}>
-          Add Product
         </button>
       </div>
       <div className="flex">
@@ -87,24 +83,7 @@ export const AdminDashboard = () => {
           </svg>
         )}
         {showFetchSingleUser && <FetchSingleUser />}
-        {showAddProduct && (
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            fill="none"
-            viewBox="0 0 24 24"
-            strokeWidth={1.5}
-            stroke="currentColor"
-            className="w-6 h-6 cursor-pointer"
-            onClick={closeAddProduct}
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              d="M6 18L18 6M6 6l12 12"
-            />
-          </svg>
-        )}
-        {showAddProduct && <AddProduct />}
+        <AddProduct />
       </div>
     </div>
   );

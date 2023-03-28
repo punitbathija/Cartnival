@@ -24,13 +24,17 @@ const AddProduct = () => {
     formData.append("brand", brand);
     formData.append("quantity", quantity);
 
-    await axios;
-
-    const response = await axios
-      .post(`${api}admin/product/add`, formData, {
-        headers: {
-          "Content-Type": "multipart/form-data",
-        },
+    await axios
+      .post(`${api}admin/product/add`, {
+        withCredentials: true,
+        // name: name,
+        // price: price,
+        // description: description,
+        // photos: photos,
+        // category: category,
+        // brand: brand,
+        // quantity: quantity,
+        formData,
       })
       .then((res) => {
         console.log(res);
@@ -89,7 +93,7 @@ const AddProduct = () => {
             onChange={(e) => {
               const files = e.target.files;
               console.log(files);
-              setPhotos(photos);
+              setPhotos(files);
             }}
           />
 

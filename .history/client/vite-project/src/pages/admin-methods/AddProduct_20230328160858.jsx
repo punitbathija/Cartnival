@@ -27,11 +27,12 @@ const AddProduct = () => {
     await axios;
 
     const response = await axios
-      .post(`${api}admin/product/add`, formData, {
+      .post(`${api}admin/product/add`, formDataWithPhotos, {
         headers: {
           "Content-Type": "multipart/form-data",
         },
       })
+
       .then((res) => {
         console.log(res);
       })

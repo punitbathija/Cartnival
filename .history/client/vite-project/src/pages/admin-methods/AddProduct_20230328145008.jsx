@@ -14,23 +14,16 @@ const AddProduct = () => {
 
   const handleAddProduct = async (e) => {
     e.preventDefault();
-
-    const formData = new FormData();
-    formData.append("name", name);
-    formData.append("description", description);
-    formData.append("price", price);
-    formData.append("photos", photos);
-    formData.append("category", category);
-    formData.append("brand", brand);
-    formData.append("quantity", quantity);
-
-    await axios;
-
-    const response = await axios
-      .post(`${api}admin/product/add`, formData, {
-        headers: {
-          "Content-Type": "multipart/form-data",
-        },
+    await axios
+      .post(`${api}admin/product/add`, {
+        withCredentials: true,
+        name: name,
+        price: price,
+        description: description,
+        photos: photos,
+        category: category,
+        brand: brand,
+        quantity: quantity,
       })
       .then((res) => {
         console.log(res);
@@ -44,7 +37,11 @@ const AddProduct = () => {
     <div className="md:flex p-24 justify-center gap-36 text-center align-middle justify-items-center m-auto dark:bg-neutral-800 dark:text-white ease-in duration-200 font-mono">
       <div className="">
         <h1 className="text-3xl py-6 text-cyan-500">Admin Sign In</h1>
-        <form onSubmit={handleAddProduct} encType="multipart/form-data">
+        <form
+          onSubmit={handleAddProduct}
+          method="post"
+          enctype="multipart/form-data"
+        >
           <p className="md:text-xl">
             Product Name<span className="text-red-500">*</span>
           </p>
@@ -88,8 +85,12 @@ const AddProduct = () => {
             className="border-2 p-2 dark:text-white"
             onChange={(e) => {
               const files = e.target.files;
-              console.log(files);
-              setPhotos(photos);
+              const newSelectedFiles = [];
+              for (let i = 0; i < files.length; i++) {
+                newSelectedFiles.push(files[i]);
+              }
+              value = { photos };
+              setPhotos(newSelectedFiles);
             }}
           />
 

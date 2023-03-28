@@ -46,9 +46,6 @@ export const AdminDashboard = () => {
         <button className="text-xl" onClick={handleFetchSingleUser}>
           Fetch Single User By Id
         </button>
-        <button className="text-xl" onClick={handleAddProduct}>
-          Add Product
-        </button>
       </div>
       <div className="flex">
         {showFetchAllUsers && (

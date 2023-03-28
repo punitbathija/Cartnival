@@ -16,21 +16,23 @@ const AddProduct = () => {
     e.preventDefault();
 
     const formData = new FormData();
-    formData.append("name", name);
-    formData.append("description", description);
-    formData.append("price", price);
-    formData.append("photos", photos);
-    formData.append("category", category);
-    formData.append("brand", brand);
-    formData.append("quantity", quantity);
-
-    await axios;
-
-    const response = await axios
-      .post(`${api}admin/product/add`, formData, {
-        headers: {
-          "Content-Type": "multipart/form-data",
-        },
+    formData.append('name', name);
+    formData.append('description', description);
+    formData.append('price', price);
+    for (const file of photos) {
+      formData.append('photos', file);
+    }
+    
+    await axios
+      .post(`${api}admin/product/add`, {
+        withCredentials: true,
+        name: name,
+        price: price,
+        description: description,
+        photos: photos,
+        category: category,
+        brand: brand,
+        quantity: quantity,
       })
       .then((res) => {
         console.log(res);
@@ -86,10 +88,14 @@ const AddProduct = () => {
             type="file"
             multiple
             className="border-2 p-2 dark:text-white"
-            onChange={(e) => {
-              const files = e.target.files;
-              console.log(files);
-              setPhotos(photos);
+            // onChange={(e) => {
+            //   const files = e.target.files;
+            //   console.log(files);
+            //   const newSelectedFiles = [];
+            //   for (let i = 0; i < files.length; i++) {
+            //     newSelectedFiles.push(files[i]);
+            //   }
+              setPhotos(newSelectedFiles);
             }}
           />
 

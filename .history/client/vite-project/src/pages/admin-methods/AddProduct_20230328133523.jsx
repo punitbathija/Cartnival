@@ -7,30 +7,22 @@ const AddProduct = () => {
   const [name, setName] = useState("");
   const [price, setPrice] = useState("");
   const [description, setDescription] = useState("");
-  const [photos, setPhotos] = useState([]);
+  const [photos, setPhotos] = useState(null);
   const [category, setCategory] = useState("");
   const [brand, setBrand] = useState("");
   const [quantity, setQuantity] = useState("");
 
   const handleAddProduct = async (e) => {
     e.preventDefault();
-
-    const formData = new FormData();
-    formData.append("name", name);
-    formData.append("description", description);
-    formData.append("price", price);
-    formData.append("photos", photos);
-    formData.append("category", category);
-    formData.append("brand", brand);
-    formData.append("quantity", quantity);
-
-    await axios;
-
-    const response = await axios
-      .post(`${api}admin/product/add`, formData, {
-        headers: {
-          "Content-Type": "multipart/form-data",
-        },
+    await axios
+      .post(`${api}addProduct`, {
+        name,
+        price,
+        description,
+        photos,
+        category,
+        brand,
+        quantity,
       })
       .then((res) => {
         console.log(res);
@@ -44,8 +36,8 @@ const AddProduct = () => {
     <div className="md:flex p-24 justify-center gap-36 text-center align-middle justify-items-center m-auto dark:bg-neutral-800 dark:text-white ease-in duration-200 font-mono">
       <div className="">
         <h1 className="text-3xl py-6 text-cyan-500">Admin Sign In</h1>
-        <form onSubmit={handleAddProduct} encType="multipart/form-data">
-          <p className="md:text-xl">
+        <form onSubmit={handleAddProduct} method="post">
+          <p className="md:text-2xl">
             Product Name<span className="text-red-500">*</span>
           </p>
           <input
@@ -57,7 +49,7 @@ const AddProduct = () => {
           <br />
           <small>Product name should not be more than 120 characters</small>
 
-          <p className="md:text-xl ">
+          <p className="md:text-2xl ">
             Price<span className="text-red-500">*</span>
           </p>
           <input
@@ -69,7 +61,7 @@ const AddProduct = () => {
           <br />
           <small>Product price cannot be more than 99999</small>
 
-          <p className="md:text-xl ">
+          <p className="md:text-2xl ">
             Description<span className="text-red-500">*</span>
           </p>
           <input
@@ -78,22 +70,17 @@ const AddProduct = () => {
             onChange={(e) => setDescription(e.target.value)}
             value={description}
           />
-          <p className="md:text-xl ">
+          <p className="md:text-2xl ">
             Photos<span className="text-red-500">*</span>
           </p>
           <input
-            id="photo"
             type="file"
-            multiple
             className="border-2 p-2 dark:text-white"
-            onChange={(e) => {
-              const files = e.target.files;
-              console.log(files);
-              setPhotos(photos);
-            }}
+            onChange={(e) => setPhotos(e.target.files)}
+            value={photos}
           />
 
-          <p className="md:text-xl ">
+          <p className="md:text-2xl ">
             Category<span className="text-red-500">*</span>
           </p>
           <div className="flex flex-col m-auto">
@@ -120,7 +107,7 @@ const AddProduct = () => {
             </select>
           </div>
 
-          <p className="md:text-xl ">
+          <p className="md:text-2xl ">
             Brand<span className="text-red-500">*</span>
           </p>
           <input
@@ -130,7 +117,7 @@ const AddProduct = () => {
             value={brand}
           />
 
-          <p className="md:text-xl ">
+          <p className="md:text-2xl ">
             Quantity<span className="text-red-500">*</span>
           </p>
           <input

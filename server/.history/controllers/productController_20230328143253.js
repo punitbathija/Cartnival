@@ -13,15 +13,14 @@ exports.productTest = async (req, res) => {
 exports.addProduct = BigPromise(async (req, res, next) => {
   let imageArray = [];
 
-  console.log(req.files);
-  if (!req.files) {
+  if (!req.file) {
     return next(new CustomError("images are required", 401));
   }
 
-  if (req.files) {
+  if (req.file) {
     for (let index = 0; index < req.files.photos.length; index++) {
       let result = await cloudinary.v2.uploader.upload(
-        req.files.photos[index].tempFilePath,
+        req.file.photos[index].tempFilePath,
         {
           folder: "products",
         }
