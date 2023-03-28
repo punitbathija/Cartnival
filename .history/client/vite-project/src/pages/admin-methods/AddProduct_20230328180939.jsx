@@ -16,11 +16,11 @@ const AddProduct = () => {
   formData.append("name", name);
   formData.append("description", description);
   formData.append("price", price);
-  formData.append("photos", photos);
   formData.append("category", category);
   formData.append("brand", brand);
   formData.append("quantity", quantity);
 
+  const handlePhotoUpload = 
   const handleAddProduct = async (e) => {
     e.preventDefault();
 
@@ -83,10 +83,16 @@ const AddProduct = () => {
             type="file"
             id="photos"
             name="photos"
+            accept="image/*"
             multiple
-            onChange={(e) => setPhotos(e.target.files)}
+            onChange={(e) => {
+    setPhotos(e.target.files);
+    for (let index = 0; index < photos.length; index++) {
+      formData.append("photos", photos[index]);
+    }
+  };
+}
           />
-
           <p className="md:text-xl ">
             Category<span className="text-red-500">*</span>
           </p>

@@ -16,7 +16,6 @@ const AddProduct = () => {
   formData.append("name", name);
   formData.append("description", description);
   formData.append("price", price);
-  formData.append("photos", photos);
   formData.append("category", category);
   formData.append("brand", brand);
   formData.append("quantity", quantity);
@@ -84,7 +83,7 @@ const AddProduct = () => {
             id="photos"
             name="photos"
             multiple
-            onChange={(e) => setPhotos(e.target.files)}
+            onChange={(e) => setPhot(e.target.files)}
           />
 
           <p className="md:text-xl ">

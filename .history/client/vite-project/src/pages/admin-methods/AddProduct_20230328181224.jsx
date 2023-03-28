@@ -84,7 +84,7 @@ const AddProduct = () => {
             id="photos"
             name="photos"
             multiple
-            onChange={(e) => setPhotos(e.target.files)}
+            onChange={(e) => setPhot(e.target.files)}
           />
 
           <p className="md:text-xl ">

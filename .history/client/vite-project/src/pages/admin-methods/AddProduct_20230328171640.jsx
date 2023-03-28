@@ -12,17 +12,19 @@ const AddProduct = () => {
   const [brand, setBrand] = useState("");
   const [quantity, setQuantity] = useState("");
 
-  const formData = new FormData();
-  formData.append("name", name);
-  formData.append("description", description);
-  formData.append("price", price);
-  formData.append("photos", photos);
-  formData.append("category", category);
-  formData.append("brand", brand);
-  formData.append("quantity", quantity);
-
   const handleAddProduct = async (e) => {
     e.preventDefault();
+
+    const formData = new FormData();
+    formData.append("name", name);
+    formData.append("description", description);
+    formData.append("price", price);
+    formData.append("photos", photos);
+    formData.append("category", category);
+    formData.append("brand", brand);
+    formData.append("quantity", quantity);
+
+    await axios;
 
     const response = await axios
       .post(`${api}admin/product/add`, formData, {
@@ -80,11 +82,15 @@ const AddProduct = () => {
             Photos<span className="text-red-500">*</span>
           </p>
           <input
+            id="photo"
             type="file"
-            id="photos"
-            name="photos"
             multiple
-            onChange={(e) => setPhotos(e.target.files)}
+            className="border-2 p-2 dark:text-white"
+            onChange={(e) => {
+              const photos = e.target.files;
+              console.log(photos);
+              setPhotos(photos);
+            }}
           />
 
           <p className="md:text-xl ">
