@@ -15,25 +15,15 @@ const AddProduct = () => {
   const handleAddProduct = async (e) => {
     e.preventDefault();
     await axios
-      .post(`${api}addProduct`, {
-        name,
-        price,
-        description,
-        photos,
-        category,
-        brand,
-        quantity,
-      })
+      .post(`${api}addProduct`, {})
       .then((res) => {
         console.log(res);
       })
-      .catch((error) => {
-        console.log(error);
-      });
+      .catch((error) => {});
   };
 
   return (
-    <div className="md:flex p-24 justify-center gap-36 text-center align-middle justify-items-center m-auto dark:bg-neutral-800 dark:text-white ease-in duration-200 font-mono">
+    <div className="md:flex p-24 justify-center gap-36 text-center align-middle justify-items-center m-auto dark:bg-neutral-800 dark:text-white ease-in duration-200 font-mono h-[85.5vh]">
       <div className="">
         <h1 className="text-3xl py-6 text-cyan-500">Admin Sign In</h1>
         <form onSubmit={handleAddProduct} method="post">
@@ -58,9 +48,6 @@ const AddProduct = () => {
             onChange={(e) => setPrice(e.target.value)}
             value={price}
           />
-          <br />
-          <small>Product price cannot be more than 99999</small>
-
           <p className="md:text-2xl ">
             Description<span className="text-red-500">*</span>
           </p>
@@ -74,8 +61,8 @@ const AddProduct = () => {
             Photos<span className="text-red-500">*</span>
           </p>
           <input
-            type="file"
-            className="border-2 p-2 dark:text-white"
+            type="files"
+            className="border-2 p-2 dark:text-black"
             onChange={(e) => setPhotos(e.target.files)}
             value={photos}
           />

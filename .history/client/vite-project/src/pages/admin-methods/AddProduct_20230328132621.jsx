@@ -75,7 +75,7 @@ const AddProduct = () => {
           </p>
           <input
             type="file"
-            className="border-2 p-2 dark:text-white"
+            className="border-2 p-2 dark:text-black"
             onChange={(e) => setPhotos(e.target.files)}
             value={photos}
           />

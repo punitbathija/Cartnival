@@ -15,21 +15,11 @@ const AddProduct = () => {
   const handleAddProduct = async (e) => {
     e.preventDefault();
     await axios
-      .post(`${api}addProduct`, {
-        name,
-        price,
-        description,
-        photos,
-        category,
-        brand,
-        quantity,
-      })
+      .post(`${api}addProduct`, {})
       .then((res) => {
         console.log(res);
       })
-      .catch((error) => {
-        console.log(error);
-      });
+      .catch((error) => {});
   };
 
   return (
@@ -74,8 +64,8 @@ const AddProduct = () => {
             Photos<span className="text-red-500">*</span>
           </p>
           <input
-            type="file"
-            className="border-2 p-2 dark:text-white"
+            type="files"
+            className="border-2 p-2 dark:text-black"
             onChange={(e) => setPhotos(e.target.files)}
             value={photos}
           />
