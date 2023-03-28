@@ -87,7 +87,7 @@ const AddProduct = () => {
             multiple
             className="border-2 p-2 dark:text-white"
             onChange={(e) => {
-              const files = e.target.files[0];
+              const files = e.target.files;
               console.log(files);
               setPhotos(photos);
             }}
