@@ -14,7 +14,6 @@ export const AdminDashboard = () => {
   const [showFetchSingleUser, setShowFetchSingleUser] = useState(false);
   const [showAddProduct, setShowAddProduct] = useState(false);
   const [showSingleProduct, setShowSingleProduct] = useState(false);
-  const [showAllProducts, setShowAllProducts] = useState(false);
 
   const handleFetchAllUsers = () => {
     setShowFetchAllUsers(true);
@@ -48,14 +47,6 @@ export const AdminDashboard = () => {
     setShowSingleProduct(false);
   };
 
-  const handleAllProducts = () => {
-    setShowAllProducts(true);
-  };
-
-  const closeAllProducts = () => {
-    setShowAllProducts(false);
-  };
-
   return (
     <div className="flex flex-col gap-4 p-24 text-center align-middle justify-items-center m-auto dark:bg-neutral-800 dark:text-white ease-in duration-200 font-mono">
       <h1 className="text-2xl text-cyan-500">Admin Dashboard</h1>
@@ -71,10 +62,6 @@ export const AdminDashboard = () => {
         </button>
         <button className="text-xl" onClick={handleSingleProduct}>
           Search Product by Id
-        </button>
-
-        <button className="text-xl" onClick={handleAllProducts}>
-          Fetch All Products
         </button>
       </div>
       <div className="flex">
@@ -151,25 +138,7 @@ export const AdminDashboard = () => {
           </svg>
         )}
         {showSingleProduct && <FetchSingleProduct />}
-
-        {showAllProducts && (
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            fill="none"
-            viewBox="0 0 24 24"
-            strokeWidth={1.5}
-            stroke="currentColor"
-            className="w-6 h-6 cursor-pointer"
-            onClick={closeAllProducts}
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              d="M6 18L18 6M6 6l12 12"
-            />
-          </svg>
-        )}
-        {showAllProducts && <FetchAllProducts />}
+        <FetchAllProducts />
       </div>
     </div>
   );

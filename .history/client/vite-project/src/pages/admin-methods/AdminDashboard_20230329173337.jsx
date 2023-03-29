@@ -74,7 +74,7 @@ export const AdminDashboard = () => {
         </button>
 
         <button className="text-xl" onClick={handleAllProducts}>
-          Fetch All Products
+          Search Product by Id
         </button>
       </div>
       <div className="flex">
@@ -160,7 +160,7 @@ export const AdminDashboard = () => {
             strokeWidth={1.5}
             stroke="currentColor"
             className="w-6 h-6 cursor-pointer"
-            onClick={closeAllProducts}
+            onClick={closeSingleProduct}
           >
             <path
               strokeLinecap="round"
