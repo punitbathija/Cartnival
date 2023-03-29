@@ -77,7 +77,7 @@ const FetchSingleProduct = () => {
             </svg>
           </button>
           {tokenData && (
-            <div className="flex flex-col justify-center justify-items-center align-middle m-auto text-center gap-4">
+            <div>
               <p className="md:text-2xl">Name:- {tokenData.name}</p>
               <p className="md:text-2xl">Brand:- {tokenData.brand}</p>
               <p className="md:text-2xl">Category:- {tokenData.category}</p>
@@ -88,8 +88,8 @@ const FetchSingleProduct = () => {
               <p className="md:text-2xl">Price:- {tokenData.price}</p>
               <p className="md:text-2xl">Category:- {tokenData.quantity}</p>
               <img
-                className="h-[250px] w-[250px] text-center m-auto"
-                src={tokenData.photos[0].secure_url}
+                className="h-[250px] w-[250px]"
+                src={tokenData.photos.secure_url}
               />
               <br />
             </div>

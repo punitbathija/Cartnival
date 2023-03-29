@@ -77,7 +77,7 @@ const FetchSingleProduct = () => {
             </svg>
           </button>
           {tokenData && (
-            <div className="flex flex-col justify-center justify-items-center align-middle m-auto text-center gap-4">
+            <div className="flex flex-col justify-center justify-items-center align-middle m-auto text-center gap-10">
               <p className="md:text-2xl">Name:- {tokenData.name}</p>
               <p className="md:text-2xl">Brand:- {tokenData.brand}</p>
               <p className="md:text-2xl">Category:- {tokenData.category}</p>

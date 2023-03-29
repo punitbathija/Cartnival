@@ -4,7 +4,6 @@ import { useSelector } from "react-redux";
 import { selectUser } from "../../userSlice";
 import FetchSingleUser from "./FetchSingleUser";
 import AddProduct from "./AddProduct";
-import FetchSingleProduct from "./FetchSingleProduct";
 
 export const AdminDashboard = () => {
   const user = useSelector(selectUser);
@@ -136,7 +135,7 @@ export const AdminDashboard = () => {
             />
           </svg>
         )}
-        {showSingleProduct && <FetchSingleProduct />}
+        {showSingleProduct && <AddProduct />}
       </div>
     </div>
   );

@@ -13,8 +13,7 @@ const FetchSingleProduct = () => {
     await axios
       .get(`${api}product/${product}`)
       .then((res) => {
-        console.log(res.data.product);
-        setTokenData(res.data.product);
+        console.log(res);
       })
       .catch((error) => {
         setError("Cannot find produxt");
@@ -77,20 +76,10 @@ const FetchSingleProduct = () => {
             </svg>
           </button>
           {tokenData && (
-            <div className="flex flex-col justify-center justify-items-center align-middle m-auto text-center gap-4">
+            <div>
               <p className="md:text-2xl">Name:- {tokenData.name}</p>
-              <p className="md:text-2xl">Brand:- {tokenData.brand}</p>
-              <p className="md:text-2xl">Category:- {tokenData.category}</p>
-              <p className="md:text-2xl">Created By:- {tokenData.customer}</p>
-              <p className="md:text-2xl">
-                Description:- {tokenData.description}
-              </p>
-              <p className="md:text-2xl">Price:- {tokenData.price}</p>
-              <p className="md:text-2xl">Category:- {tokenData.quantity}</p>
-              <img
-                className="h-[250px] w-[250px] text-center m-auto"
-                src={tokenData.photos[0].secure_url}
-              />
+              <p className="md:text-2xl">Email:- {tokenData.email}</p>
+              <p className="md:text-2xl">Role:- {tokenData.role}</p>
               <br />
             </div>
           )}

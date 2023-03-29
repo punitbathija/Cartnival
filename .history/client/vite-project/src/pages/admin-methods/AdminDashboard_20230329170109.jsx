@@ -4,7 +4,6 @@ import { useSelector } from "react-redux";
 import { selectUser } from "../../userSlice";
 import FetchSingleUser from "./FetchSingleUser";
 import AddProduct from "./AddProduct";
-import FetchSingleProduct from "./FetchSingleProduct";
 
 export const AdminDashboard = () => {
   const user = useSelector(selectUser);
@@ -58,9 +57,6 @@ export const AdminDashboard = () => {
         </button>
         <button className="text-xl" onClick={handleAddProduct}>
           Add Product
-        </button>
-        <button className="text-xl" onClick={handleSingleProduct}>
-          Search Product by Id
         </button>
       </div>
       <div className="flex">
@@ -118,25 +114,6 @@ export const AdminDashboard = () => {
           </svg>
         )}
         {showAddProduct && <AddProduct />}
-
-        {showSingleProduct && (
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            fill="none"
-            viewBox="0 0 24 24"
-            strokeWidth={1.5}
-            stroke="currentColor"
-            className="w-6 h-6 cursor-pointer"
-            onClick={closeSingleProduct}
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              d="M6 18L18 6M6 6l12 12"
-            />
-          </svg>
-        )}
-        {showSingleProduct && <FetchSingleProduct />}
       </div>
     </div>
   );
