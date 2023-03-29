@@ -12,26 +12,31 @@ const AddProduct = () => {
   const [brand, setBrand] = useState("");
   const [quantity, setQuantity] = useState("");
 
-  const handleFileInputChange = (event) => {
-    const files = event.target.files;
-    setPhotos(files);
+  const handleImage = () => {
+    const file = e.target.files[0];
+    setFileToBase(file);
+    console.log(file);
   };
+
+  const formData = new FormData();
+  formData.append("name", name);
+  formData.append("description", description);
+  formData.append("price", price);
+  formData.append("photos", photos);
+  formData.append("category", category);
+  formData.append("brand", brand);
+  formData.append("quantity", quantity);
 
   const handleAddProduct = async (e) => {
     e.preventDefault();
 
-    const formData = new FormData();
-    formData.append("name", name);
-    formData.append("description", description);
-    formData.append("price", price);
-
-    for (let i = 0; i < photos.length; i++) {
-      formData.append("photos", photos[i]);
-    }
-
-    formData.append("category", category);
-    formData.append("brand", brand);
-    formData.append("quantity", quantity);
+    const setFileToBase = () => {
+      const reader = new FileReader();
+      reader.readAsDataURL(file);
+      reader.onloadend = () => {
+        setPhotos(reader.result);
+      };
+    };
 
     const response = await axios
       .post(`${api}admin/product/add`, formData, {
@@ -90,9 +95,10 @@ const AddProduct = () => {
           </p>
           <input
             type="file"
+            id="photos"
             name="photos"
             multiple
-            onChange={handleFileInputChange}
+            onChange={handleImage}
           />
 
           <p className="md:text-xl ">

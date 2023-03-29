@@ -7,31 +7,36 @@ const AddProduct = () => {
   const [name, setName] = useState("");
   const [price, setPrice] = useState("");
   const [description, setDescription] = useState("");
-  const [photos, setPhotos] = useState([]);
+  const [image, setImage] = useState([]);
   const [category, setCategory] = useState("");
   const [brand, setBrand] = useState("");
   const [quantity, setQuantity] = useState("");
 
-  const handleFileInputChange = (event) => {
-    const files = event.target.files;
-    setPhotos(files);
+  const handleImage = (e) => {
+    const file = e.target.files[0];
+    setFileToBase(file);
+    console.log(file);
   };
+
+  const setFileToBase = () => {
+    const reader = new FileReader();
+    reader.readAsDataURL(file);
+    reader.onloadend = () => {
+      setImage(reader.result);
+    };
+  };
+
+  const formData = new FormData();
+  formData.append("name", name);
+  formData.append("description", description);
+  formData.append("price", price);
+  formData.append("image", image);
+  formData.append("category", category);
+  formData.append("brand", brand);
+  formData.append("quantity", quantity);
 
   const handleAddProduct = async (e) => {
     e.preventDefault();
-
-    const formData = new FormData();
-    formData.append("name", name);
-    formData.append("description", description);
-    formData.append("price", price);
-
-    for (let i = 0; i < photos.length; i++) {
-      formData.append("photos", photos[i]);
-    }
-
-    formData.append("category", category);
-    formData.append("brand", brand);
-    formData.append("quantity", quantity);
 
     const response = await axios
       .post(`${api}admin/product/add`, formData, {
@@ -86,14 +91,9 @@ const AddProduct = () => {
             value={description}
           />
           <p className="md:text-xl ">
-            Photos<span className="text-red-500">*</span>
+            image<span className="text-red-500">*</span>
           </p>
-          <input
-            type="file"
-            name="photos"
-            multiple
-            onChange={handleFileInputChange}
-          />
+          <input type="file" name="image" onChange={handleImage} />
 
           <p className="md:text-xl ">
             Category<span className="text-red-500">*</span>

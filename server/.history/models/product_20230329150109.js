@@ -18,7 +18,7 @@ const productSchema = new mongoose.Schema({
     required: [true, "Please provide a description for the product"],
   },
 
-  photos: [
+  image: {
     {
       id: {
         type: String,
@@ -29,7 +29,7 @@ const productSchema = new mongoose.Schema({
         required: true,
       },
     },
-  ],
+  },
 
   category: {
     type: String,

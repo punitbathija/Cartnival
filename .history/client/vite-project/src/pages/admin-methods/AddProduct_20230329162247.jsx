@@ -3,6 +3,7 @@ import axios from "axios";
 
 const AddProduct = () => {
   const [error, setError] = useState("");
+
   const api = import.meta.env.VITE_REACT_APP_BACKEND;
   const [name, setName] = useState("");
   const [price, setPrice] = useState("");
@@ -12,28 +13,26 @@ const AddProduct = () => {
   const [brand, setBrand] = useState("");
   const [quantity, setQuantity] = useState("");
 
-  const handleFileInputChange = (event) => {
-    const files = event.target.files;
-    setPhotos(files);
+  const formData = new FormData();
+  formData.append("name", name);
+  formData.append("description", description);
+  formData.append("price", price);
+
+  for (let i = 0; i < photos.length; i++) {
+    formData.append("photos", photos[i]);
+  }
+  formData.append("category", category);
+  formData.append("brand", brand);
+  formData.append("quantity", quantity);
+
+  const handleImageChange = (e) => {
+    setPhotos(...photos, e.target.files[0]);
   };
 
   const handleAddProduct = async (e) => {
     e.preventDefault();
 
-    const formData = new FormData();
-    formData.append("name", name);
-    formData.append("description", description);
-    formData.append("price", price);
-
-    for (let i = 0; i < photos.length; i++) {
-      formData.append("photos", photos[i]);
-    }
-
-    formData.append("category", category);
-    formData.append("brand", brand);
-    formData.append("quantity", quantity);
-
-    const response = await axios
+    await axios
       .post(`${api}admin/product/add`, formData, {
         headers: {
           "Content-Type": "multipart/form-data",
@@ -90,9 +89,10 @@ const AddProduct = () => {
           </p>
           <input
             type="file"
+            id="photos"
             name="photos"
             multiple
-            onChange={handleFileInputChange}
+            onChange={handleImageChange}
           />
 
           <p className="md:text-xl ">

@@ -18,19 +18,16 @@ const productSchema = new mongoose.Schema({
     required: [true, "Please provide a description for the product"],
   },
 
-  photos: [
-    {
-      id: {
-        type: String,
-        required: true,
-      },
-      secure_url: {
-        type: String,
-        required: true,
-      },
+  image: {
+    public_id: {
+      type: String,
+      required: true,
     },
-  ],
-
+    url: {
+      type: String,
+      required: true,
+    },
+  },
   category: {
     type: String,
     required: [true, "Please choose a category to continue"],
