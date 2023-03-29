@@ -126,7 +126,7 @@ const FetchSingleProduct = () => {
                 <div className="md:flex p-24 justify-center gap-36 text-center align-middle justify-items-center m-auto dark:bg-neutral-800 dark:text-white ease-in duration-200 font-mono">
                   <div className="">
                     <h1 className="text-3xl py-6 text-cyan-500">
-                      Modify Product
+                      Admin Sign In
                     </h1>
                     <form
                       onSubmit={handleModifyProduct}
@@ -230,7 +230,7 @@ const FetchSingleProduct = () => {
                         className="my-4 text-xl border-2 p-1.5 bg-cyan-700 w-[50%] m-auto"
                         onClick={handleModifyProduct}
                       >
-                        Modify Product
+                        Add Product
                       </button>
                     </form>
                   </div>
