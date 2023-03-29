@@ -64,17 +64,17 @@ export const AdminDashboard = () => {
           Fetch All Users
         </button>
         <button className="text-xl" onClick={handleFetchSingleUser}>
-          Manage User By Id
+          Fetch Single User By Id
         </button>
         <button className="text-xl" onClick={handleAddProduct}>
           Add Product
         </button>
+        <button className="text-xl" onClick={handleSingleProduct}>
+          Manage Product by Id
+        </button>
 
         <button className="text-xl" onClick={handleAllProducts}>
           Fetch All Products
-        </button>
-        <button className="text-xl" onClick={handleSingleProduct}>
-          Manage Product by Id
         </button>
       </div>
       <div className="flex">

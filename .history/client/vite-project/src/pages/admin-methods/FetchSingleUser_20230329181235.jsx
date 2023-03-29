@@ -34,7 +34,7 @@ const FetchSingleUser = () => {
       });
   };
 
-  const handleDeleteSingleProduct = async (e) => {
+  const handleDeleteSingleUser = async (e) => {
     const customer = searchQuery;
     e.preventDefault();
     await axios
@@ -106,7 +106,7 @@ const FetchSingleUser = () => {
 
                 <button
                   className="text-xl border-2 p-1.5 bg-cyan-700 w-[50%] m-auto"
-                  onClick={handleDeleteSingleProduct}
+                  onClick={handleDeleteSingleUser}
                 >
                   Delete User
                 </button>

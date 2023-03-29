@@ -62,18 +62,18 @@ const FetchSingleProduct = () => {
       });
   };
 
-  const handleDeleteSingleProduct = async (e) => {
-    const product = searchQuery;
-    e.preventDefault();
-    await axios
-      .delete(`${api}admin/product/${product}`)
-      .then((res) => {
-        setTokenData(res.data.product);
-      })
-      .catch((error) => {
-        setError("Cannot find product");
-      });
-  };
+  //   const handleDeleteSingleUser = async (e) => {
+  //     const customer = searchQuery;
+  //     e.preventDefault();
+  //     await axios
+  //       .delete(`${api}admin/user/${customer}`)
+  //       .then((res) => {
+  //         setTokenData(res.data.customer);
+  //       })
+  //       .catch((error) => {
+  //         setError("Cannot find user");
+  //       });
+  //   };
 
   return (
     <div className="md:flex m-auto dark:bg-neutral-800 dark:text-white ease-in duration-200 font-mono">
@@ -226,7 +226,6 @@ const FetchSingleProduct = () => {
                         onChange={(e) => setQuantity(e.target.value)}
                         value={quantity}
                       />
-                      <br />
                       <button
                         className="my-4 text-xl border-2 p-1.5 bg-cyan-700 w-[50%] m-auto"
                         onClick={handleModifyProduct}

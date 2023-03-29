@@ -226,7 +226,6 @@ const FetchSingleProduct = () => {
                         onChange={(e) => setQuantity(e.target.value)}
                         value={quantity}
                       />
-                      <br />
                       <button
                         className="my-4 text-xl border-2 p-1.5 bg-cyan-700 w-[50%] m-auto"
                         onClick={handleModifyProduct}
