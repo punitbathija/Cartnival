@@ -6,10 +6,10 @@ import Categories from "./Categories";
 
 const Home = () => {
   return (
-    <div className="py-12 overflow-hidden dark:bg-neutral-800 dark:text-white ease-in duration-200 font-mono ">
+    <div className="py-2 overflow-hidden dark:bg-neutral-800 dark:text-white ease-in duration-200 font-mono ">
       <HomeSwiper slides={slides} />
-      <Categories />
       <AllProducts />
+      <Categories />
     </div>
   );
 };
