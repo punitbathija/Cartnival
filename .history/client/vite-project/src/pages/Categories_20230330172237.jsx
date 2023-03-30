@@ -2,10 +2,10 @@ import React from "react";
 import CategoryRoundedIcon from "@mui/icons-material/CategoryRounded";
 const Categories = () => {
   return (
-    <div className="py-10 cursor-default">
+    <div className="py-10">
       <h1 className="text-cyan-500 md:text-4xl font-extralight p-12">
-        Shop By Category{"    "}
-        <CategoryRoundedIcon fontSize="50" />
+        Shop By Category
+        <CategoryRoundedIcon />
       </h1>
       <div className="my-6 flex flex-wrap justify-center justify-items-center align-middle text-center m-auto">
         <div className="bg-[url('https://images.pexels.com/photos/4533076/pexels-photo-4533076.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1')] bg-cover my-4 h-96 w-96 m-auto cursor-pointer border-2 flex justify-center justify-items-center align-middle text-center hover:scale-105">

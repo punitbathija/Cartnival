@@ -2,9 +2,9 @@ import React from "react";
 import CategoryRoundedIcon from "@mui/icons-material/CategoryRounded";
 const Categories = () => {
   return (
-    <div className="py-10 cursor-default">
+    <div className="py-10">
       <h1 className="text-cyan-500 md:text-4xl font-extralight p-12">
-        Shop By Category{"    "}
+        Shop By Category
         <CategoryRoundedIcon fontSize="50" />
       </h1>
       <div className="my-6 flex flex-wrap justify-center justify-items-center align-middle text-center m-auto">
