@@ -12,27 +12,9 @@
         "interval": 500
     },
     {
-        "image": "https://images.pexels.com/photos/3183132/pexels-photo-3183132.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
-        "title": "Up your electronic game with us",
-        "subTitle": "All popular electronics available.",
-        "interval": 2500
-    },
-    {
         "image": "https://images.pexels.com/photos/1536619/pexels-photo-1536619.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
         "title": "Style with us and break the street",
         "subTitle": "Style with us and break the strret as all eyes on you.",
-        "interval": 2500
-    },
-    {
-        "image": "https://images.pexels.com/photos/322207/pexels-photo-322207.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
-        "title": "All additional accesiores available",
-        "subTitle": "Style with us all additional accesiores available.",
-        "interval": 2500
-    },
-    {
-        "image": "https://images.pexels.com/photos/1080721/pexels-photo-1080721.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
-        "title": "Build a modern kitchen with us",
-        "subTitle": "Style your rooms with the best accs.",
         "interval": 2500
     }
 ]

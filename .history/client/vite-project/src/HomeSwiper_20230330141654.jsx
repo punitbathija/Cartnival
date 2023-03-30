@@ -26,7 +26,7 @@ const HomeSwiper = ({ slides }) => {
       }}
       cardeffect={{
         shadow: true,
-        slideShadows: false,
+        slideShadows: true,
         shadowOffset: 20,
         shadowScale: 0.94,
       }}

@@ -23,10 +23,11 @@ const HomeSwiper = ({ slides }) => {
         delay: 5000,
         disableOnInteraction: false,
         pauseOnMouseEnter: true,
+        reverseDirection: true,
       }}
       cardeffect={{
         shadow: true,
-        slideShadows: false,
+        slideShadows: true,
         shadowOffset: 20,
         shadowScale: 0.94,
       }}

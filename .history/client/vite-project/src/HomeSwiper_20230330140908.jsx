@@ -19,14 +19,9 @@ const HomeSwiper = ({ slides }) => {
       onSlideChange={() => console.log("")}
       onSwiper={(swiper) => console.log()}
       effect={"cards"}
-      autoplay={{
-        delay: 5000,
-        disableOnInteraction: false,
-        pauseOnMouseEnter: true,
-      }}
       cardeffect={{
         shadow: true,
-        slideShadows: false,
+        slideShadows: true,
         shadowOffset: 20,
         shadowScale: 0.94,
       }}
