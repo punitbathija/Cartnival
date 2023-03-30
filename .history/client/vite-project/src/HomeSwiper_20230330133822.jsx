@@ -9,6 +9,7 @@ const HomeSwiper = ({ slides }) => {
       modules={[Navigation, Pagination, Scrollbar, A11y, EffectCards]}
       spaceBetween={50}
       slidesPerView={1}
+      navigation
       onSlideChange={() => console.log("")}
       onSwiper={(swiper) => console.log()}
       effect={"cards"}

@@ -1,18 +1,21 @@
 import React from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Navigation, Pagination, Scrollbar, A11y, EffectCards } from "swiper";
+import { Navigation, Pagination, Scrollbar, A11y, EffectCube } from "swiper";
 import "swiper/swiper-bundle.min.css";
 
 const HomeSwiper = ({ slides }) => {
   return (
     <Swiper
-      modules={[Navigation, Pagination, Scrollbar, A11y, EffectCards]}
+      modules={[Navigation, Pagination, Scrollbar, A11y, EffectCube]}
       spaceBetween={50}
       slidesPerView={1}
-      onSlideChange={() => console.log("")}
-      onSwiper={(swiper) => console.log()}
-      effect={"cards"}
-      cardeffect={{
+      navigation
+      pagination={{ clickable: true }}
+      scrollbar={{ draggable: true }}
+      onSlideChange={() => console.log("slide change")}
+      onSwiper={(swiper) => console.log(swiper)}
+      effect={"cube"}
+      cubeEffect={{
         shadow: true,
         slideShadows: true,
         shadowOffset: 20,
@@ -24,7 +27,7 @@ const HomeSwiper = ({ slides }) => {
           <img
             src={slide.image}
             alt={slide.title}
-            className="md:w-[1050px] m-auto"
+            className="w-[900px]m-auto"
           />
         </SwiperSlide>
       ))}

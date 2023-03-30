@@ -12,12 +12,14 @@ const HomeSwiper = ({ slides }) => {
       onSlideChange={() => console.log("")}
       onSwiper={(swiper) => console.log()}
       effect={"cards"}
-      cardeffect={{
-        shadow: true,
-        slideShadows: true,
-        shadowOffset: 20,
-        shadowScale: 0.94,
-      }}
+      cardeffect={
+        {
+          // shadow: true,
+          // slideShadows: true,
+          // shadowOffset: 20,
+          // shadowScale: 0.94,
+        }
+      }
     >
       {slides.map((slide) => (
         <SwiperSlide key={slide.image}>

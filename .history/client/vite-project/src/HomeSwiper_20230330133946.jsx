@@ -16,7 +16,7 @@ const HomeSwiper = ({ slides }) => {
         shadow: true,
         slideShadows: true,
         shadowOffset: 20,
-        shadowScale: 0.94,
+        shadowScale: 0,
       }}
     >
       {slides.map((slide) => (

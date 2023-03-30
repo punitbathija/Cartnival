@@ -7,7 +7,7 @@ const HomeSwiper = ({ slides }) => {
   return (
     <Swiper
       modules={[Navigation, Pagination, Scrollbar, A11y, EffectCards]}
-      spaceBetween={50}
+      spaceBetween={10}
       slidesPerView={1}
       onSlideChange={() => console.log("")}
       onSwiper={(swiper) => console.log()}

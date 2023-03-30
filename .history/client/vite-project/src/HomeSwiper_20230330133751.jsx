@@ -9,6 +9,7 @@ const HomeSwiper = ({ slides }) => {
       modules={[Navigation, Pagination, Scrollbar, A11y, EffectCards]}
       spaceBetween={50}
       slidesPerView={1}
+      navigation
       onSlideChange={() => console.log("")}
       onSwiper={(swiper) => console.log()}
       effect={"cards"}
@@ -16,7 +17,7 @@ const HomeSwiper = ({ slides }) => {
         shadow: true,
         slideShadows: true,
         shadowOffset: 20,
-        shadowScale: 0.94,
+        shadowScale: 1.94,
       }}
     >
       {slides.map((slide) => (
@@ -24,7 +25,7 @@ const HomeSwiper = ({ slides }) => {
           <img
             src={slide.image}
             alt={slide.title}
-            className="md:w-[1050px] m-auto"
+            className="w-[1050px] m-auto"
           />
         </SwiperSlide>
       ))}

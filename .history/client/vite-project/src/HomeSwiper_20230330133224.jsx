@@ -1,6 +1,13 @@
 import React from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Navigation, Pagination, Scrollbar, A11y, EffectCards } from "swiper";
+import {
+  Navigation,
+  Pagination,
+  Scrollbar,
+  A11y,
+  EffectCube,
+  EffectCards,
+} from "swiper";
 import "swiper/swiper-bundle.min.css";
 
 const HomeSwiper = ({ slides }) => {
@@ -9,10 +16,13 @@ const HomeSwiper = ({ slides }) => {
       modules={[Navigation, Pagination, Scrollbar, A11y, EffectCards]}
       spaceBetween={50}
       slidesPerView={1}
-      onSlideChange={() => console.log("")}
-      onSwiper={(swiper) => console.log()}
+      navigation
+      pagination={{ clickable: true }}
+      scrollbar={{ draggable: true }}
+      onSlideChange={() => console.log("slide change")}
+      onSwiper={(swiper) => console.log(swiper)}
       effect={"cards"}
-      cardeffect={{
+      cardEffect={{
         shadow: true,
         slideShadows: true,
         shadowOffset: 20,
@@ -24,7 +34,7 @@ const HomeSwiper = ({ slides }) => {
           <img
             src={slide.image}
             alt={slide.title}
-            className="md:w-[1050px] m-auto"
+            className="w-[1050px] m-auto"
           />
         </SwiperSlide>
       ))}

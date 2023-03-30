@@ -4,7 +4,7 @@ import slides from "../homeImages.json";
 
 const Home = () => {
   return (
-    <div className="py-6 overflow-hidden dark:bg-neutral-800 dark:text-white ease-in duration-200 font-mono ">
+    <div className="my-4 overflow-hidden dark:bg-neutral-800 dark:text-white ease-in duration-200 font-mono ">
       <HomeSwiper slides={slides} />
     </div>
   );
