@@ -26,7 +26,7 @@ const AllProducts = () => {
         allProducts.map((product) => {
           return (
             <div
-              className="my-4 h-96 w-96 m-auto cursor-pointer"
+              className="my-4 h-96 w-96 m-auto cursor-default"
               key={product._id}
             >
               <img

@@ -25,10 +25,7 @@ const AllProducts = () => {
       {productData &&
         allProducts.map((product) => {
           return (
-            <div
-              className="my-4 h-96 w-96 m-auto cursor-pointer"
-              key={product._id}
-            >
+            <div className="my-4 h-96 w-96 m-auto">
               <img
                 src={product.photos[0].secure_url}
                 className="p-4 h-2/3 m-auto w-2/3 rounded-full"
@@ -36,16 +33,15 @@ const AllProducts = () => {
               <p className="my-2 w-[50%] text-center m-auto text-cyan-500">
                 {product.name}
               </p>
-              <div className="my-2 w-[50%] text-center m-auto">
+              <p className="my-2 w-[50%] text-center m-auto">
                 <Stack spacing={1}>
                   <Rating
-                    className="text-center m-auto dark:text-white bg-transparent"
                     name="size-small read-only"
                     defaultValue={product.ratings}
                     size="small"
                   />
                 </Stack>
-              </div>
+              </p>
               <p className="my-2 w-[50%] text-center m-auto font-bold">
                 ₹{product.price}
               </p>

@@ -25,10 +25,7 @@ const AllProducts = () => {
       {productData &&
         allProducts.map((product) => {
           return (
-            <div
-              className="my-4 h-96 w-96 m-auto cursor-pointer"
-              key={product._id}
-            >
+            <div className="my-4 h-96 w-96 m-auto" key={product._id}>
               <img
                 src={product.photos[0].secure_url}
                 className="p-4 h-2/3 m-auto w-2/3 rounded-full"
