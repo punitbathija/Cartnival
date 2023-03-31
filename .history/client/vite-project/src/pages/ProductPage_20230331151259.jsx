@@ -1,12 +1,10 @@
 import React, { useEffect } from "react";
 import { useParams } from "react-router-dom";
-import axios from "axios";
-const api = import.meta.env.VITE_REACT_APP_BACKEND;
 
 const ProductPage = () => {
   const { id } = useParams();
   useEffect(() => {
-    const handleFetchSingleProduct = async () => {
+    const handleFetchSingleProduct = async (e) => {
       await axios
         .get(`${api}product/${id}`)
         .then((res) => {

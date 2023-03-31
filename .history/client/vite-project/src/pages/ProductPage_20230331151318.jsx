@@ -1,7 +1,6 @@
+import axios from "axios";
 import React, { useEffect } from "react";
 import { useParams } from "react-router-dom";
-import axios from "axios";
-const api = import.meta.env.VITE_REACT_APP_BACKEND;
 
 const ProductPage = () => {
   const { id } = useParams();
