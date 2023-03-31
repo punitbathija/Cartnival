@@ -31,7 +31,7 @@ const AllProducts = () => {
       {productData &&
         allProducts.map((product) => {
           return (
-            <Link to={`/products/${product._id}`}>
+            <Link to={`/product/${product.id}`}>
               <div
                 className="my-4 h-96 w-96 m-auto cursor-pointer"
                 key={product._id}

@@ -26,12 +26,16 @@ const AllProducts = () => {
     handleFetchAllProducts();
   }, []);
 
+  // const handleProductSelect = () => {
+  //  const product = dispatch(selectProduct(product))
+  // };
+
   return (
     <div className="flex my-6 flex-wrap justify-center justify-items-center align-middle text-center m-auto">
       {productData &&
         allProducts.map((product) => {
           return (
-            <Link to={`/products/${product._id}`}>
+            <Link to={`/product/${product.id}`}>
               <div
                 className="my-4 h-96 w-96 m-auto cursor-pointer"
                 key={product._id}

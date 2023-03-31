@@ -30,7 +30,7 @@ function App() {
           <Route exact path="/signin" Component={Signin} />
           <Route exact path="/admin/signin" Component={AdminSignin} />
           <Route exact path="/admin/dashboard" Component={AdminDashboard} />
-          <Route exact path="/products/:id" Component={ProductPage} />
+          <Route exact path="/products/:id" Component={ProductPage}
         </Routes>
       </Router>
     </>
