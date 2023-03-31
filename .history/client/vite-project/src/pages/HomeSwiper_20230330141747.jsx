@@ -36,7 +36,7 @@ const HomeSwiper = ({ slides }) => {
           <img
             src={slide.image}
             alt={slide.title}
-            className="md:h-[550px] m-auto w-[350px]"
+            className="md:h-[550px] m-auto"
           />
         </SwiperSlide>
       ))}

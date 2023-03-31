@@ -39,10 +39,10 @@ const ProductPage = () => {
                 </p>
               )}
             </h1>
-            <div className="text-sm text-black dark:text-white">
+            <p className="text-sm text-black dark:text-white">
               In {productData.category}
               <h1 className="text-2xl text-cyan-500">₹{productData.price}</h1>
-            </div>
+            </p>
             <h1 className="text-md p-8 md:w-[500px] w-[350px] m-auto">
               <span className="font-bold">About this item</span>
               <br />

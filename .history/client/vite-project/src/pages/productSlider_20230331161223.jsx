@@ -10,19 +10,20 @@ const ProductSlider = ({ productData }) => {
   return (
     <>
       <Swiper
-        direction={"vertical"}
+        slidesPerView={3}
+        spaceBetween={30}
         pagination={{
           clickable: true,
         }}
         modules={[Pagination]}
-        className="mySwiper h-[350px] px-8 justify-center m-auto "
+        className="mySwiper"
       >
         {productData.photos.map((photo) => (
           <SwiperSlide key={photo._id}>
             <img
               src={photo.secure_url}
               alt={photo.id}
-              className="h-[350px] m-auto md:my-8"
+              className="md:h-[550px] m-auto"
             />
           </SwiperSlide>
         ))}

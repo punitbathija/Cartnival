@@ -15,7 +15,7 @@ const ProductSlider = ({ productData }) => {
           clickable: true,
         }}
         modules={[Pagination]}
-        className="mySwiper h-[350px] px-8 justify-center m-auto "
+        className="mySwiper h-[350px]"
       >
         {productData.photos.map((photo) => (
           <SwiperSlide key={photo._id}>

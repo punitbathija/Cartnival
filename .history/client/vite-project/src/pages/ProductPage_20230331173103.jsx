@@ -39,17 +39,17 @@ const ProductPage = () => {
                 </p>
               )}
             </h1>
-            <div className="text-sm text-black dark:text-white">
+            <p className="text-sm text-black dark:text-white">
               In {productData.category}
-              <h1 className="text-2xl text-cyan-500">₹{productData.price}</h1>
-            </div>
+              <h1 className="text-3xl text-cyan-500">₹{productData.price}</h1>
+            </p>
             <h1 className="text-md p-8 md:w-[500px] w-[350px] m-auto">
               <span className="font-bold">About this item</span>
               <br />
               {productData.description}
             </h1>
-            <div className="flex gap-4 justify-center m-auto py-6">
-              <button className="flex gap-3 bg-amber-400 shadow-lg p-3 rounded-md hover:scale-110 hover:drop-shadow-xl">
+            <div className="flex gap-4 ">
+              <button className="flex gap-2 bg-orange-600 shadow-lg p-3 rounded-md hover:scale-110 hover:drop-shadow-xl">
                 ADD TO
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -66,7 +66,7 @@ const ProductPage = () => {
                   />
                 </svg>
               </button>
-              <button className="flex gap-2 bg-orange-600 shadow-lg p-3 rounded-md hover:scale-110 hover:drop-shadow-xl text-center">
+              <button className="flex gap-2 bg-amber-400 shadow-lg p-3 rounded-md hover:scale-110 hover:drop-shadow-xl w-[150px]">
                 BUY NOW
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
