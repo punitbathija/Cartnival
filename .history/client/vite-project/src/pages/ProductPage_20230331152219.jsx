@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
-import ProductSlider from "./productSlider";
 const api = import.meta.env.VITE_REACT_APP_BACKEND;
 
 const ProductPage = () => {
@@ -24,7 +23,7 @@ const ProductPage = () => {
 
   return (
     <div className="flex py-4 flex-wrap justify-center justify-items-center align-middle text-center m-auto dark:bg-neutral-800 dark:text-white ease-in duration-200 font-mono">
-      {productData && <ProductSlider productData={productData} />}
+      <h1></h1>
     </div>
   );
 };

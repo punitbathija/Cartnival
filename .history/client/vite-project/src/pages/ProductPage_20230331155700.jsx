@@ -20,11 +20,11 @@ const ProductPage = () => {
         });
     };
     handleFetchSingleProduct();
-  }, []);
+  }, [productData]);
 
   return (
     <div className="flex py-4 flex-wrap justify-center justify-items-center align-middle text-center m-auto dark:bg-neutral-800 dark:text-white ease-in duration-200 font-mono">
-      {productData && <ProductSlider productData={productData} />}
+      <ProductSlider productData={productData} />
     </div>
   );
 };
