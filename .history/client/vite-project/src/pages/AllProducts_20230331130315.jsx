@@ -34,9 +34,7 @@ const AllProducts = () => {
                 className="p-4 h-2/3 m-auto w-2/3 rounded-full"
               />
               <p className="my-2 w-[50%] text-center m-auto text-cyan-500">
-                {product.name.length > 35
-                  ? product.name.substring(0, 34) + "..."
-                  : product.name}
+                {product.name}
               </p>
               <div className="my-2 w-[50%] text-center m-auto">
                 <Stack spacing={1}>
