@@ -8,10 +8,8 @@ const api = import.meta.env.VITE_REACT_APP_BACKEND;
 const Reviews = () => {
   const { id } = useParams();
   const [productData, setProductData] = useState("");
-  const [error, setError] = useState("");
-
-  const [comment, setComment] = useState("");
-  const [rating, setRating] = useState("");
+  const [addComment, setAddComment] = useState("");
+  const [addRating, setAddRating] = useState("");
 
   useEffect(() => {
     const handleFetchReviews = async () => {
@@ -27,21 +25,20 @@ const Reviews = () => {
     };
     handleFetchReviews();
   }, []);
-
-  const handleAddReview = async () => {
-    await axios
-      .post(`${api}review/${id}`, {
-        comment,
-        rating,
-      })
-      .then((res) => {
-        console.log(res.data.reviews);
-      })
-      .catch((error) => {
-        setError("Cannot find produxt");
-      });
-  };
-  handleAddReview();
+  useEffect(() => {
+    const handleAddReview = async () => {
+      await axios
+        .post(`${api}review/${id}`, {})
+        .then((res) => {
+          console.log(res.data.reviews);
+          setProductData(res.data.reviews);
+        })
+        .catch((error) => {
+          setError("Cannot find produxt");
+        });
+    };
+    handleAddReview();
+  }, []);
 
   return (
     <>
@@ -50,6 +47,7 @@ const Reviews = () => {
         {productData &&
           productData.map((review) => {
             return (
+                <div>
               <div key={review._id} className="p-4">
                 <h1>{review.name}</h1>
                 <Rating
@@ -60,24 +58,18 @@ const Reviews = () => {
                 />
                 <h1>{review.comment}</h1>
               </div>
+              <div className="p-4">
+                <input type="text"  placeholder="Enter a review for the product"/>
+                <Rating
+                  name="read-only"
+                  size="medium"
+                  value={review.rating}
+                  readOnly
+                />
+                <h1>{review.comment}</h1>
+              </div>
             );
           })}
-        <h1>Add a review</h1>
-        <div className="dark:text-black">
-          <input
-            type="text"
-            placeholder="Add a review"
-            onChange={(e) => setComment(e.target.value)}
-            value={comment}
-          />
-          <input
-            type="number"
-            placeholder="Add a review"
-            onChange={(e) => setRating(e.target.value)}
-            value={rating}
-          />
-          <button onClick={handleAddReview}>Submit</button>
-        </div>
       </div>
     </>
   );

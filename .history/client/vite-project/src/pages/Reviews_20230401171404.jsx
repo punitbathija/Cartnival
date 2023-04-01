@@ -8,10 +8,8 @@ const api = import.meta.env.VITE_REACT_APP_BACKEND;
 const Reviews = () => {
   const { id } = useParams();
   const [productData, setProductData] = useState("");
-  const [error, setError] = useState("");
-
   const [comment, setComment] = useState("");
-  const [rating, setRating] = useState("");
+  const [addRating, setAddRating] = useState("");
 
   useEffect(() => {
     const handleFetchReviews = async () => {
@@ -27,21 +25,20 @@ const Reviews = () => {
     };
     handleFetchReviews();
   }, []);
-
-  const handleAddReview = async () => {
-    await axios
-      .post(`${api}review/${id}`, {
-        comment,
-        rating,
-      })
-      .then((res) => {
-        console.log(res.data.reviews);
-      })
-      .catch((error) => {
-        setError("Cannot find produxt");
-      });
-  };
-  handleAddReview();
+  useEffect(() => {
+    const handleAddReview = async () => {
+      await axios
+        .post(`${api}review/${id}`, {})
+        .then((res) => {
+          console.log(res.data.reviews);
+          setProductData(res.data.reviews);
+        })
+        .catch((error) => {
+          setError("Cannot find produxt");
+        });
+    };
+    handleAddReview();
+  }, []);
 
   return (
     <>
@@ -73,10 +70,9 @@ const Reviews = () => {
           <input
             type="number"
             placeholder="Add a review"
-            onChange={(e) => setRating(e.target.value)}
-            value={rating}
+            onChange={(e) => setAddRating(e.target.value)}
+            value={addRating}
           />
-          <button onClick={handleAddReview}>Submit</button>
         </div>
       </div>
     </>

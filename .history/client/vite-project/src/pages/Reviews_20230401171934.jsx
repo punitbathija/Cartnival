@@ -27,7 +27,6 @@ const Reviews = () => {
     };
     handleFetchReviews();
   }, []);
-
   const handleAddReview = async () => {
     await axios
       .post(`${api}review/${id}`, {
@@ -36,6 +35,7 @@ const Reviews = () => {
       })
       .then((res) => {
         console.log(res.data.reviews);
+        setProductData(res.data.reviews);
       })
       .catch((error) => {
         setError("Cannot find produxt");

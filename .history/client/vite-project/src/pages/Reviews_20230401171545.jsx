@@ -8,8 +8,6 @@ const api = import.meta.env.VITE_REACT_APP_BACKEND;
 const Reviews = () => {
   const { id } = useParams();
   const [productData, setProductData] = useState("");
-  const [error, setError] = useState("");
-
   const [comment, setComment] = useState("");
   const [rating, setRating] = useState("");
 
@@ -27,21 +25,21 @@ const Reviews = () => {
     };
     handleFetchReviews();
   }, []);
-
-  const handleAddReview = async () => {
-    await axios
-      .post(`${api}review/${id}`, {
-        comment,
-        rating,
-      })
-      .then((res) => {
-        console.log(res.data.reviews);
-      })
-      .catch((error) => {
-        setError("Cannot find produxt");
-      });
-  };
-  handleAddReview();
+    const handleAddReview = async () => {
+      await axios
+        .post(`${api}review/${id}`, {
+          comment,
+          rating,
+        })
+        .then((res) => {
+          console.log(res.data.reviews);
+          setProductData(res.data.reviews);
+        })
+        .catch((error) => {
+          setError("Cannot find produxt");
+        });
+    };
+    handleAddReview();
 
   return (
     <>
@@ -76,7 +74,7 @@ const Reviews = () => {
             onChange={(e) => setRating(e.target.value)}
             value={rating}
           />
-          <button onClick={handleAddReview}>Submit</button>
+          <button onClick={}>Submit</button>
         </div>
       </div>
     </>
