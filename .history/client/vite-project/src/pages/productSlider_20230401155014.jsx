@@ -22,7 +22,7 @@ const ProductSlider = ({ productData }) => {
             <img
               src={photo.secure_url}
               alt={photo.id}
-              className="h-[350px] m-auto border-2 p-4"
+              className="h-[350px] m-auto mt-2 border-2 p-4"
             />
           </SwiperSlide>
         ))}
