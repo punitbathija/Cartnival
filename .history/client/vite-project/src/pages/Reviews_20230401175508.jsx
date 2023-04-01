@@ -45,7 +45,7 @@ const Reviews = () => {
   return (
     <>
       <div className="h-[90vh] flex-col text-center md:px-32 px-4 py-12 m-auto dark:bg-neutral-800 dark:text-white ease-in duration-200 font-mono overflow-hidden">
-        <h1 className="text-2xl text-cyan-500 my-4">Add or modify a review</h1>
+        <h1 className="text-xl text-cyan-500 my-4">Add or modify a review</h1>
         <div>
           <Rating
             name="simple-controlled"
@@ -69,7 +69,7 @@ const Reviews = () => {
             Submit
           </button>
         </div>
-        <h1 className="text-2xl  text-cyan-500 my-8">All reviews</h1>
+        <h1 className="text-2xl  text-cyan-500 my-8">All Reviews</h1>
         {productData &&
           productData.map((review) => {
             return (

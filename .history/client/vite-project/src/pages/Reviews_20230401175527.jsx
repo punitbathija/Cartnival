@@ -69,7 +69,7 @@ const Reviews = () => {
             Submit
           </button>
         </div>
-        <h1 className="text-2xl  text-cyan-500 my-8">All reviews</h1>
+        <h1 className="text-2xl  text-cyan-500 my-8">All Reviews</h1>
         {productData &&
           productData.map((review) => {
             return (

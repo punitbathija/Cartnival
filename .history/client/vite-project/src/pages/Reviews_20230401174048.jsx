@@ -45,31 +45,7 @@ const Reviews = () => {
   return (
     <>
       <div className="h-[90vh] flex-col text-center md:px-32 px-4 py-12 m-auto dark:bg-neutral-800 dark:text-white ease-in duration-200 font-mono overflow-hidden">
-        <h1 className="text-2xl text-cyan-500 my-4">Add or modify a review</h1>
-        <div>
-          <Rating
-            name="simple-controlled"
-            value={rating}
-            onChange={(e) => {
-              setRating(parseInt(e.target.value));
-            }}
-          />
-          <br />
-
-          <input
-            className=" w-full p-4 rounded-full border-2 my-4 bg-transparent"
-            type="text"
-            placeholder="Add a review"
-            onChange={(e) => setComment(e.target.value)}
-            value={comment}
-          />
-
-          <br />
-          <button className="text-black flex gap-2 bg-amber-400 shadow-lg p-2 rounded-md hover:scale-110 hover:drop-shadow-xl text-center m-auto">
-            Submit
-          </button>
-        </div>
-        <h1 className="text-2xl  text-cyan-500 my-8">All reviews</h1>
+        <h1 className="text-2xl  text-cyan-500 my-8">Reviews</h1>
         {productData &&
           productData.map((review) => {
             return (
@@ -85,6 +61,25 @@ const Reviews = () => {
               </div>
             );
           })}
+        <h1 className="text-2xl">Add a review</h1>
+        <div className="dark:text-black">
+          <input
+            className="p-5 rounded-full border-2"
+            type="text"
+            placeholder="Add a review"
+            onChange={(e) => setComment(e.target.value)}
+            value={comment}
+          />
+          <br />
+          <Rating
+            name="simple-controlled"
+            value={rating}
+            onChange={(e) => {
+              setRating(parseInt(e.target.value));
+            }}
+          />
+          <button onClick={handleAddReview}>Submit</button>
+        </div>
       </div>
     </>
   );
