@@ -22,20 +22,6 @@ const Reviews = () => {
     };
     handleFetchReviews();
   }, []);
-  useEffect(() => {
-    const handleAddReview = async () => {
-      await axios
-        .get(`${api}review/${id}`)
-        .then((res) => {
-          console.log(res.data.reviews);
-          setProductData(res.data.reviews);
-        })
-        .catch((error) => {
-          setError("Cannot find produxt");
-        });
-    };
-    handleAddReview();
-  }, []);
 
   return (
     <>

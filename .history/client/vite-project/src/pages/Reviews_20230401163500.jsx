@@ -22,29 +22,15 @@ const Reviews = () => {
     };
     handleFetchReviews();
   }, []);
-  useEffect(() => {
-    const handleAddReview = async () => {
-      await axios
-        .get(`${api}review/${id}`)
-        .then((res) => {
-          console.log(res.data.reviews);
-          setProductData(res.data.reviews);
-        })
-        .catch((error) => {
-          setError("Cannot find produxt");
-        });
-    };
-    handleAddReview();
-  }, []);
 
   return (
     <>
-      <div className="h-[90vh] flex-col text-center md:px-32 px-4 py-12 m-auto dark:bg-neutral-800 dark:text-white ease-in duration-200 font-mono overflow-hidden">
-        <h1 className="text-2xl  text-cyan-500 my-8">Reviews</h1>
+      <div className=" h-[100vh] border-2 flex-col md:px-32 px-4 py-12 m-auto dark:bg-neutral-800 dark:text-white ease-in duration-200 font-mono overflow-hidden">
+        <h1 className="text-2xl  text-cyan-500">Reviews</h1>
         {productData &&
           productData.map((review) => {
             return (
-              <div key={review._id} className="p-4">
+              <div key={review._id}>
                 <h1>{review.name}</h1>
                 <Rating
                   name="read-only"

@@ -22,20 +22,6 @@ const Reviews = () => {
     };
     handleFetchReviews();
   }, []);
-  useEffect(() => {
-    const handleAddReview = async () => {
-      await axios
-        .get(`${api}review/${id}`)
-        .then((res) => {
-          console.log(res.data.reviews);
-          setProductData(res.data.reviews);
-        })
-        .catch((error) => {
-          setError("Cannot find produxt");
-        });
-    };
-    handleAddReview();
-  }, []);
 
   return (
     <>
@@ -44,7 +30,7 @@ const Reviews = () => {
         {productData &&
           productData.map((review) => {
             return (
-              <div key={review._id} className="p-4">
+              <div key={review._id} className="border-2 p-4 w-[50%]">
                 <h1>{review.name}</h1>
                 <Rating
                   name="read-only"
