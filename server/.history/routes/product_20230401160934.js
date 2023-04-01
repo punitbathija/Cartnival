@@ -18,7 +18,7 @@ router.route("/products").get(getAllProducts);
 router.route("/product/:id").get(getSingleProduct);
 router.route("/review").post(isLoggedin, addReview);
 router.route("/review").delete(isLoggedin, deleteReview);
-router.route("/review/:id").get(getReviewsForProduct);
+router.route("/review").get(getReviewsForProduct);
 
 // Admin Routes
 

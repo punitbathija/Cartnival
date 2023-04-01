@@ -34,7 +34,7 @@ const ProductPage = () => {
               <br />
               <Rating name="read-only" value={productData.ratings} readOnly />
               {productData.ratings && (
-                <Link to={`/products/${id}/reviews`}>
+                <Link>
                   <p className="text-sm text-black dark:text-white">
                     ({productData.reviews.length} ratings)
                   </p>

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Link, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import axios from "axios";
 import ProductSlider from "./productSlider";
 const api = import.meta.env.VITE_REACT_APP_BACKEND;
@@ -34,11 +34,9 @@ const ProductPage = () => {
               <br />
               <Rating name="read-only" value={productData.ratings} readOnly />
               {productData.ratings && (
-                <Link to={`/products/${id}/reviews`}>
-                  <p className="text-sm text-black dark:text-white">
-                    ({productData.reviews.length} ratings)
-                  </p>
-                </Link>
+                <p className="text-sm text-black dark:text-white">
+                  ({productData.reviews.length} ratings)
+                </p>
               )}
             </h1>
             <div className="text-sm text-black dark:text-white">
@@ -86,6 +84,7 @@ const ProductPage = () => {
                 </svg>
               </button>
             </div>
+            <h1 className="text-sm block float-left">Reviews</h1>
           </div>
         </div>
       )}
