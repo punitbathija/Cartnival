@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { signout } from "./userSlice";
 import { useDispatch } from "react-redux";
+import { Link } from "react-router-dom";
 
 const Header = () => {
   const [theme, setTheme] = useState("light");
@@ -79,10 +80,11 @@ const Header = () => {
                   </svg>
                 )}
               </li>
-
-              <li className="hover:underline  underline-offset-4 decoration-2 decoration-cyan-500 py-2 rounded-lg px-2 md:px-5">
-                <a href="#">Home</a>
-              </li>
+              <Link to={"/signin"}>
+                <li className="hover:underline  underline-offset-4 decoration-2 decoration-cyan-500 py-2 rounded-lg px-2 md:px-5">
+                  <a href="#">Home</a>
+                </li>
+              </Link>
               <li className="hover:underline underline-offset-4 decoration-2 decoration-cyan-500 py-2 rounded-lg px-2 md:px-5">
                 <a href="#">Shop</a>
               </li>

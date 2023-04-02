@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { signout } from "./userSlice";
 import { useDispatch } from "react-redux";
+import { Link } from "react-router-dom";
 
 const Header = () => {
   const [theme, setTheme] = useState("light");
@@ -79,7 +80,6 @@ const Header = () => {
                   </svg>
                 )}
               </li>
-
               <li className="hover:underline  underline-offset-4 decoration-2 decoration-cyan-500 py-2 rounded-lg px-2 md:px-5">
                 <a href="#">Home</a>
               </li>
@@ -110,7 +110,7 @@ const Header = () => {
             </ul>
             <div className="flex space-x-5 text-sm md:text-[16px]">
               <h1 className=" py-2 font-semibold hover:underline decoration-cyan-500  cursor-pointer">
-                Sign In
+                <Link to="/signin">Sign In</Link>
               </h1>
               <h1 className=" py-2 font-semibold hover:underline decoration-cyan-500  cursor-pointer">
                 Sign Up

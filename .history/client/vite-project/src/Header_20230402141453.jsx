@@ -2,6 +2,8 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { signout } from "./userSlice";
 import { useDispatch } from "react-redux";
+import { BrowserRouter, Link, Route, Routes } from "react-router-dom";
+import Signin from "./pages/Signin";
 
 const Header = () => {
   const [theme, setTheme] = useState("light");
@@ -108,29 +110,36 @@ const Header = () => {
                 </a>
               </li>
             </ul>
-            <div className="flex space-x-5 text-sm md:text-[16px]">
-              <h1 className=" py-2 font-semibold hover:underline decoration-cyan-500  cursor-pointer">
-                Sign In
-              </h1>
-              <h1 className=" py-2 font-semibold hover:underline decoration-cyan-500  cursor-pointer">
-                Sign Up
-              </h1>
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 24 24"
-                strokeWidth={1.5}
-                stroke="currentColor"
-                className="w-6 h-6 mt-1 cursor-pointer"
-                onClick={signOut}
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  d="M15.75 9V5.25A2.25 2.25 0 0013.5 3h-6a2.25 2.25 0 00-2.25 2.25v13.5A2.25 2.25 0 007.5 21h6a2.25 2.25 0 002.25-2.25V15M12 9l-3 3m0 0l3 3m-3-3h12.75"
-                />
-              </svg>
-            </div>
+            <BrowserRouter>
+              <div className="flex space-x-5 text-sm md:text-[16px]">
+                <Link to="/signin">
+                  <h1 className=" py-2 font-semibold hover:underline decoration-cyan-500  cursor-pointer">
+                    Sign In
+                  </h1>
+                </Link>
+                <h1 className=" py-2 font-semibold hover:underline decoration-cyan-500  cursor-pointer">
+                  Sign Up
+                </h1>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  strokeWidth={1.5}
+                  stroke="currentColor"
+                  className="w-6 h-6 mt-1 cursor-pointer"
+                  onClick={signOut}
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    d="M15.75 9V5.25A2.25 2.25 0 0013.5 3h-6a2.25 2.25 0 00-2.25 2.25v13.5A2.25 2.25 0 007.5 21h6a2.25 2.25 0 002.25-2.25V15M12 9l-3 3m0 0l3 3m-3-3h12.75"
+                  />
+                </svg>
+              </div>
+              <Routes>
+                <Route exact path="/signin" Component={Signin} />
+              </Routes>
+            </BrowserRouter>
           </div>
         </nav>
       </div>

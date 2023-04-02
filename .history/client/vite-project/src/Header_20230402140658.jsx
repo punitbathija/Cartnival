@@ -2,11 +2,13 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { signout } from "./userSlice";
 import { useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
 
 const Header = () => {
   const [theme, setTheme] = useState("light");
   const api = import.meta.env.VITE_REACT_APP_BACKEND;
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const signOut = async (e) => {
     e.preventDefault();
