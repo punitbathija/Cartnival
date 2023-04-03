@@ -9,6 +9,8 @@ const Header = () => {
   const dispatch = useDispatch();
 
   const signOut = async (e) => {
+    const user = useSelector(selectUser);
+
     e.preventDefault();
     axios
       .get(`${api}signout`)
@@ -33,9 +35,6 @@ const Header = () => {
   const handleThemeSwitch = () => {
     setTheme(theme === "dark" ? "light" : "dark");
   };
-
-  const user = useSelector(selectUser);
-  console.log(user);
 
   return (
     <>

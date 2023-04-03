@@ -10,7 +10,6 @@ const Signin = () => {
   const [error, setError] = useState("");
   const api = import.meta.env.VITE_REACT_APP_BACKEND;
   const dispatch = useDispatch();
-  const navigate = useNavigate();
 
   const handleSignin = async (e) => {
     e.preventDefault();
@@ -37,7 +36,6 @@ const Signin = () => {
             role: res.data.customer.role,
           })
         );
-        navigate("/");
       })
       .catch((error) => {
         setError("Invalid credentials");
