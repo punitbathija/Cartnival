@@ -8,9 +8,10 @@ const ResetPassword = () => {
   const [tokenData, setTokenData] = useState("");
   const [error, setError] = useState("");
   const api = import.meta.env.VITE_REACT_APP_BACKEND;
-  let { token } = useParams();
-
+  let token = useParams();
   const handleResetPassword = async (e) => {
+    console.log(token);
+
     e.preventDefault();
     await axios
       .post(`${api}password/reset/${token}`, {

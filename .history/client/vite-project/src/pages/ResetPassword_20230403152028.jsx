@@ -9,6 +9,7 @@ const ResetPassword = () => {
   const [error, setError] = useState("");
   const api = import.meta.env.VITE_REACT_APP_BACKEND;
   let { token } = useParams();
+  console.log(token);
 
   const handleResetPassword = async (e) => {
     e.preventDefault();
