@@ -40,16 +40,6 @@ function App() {
             Component={ResetPassword}
           />
           <Route exact path="/myprofile" Component={MyProfile} />
-          <Route
-            exact
-            path="/myprofile/updatepassword"
-            Component={UpdatePassword}
-          />
-          <Route
-            exact
-            path="/myprofile/updateuserdetails"
-            Component={UpdateUser}
-          />
         </Routes>
       </Router>
     </>

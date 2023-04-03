@@ -45,11 +45,6 @@ function App() {
             path="/myprofile/updatepassword"
             Component={UpdatePassword}
           />
-          <Route
-            exact
-            path="/myprofile/updateuserdetails"
-            Component={UpdateUser}
-          />
         </Routes>
       </Router>
     </>

@@ -23,9 +23,6 @@ const MyProfile = () => {
     navigate("/myprofile/updatepassword");
   };
 
-  const handleUpdateUser = () => {
-    navigate("/myprofile/updateuserdetails");
-  };
   return (
     <div className="md:flex p-24 justify-center gap-36 text-center align-middle justify-items-center m-auto dark:bg-neutral-800 dark:text-white ease-in duration-200 font-mono h-[85.5vh]">
       <div className="my-2">
@@ -68,10 +65,7 @@ const MyProfile = () => {
 
         {tokenData && (
           <div className="flex justify-center align-middle justify-items-center m-auto">
-            <button
-              className="flex text-xl border-2 p-1.5 my-2 bg-cyan-700"
-              onClick={handleUpdateUser}
-            >
+            <button className="flex text-xl border-2 p-1.5 my-2 bg-cyan-700">
               Update User Details
               <svg
                 xmlns="http://www.w3.org/2000/svg"
