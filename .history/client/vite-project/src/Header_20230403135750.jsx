@@ -126,8 +126,7 @@ const Header = () => {
               {isLoggedin && (
                 <div className="flex text-center justify-center align-middle justify-items-center m-auto gap-4">
                   <p>
-                    Welcome{" "}
-                    <span className="text-cyan-500">{user && user.name}</span>
+                    Welcome <span className="text-cyan-500">{user.name}</span>
                   </p>
                   <svg
                     xmlns="http://www.w3.org/2000/svg"

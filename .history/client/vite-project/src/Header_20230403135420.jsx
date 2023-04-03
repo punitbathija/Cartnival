@@ -123,11 +123,10 @@ const Header = () => {
               </li>
             </ul>
             <div className="flex space-x-5 text-sm md:text-[16px]">
-              {isLoggedin && (
+              {isLoggedin ? (
                 <div className="flex text-center justify-center align-middle justify-items-center m-auto gap-4">
                   <p>
-                    Welcome{" "}
-                    <span className="text-cyan-500">{user && user.name}</span>
+                    Welcome <span className="text-cyan-500">{user.name}</span>
                   </p>
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -145,9 +144,8 @@ const Header = () => {
                     />
                   </svg>
                 </div>
-              )}
-              {!isLoggedin && (
-                <div className="flex gap-4">
+              ) : (
+                <div>
                   <Link to="/signin">
                     <h1 className=" py-2 font-semibold hover:underline decoration-cyan-500  cursor-pointer">
                       Sign In
