@@ -22,8 +22,6 @@ const Reviews = () => {
       })
       .then((res) => {
         console.log(res.data.reviews);
-        setComment("");
-        setRating();
       })
       .catch((error) => {
         setError("Cannot find produxt");
@@ -43,7 +41,7 @@ const Reviews = () => {
         });
     };
     handleFetchReviews();
-  }, [comment, rating]);
+  }, [rating]);
 
   return (
     <>

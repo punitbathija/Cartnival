@@ -33,12 +33,17 @@ const ProductPage = () => {
               {productData.name}
               <br />
               <Rating name="read-only" value={productData.ratings} readOnly />
-
-              <Link to={`/products/${id}/reviews`}>
-                <p className="text-sm text-black dark:text-white">
-                  ({productData.reviews.length})
-                </p>
-              </Link>
+              {productData.ratings && (
+                <Link to={`/products/${id}/reviews`}>
+                  <p className="text-sm text-black dark:text-white">
+                    {productData.reviews.length > 0 ? (
+                      productData.reviews.length
+                    ) : (
+                      <p>Add review</p>
+                    )}
+                  </p>
+                </Link>
+              )}
             </h1>
             <div className="text-sm text-black dark:text-white">
               In {productData.category}

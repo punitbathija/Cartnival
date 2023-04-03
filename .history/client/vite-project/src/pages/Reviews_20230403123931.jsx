@@ -13,23 +13,6 @@ const Reviews = () => {
   const [comment, setComment] = useState("");
   const [rating, setRating] = useState(0);
 
-  const handleAddReview = async (e) => {
-    e.preventDefault();
-    await axios
-      .post(`${api}review/${id}`, {
-        comment,
-        rating,
-      })
-      .then((res) => {
-        console.log(res.data.reviews);
-        setComment("");
-        setRating();
-      })
-      .catch((error) => {
-        setError("Cannot find produxt");
-      });
-  };
-
   useEffect(() => {
     const handleFetchReviews = async () => {
       await axios
@@ -43,7 +26,22 @@ const Reviews = () => {
         });
     };
     handleFetchReviews();
-  }, [comment, rating]);
+  }, []);
+
+  const handleAddReview = async (e) => {
+    e.preventDefault();
+    await axios
+      .post(`${api}review/${id}`, {
+        comment,
+        rating,
+      })
+      .then((res) => {
+        console.log(res.data.reviews);
+      })
+      .catch((error) => {
+        setError("Cannot find produxt");
+      });
+  };
 
   return (
     <>
