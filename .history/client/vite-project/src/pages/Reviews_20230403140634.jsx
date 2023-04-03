@@ -29,6 +29,7 @@ const Reviews = () => {
         setError("Please signin and try again");
         setComment("");
         setRating();
+        setError();
       });
   };
 

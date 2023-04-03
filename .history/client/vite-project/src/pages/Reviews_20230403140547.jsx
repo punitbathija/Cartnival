@@ -27,8 +27,6 @@ const Reviews = () => {
       })
       .catch((error) => {
         setError("Please signin and try again");
-        setComment("");
-        setRating();
       });
   };
 

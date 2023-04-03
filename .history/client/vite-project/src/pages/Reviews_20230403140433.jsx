@@ -27,8 +27,6 @@ const Reviews = () => {
       })
       .catch((error) => {
         setError("Please signin and try again");
-        setComment("");
-        setRating();
       });
   };
 
@@ -76,7 +74,6 @@ const Reviews = () => {
           >
             Submit
           </button>
-          <p className="py-2 text-red-600">{error}</p>
         </div>
         <h1 className="text-2xl  text-cyan-500 my-8">All reviews</h1>
         {productData &&

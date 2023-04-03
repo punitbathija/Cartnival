@@ -26,7 +26,7 @@ const Reviews = () => {
         setRating();
       })
       .catch((error) => {
-        setError("Please signin and try again");
+        setError("Please signin and try again <p>Signin?</p>");
         setComment("");
         setRating();
       });
