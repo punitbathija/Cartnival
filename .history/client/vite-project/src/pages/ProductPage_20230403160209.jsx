@@ -24,11 +24,11 @@ const ProductPage = () => {
   }, []);
 
   return (
-    <div className="flex py-4 justify-center justify-items-center align-middle text-center m-auto dark:bg-neutral-800 dark:text-white ease-in duration-200 font-mono overflow-hidden">
+    <div className="flex  justify-center justify-items-center align-middle text-center m-auto dark:bg-neutral-800 dark:text-white ease-in duration-200 font-mono overflow-hidden">
       {productData && (
-        <div className="md:border-2 md:flex h-[100vh]">
+        <div className="md:border-2 md:flex">
           <ProductSlider productData={productData} />
-          <div className="m-auto">
+          <div>
             <h1 className="text-xl p-8 w-[500px] text-cyan-500 font-bold">
               {productData.name}
               <br />

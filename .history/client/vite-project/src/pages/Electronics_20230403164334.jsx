@@ -2,24 +2,25 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import Rating from "@mui/material/Rating";
 import Stack from "@mui/material/Stack";
-import { useDispatch } from "react-redux";
-import { selectProduct } from "../productSlice";
 import { Link } from "react-router-dom";
 
-const AllProducts = () => {
+const Electronics = () => {
   const [productData, setProductData] = useState("");
   const [error, setError] = useState("");
   const api = import.meta.env.VITE_REACT_APP_BACKEND;
   let allProducts = productData;
-  const dispatch = useDispatch();
 
   useEffect(() => {
     async function handleFetchAllProducts() {
       const result = await axios
         .get(`${api}products`)
         .then((res) => {
-          console.log(res.data.products);
-          setProductData(res.data.products);
+          const filteredData = res.data.products.filter(
+            (item) => item.category === "Electronics"
+          );
+          console.log(filteredData);
+
+          setProductData(filteredData);
         })
         .catch((error) => setError("something went wrong please refresh"));
     }
@@ -28,6 +29,9 @@ const AllProducts = () => {
 
   return (
     <div className="flex py-6 flex-wrap justify-center justify-items-center align-middle text-center m-auto dark:bg-neutral-800 dark:text-white ease-in duration-200 font-mono overflow-hidden">
+      <h1 className="text-cyan-500 text-3xl md:text-4xl font-extralight p-12">
+        Electronics
+      </h1>
       {productData &&
         allProducts.map((product) => {
           let id = product._id;
@@ -64,4 +68,4 @@ const AllProducts = () => {
   );
 };
 
-export default AllProducts;
+export default Electronics;

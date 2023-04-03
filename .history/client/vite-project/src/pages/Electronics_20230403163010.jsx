@@ -3,22 +3,23 @@ import axios from "axios";
 import Rating from "@mui/material/Rating";
 import Stack from "@mui/material/Stack";
 import { useDispatch } from "react-redux";
-import { selectProduct } from "../productSlice";
 import { Link } from "react-router-dom";
 
-const AllProducts = () => {
+const Electronics = () => {
   const [productData, setProductData] = useState("");
   const [error, setError] = useState("");
   const api = import.meta.env.VITE_REACT_APP_BACKEND;
   let allProducts = productData;
-  const dispatch = useDispatch();
 
   useEffect(() => {
     async function handleFetchAllProducts() {
       const result = await axios
         .get(`${api}products`)
         .then((res) => {
-          console.log(res.data.products);
+          const filteredData = res.data.products.filter(
+            (item) => item.category === "electronics"
+          );
+          console.log(filteredData);
           setProductData(res.data.products);
         })
         .catch((error) => setError("something went wrong please refresh"));
@@ -64,4 +65,4 @@ const AllProducts = () => {
   );
 };
 
-export default AllProducts;
+export default Electronics;

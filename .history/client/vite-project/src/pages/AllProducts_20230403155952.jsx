@@ -27,7 +27,7 @@ const AllProducts = () => {
   }, []);
 
   return (
-    <div className="flex py-6 flex-wrap justify-center justify-items-center align-middle text-center m-auto dark:bg-neutral-800 dark:text-white ease-in duration-200 font-mono overflow-hidden">
+    <div className="flex my-6 flex-wrap justify-center justify-items-center align-middle text-center m-auto dark:bg-neutral-800 dark:text-white ease-in duration-200 font-mono overflow-hidden">
       {productData &&
         allProducts.map((product) => {
           let id = product._id;

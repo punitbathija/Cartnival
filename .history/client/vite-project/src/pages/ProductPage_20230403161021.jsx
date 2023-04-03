@@ -28,7 +28,7 @@ const ProductPage = () => {
       {productData && (
         <div className="md:border-2 md:flex h-[100vh]">
           <ProductSlider productData={productData} />
-          <div className="m-auto">
+          <div className="">
             <h1 className="text-xl p-8 w-[500px] text-cyan-500 font-bold">
               {productData.name}
               <br />

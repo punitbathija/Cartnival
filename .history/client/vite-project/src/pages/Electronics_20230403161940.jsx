@@ -3,7 +3,6 @@ import axios from "axios";
 import Rating from "@mui/material/Rating";
 import Stack from "@mui/material/Stack";
 import { useDispatch } from "react-redux";
-import { selectProduct } from "../productSlice";
 import { Link } from "react-router-dom";
 
 const AllProducts = () => {
@@ -11,7 +10,6 @@ const AllProducts = () => {
   const [error, setError] = useState("");
   const api = import.meta.env.VITE_REACT_APP_BACKEND;
   let allProducts = productData;
-  const dispatch = useDispatch();
 
   useEffect(() => {
     async function handleFetchAllProducts() {

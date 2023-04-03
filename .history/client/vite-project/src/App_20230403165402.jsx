@@ -24,7 +24,6 @@ import Electronics from "./pages/Electronics";
 import HomeAndKitchen from "./pages/HomeAndKitchen";
 import ClothingAndAccessories from "./pages/ClothingAndAccessories";
 import Beauty from "./pages/Beauty";
-import ToysAndGames from "./pages/ToysAndGames";
 
 function App() {
   const user = useSelector(selectUser);
@@ -72,7 +71,6 @@ function App() {
           />
 
           <Route exact path="/products/beauty" Component={Beauty} />
-          <Route exact path="/products/toysandgames" Component={ToysAndGames} />
         </Routes>
       </Router>
     </>

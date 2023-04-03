@@ -19,12 +19,6 @@ import Home from "./pages/Home";
 import ProductPage from "./pages/ProductPage";
 import Reviews from "./pages/Reviews";
 import Categories from "./pages/Categories";
-import AllProducts from "./pages/AllProducts";
-import Electronics from "./pages/Electronics";
-import HomeAndKitchen from "./pages/HomeAndKitchen";
-import ClothingAndAccessories from "./pages/ClothingAndAccessories";
-import Beauty from "./pages/Beauty";
-import ToysAndGames from "./pages/ToysAndGames";
 
 function App() {
   const user = useSelector(selectUser);
@@ -58,21 +52,6 @@ function App() {
             Component={UpdateUser}
           />
           <Route exact path="/categories" Component={Categories} />
-          <Route exact path="/products" Component={AllProducts} />
-          <Route exact path="/products/electronics" Component={Electronics} />
-          <Route
-            exact
-            path="/products/homeandkitchen"
-            Component={HomeAndKitchen}
-          />
-          <Route
-            exact
-            path="/products/clothingandaccessories"
-            Component={ClothingAndAccessories}
-          />
-
-          <Route exact path="/products/beauty" Component={Beauty} />
-          <Route exact path="/products/toysandgames" Component={ToysAndGames} />
         </Routes>
       </Router>
     </>

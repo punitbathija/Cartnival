@@ -97,11 +97,9 @@ const Header = () => {
                   Home
                 </li>
               </Link>
-              <Link to="/products">
-                <li className="hover:underline underline-offset-4 decoration-2 decoration-cyan-500 py-2 rounded-lg px-2 md:px-5">
-                  <a href="#">Shop</a>
-                </li>
-              </Link>
+              <li className="hover:underline underline-offset-4 decoration-2 decoration-cyan-500 py-2 rounded-lg px-2 md:px-5">
+                <a href="#">Shop</a>
+              </li>
               <Link to="/categories">
                 <li className="hover:underline underline-offset-4 decoration-2 decoration-cyan-500 py-2 rounded-lg px-2 md:px-5">
                   <a href="#">Categories</a>
