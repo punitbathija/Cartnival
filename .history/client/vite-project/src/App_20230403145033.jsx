@@ -34,11 +34,10 @@ function App() {
           <Route exact path="/admin/dashboard" Component={AdminDashboard} />
           <Route exact path="/products/:id" Component={ProductPage} />
           <Route exact path="/products/:id/reviews" Component={Reviews} />
-          <Route exact path="/forgotpassword" Component={ForgotPassword} />
           <Route
             exact
-            path="/password/reset/:token"
-            Component={ResetPassword}
+            path="/signin/forgotpassword"
+            Component={ForgotPassword}
           />
         </Routes>
       </Router>

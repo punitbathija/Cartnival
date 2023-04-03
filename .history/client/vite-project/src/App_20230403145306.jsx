@@ -35,11 +35,6 @@ function App() {
           <Route exact path="/products/:id" Component={ProductPage} />
           <Route exact path="/products/:id/reviews" Component={Reviews} />
           <Route exact path="/forgotpassword" Component={ForgotPassword} />
-          <Route
-            exact
-            path="/password/reset/:token"
-            Component={ResetPassword}
-          />
         </Routes>
       </Router>
     </>

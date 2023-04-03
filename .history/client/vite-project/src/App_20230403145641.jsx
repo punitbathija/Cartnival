@@ -38,7 +38,7 @@ function App() {
           <Route
             exact
             path="/password/reset/:token"
-            Component={ResetPassword}
+            Component={ForgotPassword}
           />
         </Routes>
       </Router>
