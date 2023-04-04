@@ -14,15 +14,19 @@ export const cartSlice = createSlice({
       state.total = [Number(state.total) + Number(action.payload.price)];
     },
     removeFromCart: (state, action) => {
-      const id = action.payload.id;
-      const itemToRemove = state.items.find((item) => item.id === id);
-      state.items = state.items.filter((item) => item.id !== id);
-      state.total -= itemToRemove.price;
+      const index = state.items.findIndex(
+        (item) => item.id === action.payload.id
+      );
+
+      if (index >= 0) {
+        state.items.splice(index, 1);
+        state.total = Number(state.total) - Number(action.payload.price);
+      }
     },
   },
 });
 
-export const { addToCart, removeFromCart } = cartSlice.actions;
+export const { addToCart } = cartSlice.actions;
 
 export const selectItems = (state) => state.cart.items;
 export const selectTotal = (state) => state.cart.total;
