@@ -55,7 +55,7 @@ const Cart = () => {
             );
           })}
         </ul>
-        <p>Total:- ₹{total}</p>
+        <p>Total:- {total}</p>
         <button className="flex gap-2 bg-cyan-700 shadow-lg p-2 rounded-md hover:scale-110 hover:drop-shadow-xl text-center m-auto my-4">
           Proceed to checkout
         </button>

@@ -129,8 +129,7 @@ const Header = () => {
                       </svg>
                     )}
                     {cartItems.length !== 0 && (
-                      <div className="flex">
-                        <small className="ml-2">{itemsCount}</small>
+                      <div>
                         <svg
                           xmlns="http://www.w3.org/2000/svg"
                           fill="darkCyan"

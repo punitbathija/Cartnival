@@ -105,7 +105,7 @@ const Header = () => {
                 </li>
               </Link>
               <Link to="/categories">
-                <li className="hover:underline underline-offset-4 decoration-2 decoration-cyan-500 py-2 rounded-lg px-2 md:px-5">
+                <li className="hover:underline underline-offset-4 decoration-2 decoration-cyan-500 py-2 rounded-lg px-2 md:px-">
                   <a href="#">Categories</a>
                 </li>
               </Link>
