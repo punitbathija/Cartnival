@@ -1,13 +1,19 @@
 import React, { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
-import { selectItems, selectTotal } from "../cartSlice";
+import { selectItems, selectTotal, removeFromCart } from "../cartSlice";
+
+import { useDispatch } from "react-redux";
 
 const Cart = () => {
   const cartItems = useSelector(selectItems);
   console.log(cartItems);
-
   const total = useSelector(selectTotal);
   console.log(total);
+  const dispatch = useDispatch();
+
+  const handleRemoveItem = (id) => {
+    dispatch(removeFromCart({ id }));
+  };
 
   return (
     <div className="flex text-center justify-center justify-items-center m-auto dark:bg-neutral-800 dark:text-white ease-in duration-200 font-mono overflow-hidden h-[100vh]">
@@ -29,7 +35,7 @@ const Cart = () => {
                   className="w-12 h-12 mb-8"
                 />
                 <p>₹{item.price}</p>
-                <button>
+                <button onClick={() => handleRemoveItem(item.id)}>
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     fill="none"
@@ -49,7 +55,7 @@ const Cart = () => {
             );
           })}
         </ul>
-
+        <p>Total:- {total}</p>
         <button className="flex gap-2 bg-cyan-700 shadow-lg p-2 rounded-md hover:scale-110 hover:drop-shadow-xl text-center m-auto my-4">
           Proceed to checkout
         </button>
