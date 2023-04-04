@@ -44,7 +44,7 @@ const MyProfile = () => {
         {tokenData && (
           <div className="flex justify-center align-middle justify-items-center m-auto">
             <button
-              className="my-4 flex gap-3 bg-cyan-700 shadow-lg p-2 rounded-md hover:scale-110 hover:drop-shadow-xl"
+              className="flex gap-3 bg-amber-400 shadow-lg p-3 rounded-md hover:scale-110 hover:drop-shadow-xl"
               onClick={handleUpdatePassword}
             >
               Update Password
@@ -69,7 +69,7 @@ const MyProfile = () => {
         {tokenData && (
           <div className="flex justify-center align-middle justify-items-center m-auto">
             <button
-              className="flex gap-3 bg-cyan-700 shadow-lg p-2 rounded-md hover:scale-110 hover:drop-shadow-xl"
+              className="flex text-xl border-2 p-1.5 my-2 bg-cyan-700"
               onClick={handleUpdateUser}
             >
               Update User Details

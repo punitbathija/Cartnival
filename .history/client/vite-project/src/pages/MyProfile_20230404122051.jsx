@@ -69,7 +69,7 @@ const MyProfile = () => {
         {tokenData && (
           <div className="flex justify-center align-middle justify-items-center m-auto">
             <button
-              className="flex gap-3 bg-cyan-700 shadow-lg p-2 rounded-md hover:scale-110 hover:drop-shadow-xl"
+              className="my-4 flex gap-3 bg-cyan-700 shadow-lg p-2 rounded-md hover:scale-110 hover:drop-shadow-xl"
               onClick={handleUpdateUser}
             >
               Update User Details
