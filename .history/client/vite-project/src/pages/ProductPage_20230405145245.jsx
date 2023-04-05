@@ -11,6 +11,7 @@ const ProductPage = () => {
   const dispatch = useDispatch();
   const { id } = useParams();
   const [productData, setProductData] = useState("");
+  const [quantity, setQuantity] = useState(1);
 
   useEffect(() => {
     const handleFetchSingleProduct = async () => {

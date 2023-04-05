@@ -23,30 +23,25 @@ const Cart = () => {
   };
 
   const handlePayment = async (e) => {
-    const cardElement = elements.getElement(CardElement);
-
-    const { paymentMethod } = await stripe.createPaymentMethod(clientSecret, {
-      type: "card",
-      card: cardElement,
-    });
-
-    const paymentMethodId = paymentMethod.id;
-
     e.preventDefault();
-    axios
+
+    const data = await axios
       .post(`${api}create-payment-intent`, {
-        amount: total * 100,
-        paymentMethodId,
+        amount: total,
       })
       .then((res) => {
-        setClientSecret(res.data.clientSecret);
+        console.log(res);
+        setClientSecret(res.data.client_secret);
+        const confirmPayment = stripe.confirmCardPayment(clientSecret, {
+          payment_method: {
+            card: elements.getElement(CardElement),
+          },
+        });
+      })
+      .catch((err) => {
+        console.log(err);
       });
-
-    if (error) {
-      console.log(error);
-    } else {
-      console.log("Payment successful");
-    }
+    setClientSecret();
   };
 
   return (

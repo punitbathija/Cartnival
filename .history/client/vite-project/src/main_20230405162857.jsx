@@ -14,7 +14,7 @@ const stripePromise = loadStripe(publishibleKey);
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
     <Provider store={store}>
-      <Elements stripe={stripePromise}>
+      <Elements>
         <App />
       </Elements>
     </Provider>

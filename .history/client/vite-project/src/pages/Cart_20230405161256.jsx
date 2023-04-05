@@ -6,7 +6,6 @@ import { useDispatch } from "react-redux";
 
 import { CardElement, useStripe, useElements } from "@stripe/react-stripe-js";
 import axios from "axios";
-const api = import.meta.env.VITE_REACT_APP_BACKEND;
 
 const Cart = () => {
   const cartItems = useSelector(selectItems);
@@ -22,32 +21,14 @@ const Cart = () => {
     dispatch(removeFromCart({ id }));
   };
 
-  const handlePayment = async (e) => {
-    const cardElement = elements.getElement(CardElement);
-
-    const { paymentMethod } = await stripe.createPaymentMethod(clientSecret, {
-      type: "card",
-      card: cardElement,
-    });
-
-    const paymentMethodId = paymentMethod.id;
-
-    e.preventDefault();
-    axios
-      .post(`${api}create-payment-intent`, {
-        amount: total * 100,
-        paymentMethodId,
-      })
-      .then((res) => {
-        setClientSecret(res.data.clientSecret);
+  useEffect(() => {
+    const fetchClientSecret = async () => {
+      const data = axios.post("/payment/create", {
+        amount: total,
       });
-
-    if (error) {
-      console.log(error);
-    } else {
-      console.log("Payment successful");
-    }
-  };
+    };
+    fetchClientSecret();
+  }, []);
 
   return (
     <div className="flex text-center justify-center justify-items-center m-auto dark:bg-neutral-800 dark:text-white ease-in duration-200 font-mono overflow-hidden h-[100vh]">
@@ -96,10 +77,7 @@ const Cart = () => {
         <p className="text-2xl p-4 border-2 bg-cyan-100 text-black">
           Total:- ₹{total}
         </p>
-        <button
-          onClick={handlePayment}
-          className="flex gap-2 bg-cyan-700 shadow-lg p-2 rounded-md hover:scale-110 hover:drop-shadow-xl text-center m-auto my-4"
-        >
+        <button className="flex gap-2 bg-cyan-700 shadow-lg p-2 rounded-md hover:scale-110 hover:drop-shadow-xl text-center m-auto my-4">
           Proceed to checkout
         </button>
       </div>

@@ -23,30 +23,13 @@ const Cart = () => {
   };
 
   const handlePayment = async (e) => {
-    const cardElement = elements.getElement(CardElement);
-
-    const { paymentMethod } = await stripe.createPaymentMethod(clientSecret, {
-      type: "card",
-      card: cardElement,
-    });
-
-    const paymentMethodId = paymentMethod.id;
-
     e.preventDefault();
-    axios
-      .post(`${api}create-payment-intent`, {
-        amount: total * 100,
-        paymentMethodId,
-      })
-      .then((res) => {
-        setClientSecret(res.data.clientSecret);
-      });
-
-    if (error) {
-      console.log(error);
-    } else {
-      console.log("Payment successful");
-    }
+    const { data } = axios.post(`${api}create-payment-intent`, {
+      amount: total,
+      currency: "inr",
+      payment_method_types: ["card"],
+    });
+    const { clientSecret } = data;
   };
 
   return (

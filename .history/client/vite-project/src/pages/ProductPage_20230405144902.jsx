@@ -11,6 +11,7 @@ const ProductPage = () => {
   const dispatch = useDispatch();
   const { id } = useParams();
   const [productData, setProductData] = useState("");
+  const [quantity, setQuantity] = useState(1);
 
   useEffect(() => {
     const handleFetchSingleProduct = async () => {
@@ -59,7 +60,14 @@ const ProductPage = () => {
               In {productData.category}
               <h1 className="text-2xl text-cyan-500">₹{productData.price}</h1>
             </div>
-
+            <select
+              value={quantity}
+              onChange={setQuantity((e) => e.target.value)}
+            >
+              <option value="option1">Option 1</option>
+              <option value="option2">Option 2</option>
+              <option value="option3">Option 3</option>
+            </select>
             <h1 className="text-sm p-8 md:w-[500px] w-[350px] m-auto">
               <span className="font-bold">About this item</span>
               <br />

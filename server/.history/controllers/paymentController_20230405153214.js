@@ -1,4 +1,5 @@
-const stripe = require("stripe")(process.env.STRIPE_SECRET_KEY);
+const Stripe = require("stripe");
+const stripe = Stripe(process.env.STRIPE_SECRET_KEY);
 const uuid = require("uuid");
 const BigPromise = require("../middlewares/BigPromise");
 
@@ -25,17 +26,6 @@ exports.captureStripePayment = BigPromise(async (req, res, next) => {
 });
 
 exports.capturePayment = BigPromise(async (req, res, next) => {
-  const { paymentMethodId, amount } = req.body;
-
+  const amount = req.body.amount;
   console.log("Payment requsted for " + amount);
-  const paymentIntent = await stripe.paymentIntents.create({
-    amount,
-    currency: "inr",
-    payment_method: paymentMethodId,
-    confirm: true,
-    payment_method_types: ["card"],
-  });
-  clientSecret = paymentIntent.client_secret;
-
-  res.json({ clientSecret });
 });

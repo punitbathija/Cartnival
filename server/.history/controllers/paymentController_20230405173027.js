@@ -25,17 +25,16 @@ exports.captureStripePayment = BigPromise(async (req, res, next) => {
 });
 
 exports.capturePayment = BigPromise(async (req, res, next) => {
-  const { paymentMethodId, amount } = req.body;
+  const { amount } = req.body;
 
   console.log("Payment requsted for " + amount);
   const paymentIntent = await stripe.paymentIntents.create({
     amount,
-    currency: "inr",
-    payment_method: paymentMethodId,
-    confirm: true,
-    payment_method_types: ["card"],
+    currency,
+    payment_method_types,
   });
-  clientSecret = paymentIntent.client_secret;
+
+  const clientSecret = paymentIntent.client_secret;
 
   res.json({ clientSecret });
 });

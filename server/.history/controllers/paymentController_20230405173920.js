@@ -33,7 +33,6 @@ exports.capturePayment = BigPromise(async (req, res, next) => {
     currency: "inr",
     payment_method: paymentMethodId,
     confirm: true,
-    payment_method_types: ["card"],
   });
   clientSecret = paymentIntent.client_secret;
 
