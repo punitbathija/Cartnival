@@ -36,7 +36,7 @@ const AllProducts = () => {
               <div className="my-4 h-96 w-96 m-auto cursor-pointer">
                 <img
                   src={product.photos[0].secure_url}
-                  className="p-4 h-2/3 m-auto w-2/3 rounded-xl border-2"
+                  className="p-4 h-2/3 m-auto w-2/3 rounded-xl p-2"
                 />
                 <p className="my-2 w-[50%] text-center m-auto text-cyan-500">
                   {product.name.length > 35

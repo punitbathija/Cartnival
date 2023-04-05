@@ -34,7 +34,8 @@ const Reviews = () => {
       });
   };
 
-  const handleDeleteReview = async () => {
+  const handleDeleteReview = async (e) => {
+    e.preventDefault();
     await axios
       .delete(`${api}review/${id}`)
       .then((res) => {
@@ -91,10 +92,7 @@ const Reviews = () => {
           </button>
           <br />
           {user && (
-            <button
-              onClick={handleDeleteReview}
-              className="flex gap-2 text-black bg-red-500 my-4 shadow-lg p-2 rounded-md hover:scale-110 hover:drop-shadow-xl text-center m-auto"
-            >
+            <button onClick={handleDeleteReview}>
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 fill="none"

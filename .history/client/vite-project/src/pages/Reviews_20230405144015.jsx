@@ -34,7 +34,7 @@ const Reviews = () => {
       });
   };
 
-  const handleDeleteReview = async () => {
+  const handleDeleteReview = async (e => {
     await axios
       .delete(`${api}review/${id}`)
       .then((res) => {

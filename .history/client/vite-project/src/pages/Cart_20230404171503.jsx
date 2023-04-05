@@ -29,8 +29,8 @@ const Cart = () => {
             return (
               <li className="flex flex-wrap justify-between" key={item.id}>
                 <p>
-                  {item.name.length > 35
-                    ? item.name.substring(0, 34) + "..."
+                  {item.name.length > 25
+                    ? item.name.substring(0, 14) + "..."
                     : item.name}
                 </p>
                 <img
@@ -59,9 +59,7 @@ const Cart = () => {
             );
           })}
         </ul>
-        <p className="text-2xl p-4 border-2 bg-cyan-100 text-black">
-          Total:- ₹{total}
-        </p>
+        <p>Total:- ₹{total}</p>
         <button className="flex gap-2 bg-cyan-700 shadow-lg p-2 rounded-md hover:scale-110 hover:drop-shadow-xl text-center m-auto my-4">
           Proceed to checkout
         </button>
