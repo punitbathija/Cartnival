@@ -6,7 +6,11 @@ import { useDispatch } from "react-redux";
 
 import { CardElement, useStripe, useElements } from "@stripe/react-stripe-js";
 import axios from "axios";
+import { selectUser } from "../userSlice";
+import Stripe from "react-stripe-checkout";
+
 const api = import.meta.env.VITE_REACT_APP_BACKEND;
+const stripePk = import.meta.env.VITE_REACT_STRIPE_PUBLISHABLE_KEY;
 
 const Cart = () => {
   const cartItems = useSelector(selectItems);
@@ -14,9 +18,8 @@ const Cart = () => {
   const total = useSelector(selectTotal);
   console.log(total);
   const dispatch = useDispatch();
-  const [clientSecret, setClientSecret] = useState("");
-  const stripe = useStripe();
-  const elements = useElements();
+  const user = useSelector(selectUser);
+  const token = user;
 
   const handleRemoveItem = (id) => {
     dispatch(removeFromCart({ id }));
@@ -69,8 +72,11 @@ const Cart = () => {
         <p className="text-2xl p-4 border-2 bg-cyan-100 text-black">
           Total:- ₹{total}
         </p>
-        <button className="flex gap-2 bg-cyan-700 shadow-lg p-2 rounded-md hover:scale-110 hover:drop-shadow-xl text-center m-auto my-4">
-          Proceed to checkout
+        <button
+          // onClick={handleToken}
+          className="flex gap-2 bg-cyan-700 shadow-lg p-2 rounded-md hover:scale-110 hover:drop-shadow-xl text-center m-auto my-4"
+        >
+          <Stripe stripeKey={stripePk} token={tokenHandler} />
         </button>
       </div>
     </div>

@@ -21,7 +21,6 @@ const Signin = () => {
         password: password,
       })
       .then((res) => {
-        console.log(res);
         setSigninData(res.data.customer);
         setEmail("");
         setPassword("");
@@ -37,7 +36,6 @@ const Signin = () => {
             email: res.data.customer.email,
             role: res.data.customer.role,
             token: res.data.token,
-            id: res.data.customer._id,
           })
         );
         navigate("/");

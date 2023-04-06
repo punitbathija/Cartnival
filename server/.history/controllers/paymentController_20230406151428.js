@@ -48,12 +48,12 @@ exports.capturePayment = BigPromise(async (req, res, next) => {
   });
 });
 
-exports.buyNowButton = BigPromise(async (req, res, next) => {
+app.post("/payment", (req, res) => {
   const { product, token } = req.body;
   console.log("Product", product);
   console.log("Price", product.price);
   // To avoid duplication for payments
-  const idempotencyKey = v4();
+  const idempotencyKey = uuid();
   return stripe.customers
     .create({
       email: token.email,
@@ -63,10 +63,16 @@ exports.buyNowButton = BigPromise(async (req, res, next) => {
       stripe.charger.create(
         {
           amount: product.price * 100,
-          currency: "inr",
+          currency: "usd",
           customer: customer.id,
           receipt_email: token.email,
           description: `purchase of $(product.name)`,
+          shipping: {
+            name: token.card.name,
+            address: {
+              country: token.card.address_country,
+            },
+          },
         },
         { idempotencyKey }
       );

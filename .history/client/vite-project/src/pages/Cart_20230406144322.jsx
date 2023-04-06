@@ -6,6 +6,8 @@ import { useDispatch } from "react-redux";
 
 import { CardElement, useStripe, useElements } from "@stripe/react-stripe-js";
 import axios from "axios";
+import { selectUser } from "../userSlice";
+
 const api = import.meta.env.VITE_REACT_APP_BACKEND;
 
 const Cart = () => {
@@ -14,12 +16,22 @@ const Cart = () => {
   const total = useSelector(selectTotal);
   console.log(total);
   const dispatch = useDispatch();
-  const [clientSecret, setClientSecret] = useState("");
-  const stripe = useStripe();
-  const elements = useElements();
+  const user = useSelector(selectUser);
 
   const handleRemoveItem = (id) => {
     dispatch(removeFromCart({ id }));
+  };
+
+  const handleToken = async () => {
+    console.log(user);
+    try {
+      await axios.post(`${api}create-payment-intent`, {
+        token: user.id,
+        amount: total,
+      });
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   return (
@@ -69,7 +81,10 @@ const Cart = () => {
         <p className="text-2xl p-4 border-2 bg-cyan-100 text-black">
           Total:- ₹{total}
         </p>
-        <button className="flex gap-2 bg-cyan-700 shadow-lg p-2 rounded-md hover:scale-110 hover:drop-shadow-xl text-center m-auto my-4">
+        <button
+          onClick={handleToken}
+          className="flex gap-2 bg-cyan-700 shadow-lg p-2 rounded-md hover:scale-110 hover:drop-shadow-xl text-center m-auto my-4"
+        >
           Proceed to checkout
         </button>
       </div>

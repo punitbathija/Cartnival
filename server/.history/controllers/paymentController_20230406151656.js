@@ -48,7 +48,7 @@ exports.capturePayment = BigPromise(async (req, res, next) => {
   });
 });
 
-exports.buyNowButton = BigPromise(async (req, res, next) => {
+app.post("/payment", (req, res) => {
   const { product, token } = req.body;
   console.log("Product", product);
   console.log("Price", product.price);

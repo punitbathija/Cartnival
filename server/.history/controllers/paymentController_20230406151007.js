@@ -47,32 +47,3 @@ exports.capturePayment = BigPromise(async (req, res, next) => {
     cancel_url: "http://127.0.0.1:5173/cart",
   });
 });
-
-exports.buyNowButton = BigPromise(async (req, res, next) => {
-  const { product, token } = req.body;
-  console.log("Product", product);
-  console.log("Price", product.price);
-  // To avoid duplication for payments
-  const idempotencyKey = v4();
-  return stripe.customers
-    .create({
-      email: token.email,
-      source: token.id,
-    })
-    .then((customer) => {
-      stripe.charger.create(
-        {
-          amount: product.price * 100,
-          currency: "inr",
-          customer: customer.id,
-          receipt_email: token.email,
-          description: `purchase of $(product.name)`,
-        },
-        { idempotencyKey }
-      );
-    })
-    .then((result) => res.status(200).json(result))
-    .catch((err) => {
-      console.log(err);
-    });
-});
