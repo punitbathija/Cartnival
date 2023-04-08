@@ -5,7 +5,7 @@ import { useSelector } from "react-redux";
 const Success = () => {
   const user = useSelector(selectUser);
 
-  return <div>Congratulations Payment Successfull</div>;
+  return <div>Congratulations{user.name} Payment Successfull</div>;
 };
 
 export default Success;
