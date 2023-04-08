@@ -76,7 +76,7 @@ function App() {
           <Route exact path="/products/toysandgames" Component={ToysAndGames} />
           <Route exact path="/cart" Component={Cart} />
           <Route exact path="/payment/success" Component={Success} />
-          <Route exact path="/payment/fail" Component={Failure} />
+          <Route exact path="/payment/failure" Component={Failure} />
         </Routes>
       </Router>
     </>

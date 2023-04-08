@@ -1,5 +1,7 @@
 const stripe = require("stripe")(process.env.STRIPE_SECRET_KEY);
+const uuid = require("uuid");
 const BigPromise = require("../middlewares/BigPromise");
+const { v4 } = require("uuid");
 
 exports.sendStripeKey = BigPromise(async (req, res, next) => {
   res.status(200).json({
@@ -49,15 +51,7 @@ exports.capturePayment = BigPromise(async (req, res, next) => {
     },
     line_items: transformedItems,
     mode: "payment",
-    success_url: `${process.env.PAYMENT}/success`,
-    cancel_url: `${process.env.PAYMENT}/fail`,
-    metadata: {
-      email,
-      images: JSON.stringify(items.map((item) => item.photo)),
-    },
-  });
-
-  res.status(200).json({
-    id: session.id,
+    success_url: `${process.env.HOME}`,
+    cancel_url: `${process.env.CART}`,
   });
 });

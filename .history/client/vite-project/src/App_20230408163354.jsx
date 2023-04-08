@@ -24,7 +24,6 @@ import Beauty from "./pages/Beauty";
 import ToysAndGames from "./pages/ToysAndGames";
 import Cart from "./pages/Cart";
 import Success from "./pages/Success";
-import Failure from "./pages/Failure";
 
 function App() {
   const user = useSelector(selectUser);
@@ -76,7 +75,6 @@ function App() {
           <Route exact path="/products/toysandgames" Component={ToysAndGames} />
           <Route exact path="/cart" Component={Cart} />
           <Route exact path="/payment/success" Component={Success} />
-          <Route exact path="/payment/fail" Component={Failure} />
         </Routes>
       </Router>
     </>

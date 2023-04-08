@@ -4,41 +4,16 @@ const api = import.meta.env.VITE_REACT_APP_BACKEND;
 import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
 import { selectItems, selectTotal, removeFromCart } from "../cartSlice";
-import { loadStripe } from "@stripe/stripe-js";
-import { selectUser } from "../userSlice";
-
-const stripePromise = loadStripe(
-  import.meta.env.VITE_REACT_STRIPE_PUBLISHABLE_KEY
-);
 
 const Cart = () => {
   const cartItems = useSelector(selectItems);
   console.log(cartItems);
-  const items = cartItems;
   const total = useSelector(selectTotal);
   console.log(total);
   const dispatch = useDispatch();
-  const user = useSelector(selectUser);
+
   const handleRemoveItem = (id) => {
     dispatch(removeFromCart({ id }));
-  };
-
-  const createCheckoutSession = async (e) => {
-    e.preventDefault();
-    const stripe = await stripePromise;
-
-    const checkoutSesion = await axios.post(`${api}create-checkout-session`, {
-      items,
-      email: user.email,
-    });
-
-    const result = await stripe.redirectToCheckout({
-      sessionId: checkoutSesion.data.id,
-    });
-
-    if (result.error) {
-      alert(result.error.message);
-    }
   };
 
   return (
@@ -88,10 +63,7 @@ const Cart = () => {
         <p className="text-2xl p-4 border-2 bg-cyan-100 text-black">
           Total:- ₹{total}
         </p>
-        <button
-          className="flex gap-2 bg-cyan-700 shadow-lg p-2 rounded-md hover:scale-110 hover:drop-shadow-xl text-center m-auto my-4"
-          onClick={createCheckoutSession}
-        >
+        <button className="flex gap-2 bg-cyan-700 shadow-lg p-2 rounded-md hover:scale-110 hover:drop-shadow-xl text-center m-auto my-4">
           Proceed to checkout
         </button>
       </div>
