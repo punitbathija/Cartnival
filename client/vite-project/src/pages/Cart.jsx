@@ -1,12 +1,9 @@
 import React, { useEffect, useState } from "react";
-import { useSelector } from "react-redux";
-import { selectItems, selectTotal, removeFromCart } from "../cartSlice";
-
-import { useDispatch } from "react-redux";
-
-import { CardElement, useStripe, useElements } from "@stripe/react-stripe-js";
 import axios from "axios";
 const api = import.meta.env.VITE_REACT_APP_BACKEND;
+import { useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
+import { selectItems, selectTotal, removeFromCart } from "../cartSlice";
 
 const Cart = () => {
   const cartItems = useSelector(selectItems);
@@ -14,9 +11,6 @@ const Cart = () => {
   const total = useSelector(selectTotal);
   console.log(total);
   const dispatch = useDispatch();
-  const [clientSecret, setClientSecret] = useState("");
-  const stripe = useStripe();
-  const elements = useElements();
 
   const handleRemoveItem = (id) => {
     dispatch(removeFromCart({ id }));
