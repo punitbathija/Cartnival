@@ -45,21 +45,4 @@ exports.stripeWebhook = BigPromise(async (req, res, next) => {
   const requestBuffer = await buffer(req);
   const payload = requestBuffer.toString();
   const sig = request.headers["stripe-signature"];
-  let event;
-  try {
-    event = stripe.webhooks.constructEvent(payload, sig, endPointSecret);
-  } catch (error) {
-    console.log("Error!!!" + error);
-    return res.status(400).send(`Webhook error ${error.message}`);
-  }
-
-  if (event.type === "checkout.session.completed") {
-    const session = event.data.object;
-    res.status(200).json({
-      success: true,
-      session,
-    });
-  }
 });
-
-const fullfillOrder = async (session) => {};
