@@ -1,6 +1,7 @@
 const stripe = require("stripe")(process.env.STRIPE_SECRET_KEY);
 const BigPromise = require("../middlewares/BigPromise");
 const { buffer } = require("micro");
+const Session = require("../models/session");
 
 exports.capturePayment = BigPromise(async (req, res, next) => {
   const { items, email } = req.body;
@@ -55,11 +56,14 @@ exports.stripeWebhook = BigPromise(async (req, res, next) => {
 
   if (event.type === "checkout.session.completed") {
     const session = event.data.object;
+
+    console.log(event.type);
+    console.log(event.data.object);
+    console.log(event.data.object.id);
+
     res.status(200).json({
       success: true,
       session,
     });
   }
 });
-
-const fullfillOrder = async (session) => {};

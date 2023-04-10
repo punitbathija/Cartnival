@@ -7,6 +7,6 @@ const {
 const { isLoggedin } = require("../middlewares/customer");
 
 router.route("/create-checkout-session").post(isLoggedin, capturePayment);
-router.route("/webhook").post(isLoggedin, stripeWebhook);
+router.route("/webhooks").post(stripeWebhook);
 
 module.exports = router;
