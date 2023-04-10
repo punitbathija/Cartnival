@@ -39,17 +39,15 @@ const Signin = () => {
             token: res.data.token,
             id: res.data.customer._id,
           })
-        );
-        localStorage.setItem(
-          "user",
-          JSON.stringify({
-            name: res.data.customer.name,
-            email: res.data.customer.email,
-            role: res.data.customer.role,
-            token: res.data.token,
-            id: res.data.customer._id,
-          })
-        );
+        )
+        localStorage.setItem('user',JSON.stringify({
+          name: res.data.customer.name,
+          email: res.data.customer.email,
+          role: res.data.customer.role,
+          token: res.data.token,
+          id: res.data.customer._id,
+        }
+        }))
         navigate("/");
       })
       .catch((error) => {

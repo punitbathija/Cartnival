@@ -38,31 +38,19 @@ exports.capturePayment = BigPromise(async (req, res, next) => {
   });
 });
 
-exports.stripeWebhook = BigPromise(async (req, res, next) => {
-  const endPointSecret = process.env.STRIPE_WEBHOOK_SECRET;
-
-  const sig = request.headers["stripe-signature"];
-
-  let event;
-
-  try {
-    event = stripe.webhooks.constructEvent(request.body, sig, endPointSecret);
-  } catch (err) {
-    response.status(400).send(`Webhook Error: ${err.message}`);
-    return;
+exports.sendSessionId = BigPromise(async (req, res, next) => {
+  const event = req.body;
+  if (event.type === "checkout.session.completed") {
+    const session = event.data.object;
+    const session_id = session.id;
+    const paymentIntent = await stripe.paymentIntents.retrieve(
+      session.payment_intent
+    );
+    console.log(paymentIntent);
   }
 
-  // Handle the event
-  switch (event.type) {
-    case "payment_intent.succeeded":
-      const paymentIntentSucceeded = event.data.object;
-      // Then define and call a function to handle the event payment_intent.succeeded
-      break;
-    // ... handle other event types
-    default:
-      console.log(`Unhandled event type ${event.type}`);
-  }
-
-  // Return a 200 response to acknowledge receipt of the event
-  response.send();
+  res.status(200).json({
+    success: true,
+    paymentIntent,
+  });
 });

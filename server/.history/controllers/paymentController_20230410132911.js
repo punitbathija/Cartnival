@@ -38,7 +38,7 @@ exports.capturePayment = BigPromise(async (req, res, next) => {
   });
 });
 
-exports.stripeWebhook = BigPromise(async (req, res, next) => {
+exports.sendSessionId = BigPromise(async (req, res, next) => {
   const endPointSecret = process.env.STRIPE_WEBHOOK_SECRET;
 
   const sig = request.headers["stripe-signature"];
