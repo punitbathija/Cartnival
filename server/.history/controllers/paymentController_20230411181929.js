@@ -40,8 +40,6 @@ exports.capturePayment = BigPromise(async (req, res, next) => {
 });
 
 exports.stripeWebhook = async (req, res, next) => {
-  const endpointSecret = process.env.STRIPE_WEBHOOK_SECRET;
-
   try {
     const requestBuffer = Buffer.from(JSON.stringify(req.body)).toString(
       "base64"

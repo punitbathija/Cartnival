@@ -1,6 +1,6 @@
 const stripe = require("stripe")(process.env.STRIPE_SECRET_KEY);
 const BigPromise = require("../middlewares/BigPromise");
-const { Buffer } = require("buffer");
+const Buffer = require("buffer");
 
 exports.capturePayment = BigPromise(async (req, res, next) => {
   const { items, email } = req.body;
@@ -40,31 +40,32 @@ exports.capturePayment = BigPromise(async (req, res, next) => {
 });
 
 exports.stripeWebhook = async (req, res, next) => {
-  const endpointSecret = process.env.STRIPE_WEBHOOK_SECRET;
 
-  try {
-    const requestBuffer = Buffer.from(JSON.stringify(req.body)).toString(
-      "base64"
-    );
-    const payload = requestBuffer;
-    const sig = req.headers["stripe-signature"];
-
-    let event = stripe.webhooks.constructEvent(payload, sig, endpointSecret);
-
-    if (event.type === "checkout.session.completed") {
-      const session = event.data.object;
-
-      console.log(session);
-
-      return res.status(200).json({
-        success: true,
-      });
-    } else {
-      console.log("Unhandled event type:", event.type);
-      return res.status(200).send();
+    const sig = req.headers['stripe-signature'];
+    const secret = 'your_stripe_webhook_secret';
+  
+    let event;
+  
+    try {
+      const buf = await Buffer.from(req.body);
+      const stringBody = buf.toString('utf8');
+      event = stripe.webhooks.constructEvent(stringBody, sig, secret);
+    } catch (err) {
+      console.error(err);
+      return res.sendStatus(400);
     }
-  } catch (error) {
-    console.log("Webhook error:", error.message);
-    return res.status(400).send(`Webhook error: ${error.message}`);
-  }
+  
+    // Handle the event
+    switch (event.type) {
+      case 'checkout.session.completed':
+        const session = event.data.object;
+        console.log('Checkout session completed:', session);
+        break;
+      // Handle other event types here
+      default:
+        console.log(`Unhandled event type: ${event.type}`);
+    }
+  
+    res.sendStatus(200);
+  };
 };

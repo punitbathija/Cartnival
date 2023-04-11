@@ -1,6 +1,6 @@
 const stripe = require("stripe")(process.env.STRIPE_SECRET_KEY);
 const BigPromise = require("../middlewares/BigPromise");
-const { Buffer } = require("buffer");
+const { buffer } = require("micro");
 
 exports.capturePayment = BigPromise(async (req, res, next) => {
   const { items, email } = req.body;
@@ -40,13 +40,9 @@ exports.capturePayment = BigPromise(async (req, res, next) => {
 });
 
 exports.stripeWebhook = async (req, res, next) => {
-  const endpointSecret = process.env.STRIPE_WEBHOOK_SECRET;
-
   try {
-    const requestBuffer = Buffer.from(JSON.stringify(req.body)).toString(
-      "base64"
-    );
-    const payload = requestBuffer;
+    const requestBuffer = await buffer(req.body);
+    const payload = requestBuffer.toString();
     const sig = req.headers["stripe-signature"];
 
     let event = stripe.webhooks.constructEvent(payload, sig, endpointSecret);
