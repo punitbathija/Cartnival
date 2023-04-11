@@ -23,10 +23,11 @@ export const userSlice = createSlice({
     },
   },
 });
+
 const userSession = JSON.parse(localStorage.getItem("userSession"));
 
-if (userSession && userSession.user) {
-  userSlice.actions.signin(userSession.user);
+if (userSession) {
+  signin({ user: userSession.user });
 }
 
 export const { signin, signout } = userSlice.actions;

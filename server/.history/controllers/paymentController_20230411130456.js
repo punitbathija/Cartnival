@@ -1,6 +1,7 @@
 const stripe = require("stripe")(process.env.STRIPE_SECRET_KEY);
 const BigPromise = require("../middlewares/BigPromise");
 const { buffer } = require("micro");
+const Session = require("../models/session");
 
 exports.capturePayment = BigPromise(async (req, res, next) => {
   const { items, email } = req.body;
@@ -39,40 +40,31 @@ exports.capturePayment = BigPromise(async (req, res, next) => {
   });
 });
 
-let endPointSecret;
+exports.stripeWebhook = BigPromise(async (request, response, next) => {
+  const endPointSecret = process.env.STRIPE_WEBHOOK_SECRET;
 
-endPointSecret = process.env.STRIPE_WEBHOOK_SECRET;
+  const sig = request.headers["stripe-signature"];
 
-exports.stripeWebhook = BigPromise(async (req, res, next) => {
-  const sig = req.headers["stripe-signature"];
-  let data;
-  let eventType;
-  const requestBuffer = await buffer(req);
-  const payload = requestBuffer.toString();
+  let event;
 
-  if (endPointSecret) {
-    let event;
-
-    try {
-      event = stripe.webhooks.constructEvent(payload, sig, endPointSecret);
-      console.log("Webhook Verified");
-    } catch (err) {
-      res.status(400).send(`Webhook Error: ${err.message}`);
-      console.log(`Webhook Error: ${err.message}`);
-      return;
-    }
-
-    data = event.data.object;
-    eventType = event.type;
-  } else {
-    data = req.body.data.object;
-    eventType = req.body.type;
+  try {
+    event = stripe.webhooks.constructEvent(request.body, sig, endPointSecret);
+  } catch (err) {
+    response.status(400).send(`Webhook Error: ${err.message}`);
+    return;
   }
+
   // Handle the event
-
-  if (eventType === "checkout.session.completed") {
-    console.log("Data:", data);
+  switch (event.type) {
+    case "checkout.session.completed":
+      const paymentIntentSucceeded = event.data.object;
+      // Then define and call a function to handle the event payment_intent.succeeded
+      break;
+    // ... handle other event types
+    default:
+      console.log(`Unhandled event type ${event.type}`);
   }
-  // Return a 200 res to acknowledge receipt of the event
-  res.send().end();
+
+  // Return a 200 response to acknowledge receipt of the event
+  response.send();
 });

@@ -47,14 +47,12 @@ exports.stripeWebhook = BigPromise(async (req, res, next) => {
   const sig = req.headers["stripe-signature"];
   let data;
   let eventType;
-  const requestBuffer = await buffer(req);
-  const payload = requestBuffer.toString();
 
   if (endPointSecret) {
     let event;
 
     try {
-      event = stripe.webhooks.constructEvent(payload, sig, endPointSecret);
+      event = stripe.webhooks.constructEvent(req.body, sig, endPointSecret);
       console.log("Webhook Verified");
     } catch (err) {
       res.status(400).send(`Webhook Error: ${err.message}`);

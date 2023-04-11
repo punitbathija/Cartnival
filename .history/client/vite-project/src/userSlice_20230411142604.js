@@ -19,14 +19,14 @@ export const userSlice = createSlice({
 
     signout: (state) => {
       state.user = null;
-      localStorage.removeItem("userSession");
     },
   },
 });
+
 const userSession = JSON.parse(localStorage.getItem("userSession"));
 
-if (userSession && userSession.user) {
-  userSlice.actions.signin(userSession.user);
+if (userSession) {
+  signin({ user: userSession.user });
 }
 
 export const { signin, signout } = userSlice.actions;

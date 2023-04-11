@@ -11,22 +11,18 @@ export const userSlice = createSlice({
   reducers: {
     signin: (state, action) => {
       state.user = action.payload;
-      localStorage.setItem(
-        "userSession",
-        JSON.stringify({ user: action.payload })
-      );
     },
 
     signout: (state) => {
       state.user = null;
-      localStorage.removeItem("userSession");
     },
   },
 });
+
 const userSession = JSON.parse(localStorage.getItem("userSession"));
 
-if (userSession && userSession.user) {
-  userSlice.actions.signin(userSession.user);
+if (userSession) {
+  setUser({ user: userSession.user });
 }
 
 export const { signin, signout } = userSlice.actions;
