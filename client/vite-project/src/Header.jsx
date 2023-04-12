@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import { selectUser, signout } from "./userSlice";
+import { selectUser, signin, signout } from "./userSlice";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { selectItems } from "./cartSlice";
