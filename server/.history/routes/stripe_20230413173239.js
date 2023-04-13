@@ -31,7 +31,7 @@ const createOrder = async (data, lineItems) => {
     paymentInfo: {
       id: data.id,
     },
-    shippingAmount: data.shipping_cost.amount_subtotal / 100,
+    shippngAmount: data.shipping_cost.amount_subtotal / 100,
     totalAmount: data.amount_total / 100,
   });
 

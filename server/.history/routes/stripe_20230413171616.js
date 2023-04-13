@@ -18,8 +18,9 @@ const createOrder = async (data, lineItems) => {
       postalCode: data.customer_details.address.postal_code,
       country: data.customer_details.address.country,
     },
-
-    customer: data.metadata.customer_id,
+    customer: {
+      customer: data.metadata.customer_id,
+    },
     orderItems: [
       {
         name: lineItems.description,
@@ -31,14 +32,12 @@ const createOrder = async (data, lineItems) => {
     paymentInfo: {
       id: data.id,
     },
-    shippingAmount: data.shipping_cost.amount_subtotal / 100,
+    shippngAmount: data.shipping_cost.amount_subtotal / 100,
     totalAmount: data.amount_total / 100,
   });
 
   try {
-    const savedOrder = await newOrder.save({
-      validateBeforeSave: false,
-    });
+    const savedOrder = await newOrder.save();
 
     console.log("Processed order: ", savedOrder);
   } catch (error) {
