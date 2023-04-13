@@ -23,31 +23,10 @@ exports.capturePayment = BigPromise(async (req, res, next) => {
     shipping_address_collection: {
       allowed_countries: ["IN", "US", "CA", "GB"],
     },
-    shipping_options: [
-      {
-        shipping_rate_data: {
-          type: "fixed_amount",
-          fixed_amount: { amount: 5000, currency: "inr" },
-          display_name: "Standard Delivery",
-          delivery_estimate: {
-            minimum: { unit: "business_day", value: 5 },
-            maximum: { unit: "business_day", value: 7 },
-          },
-        },
-      },
-      {
-        shipping_rate_data: {
-          type: "fixed_amount",
-          fixed_amount: { amount: 10000, currency: "inr" },
-          display_name: "Same Day Delivery",
-          delivery_estimate: {
-            minimum: { unit: "business_day", value: 1 },
-            maximum: { unit: "business_day", value: 1 },
-          },
-        },
-      },
-    ],
     line_items: transformedItems,
+    // automatic_tax: {
+    //   enabled: true,
+    // },
     mode: "payment",
     success_url: `${process.env.PAYMENT}/success`,
     cancel_url: `${process.env.PAYMENT}/fail`,

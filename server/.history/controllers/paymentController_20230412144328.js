@@ -1,5 +1,6 @@
 const stripe = require("stripe")(process.env.STRIPE_SECRET_KEY);
 const BigPromise = require("../middlewares/BigPromise");
+const { Buffer } = require("buffer");
 
 exports.capturePayment = BigPromise(async (req, res, next) => {
   const { items, email } = req.body;
@@ -23,30 +24,6 @@ exports.capturePayment = BigPromise(async (req, res, next) => {
     shipping_address_collection: {
       allowed_countries: ["IN", "US", "CA", "GB"],
     },
-    shipping_options: [
-      {
-        shipping_rate_data: {
-          type: "fixed_amount",
-          fixed_amount: { amount: 5000, currency: "inr" },
-          display_name: "Standard Delivery",
-          delivery_estimate: {
-            minimum: { unit: "business_day", value: 5 },
-            maximum: { unit: "business_day", value: 7 },
-          },
-        },
-      },
-      {
-        shipping_rate_data: {
-          type: "fixed_amount",
-          fixed_amount: { amount: 10000, currency: "inr" },
-          display_name: "Same Day Delivery",
-          delivery_estimate: {
-            minimum: { unit: "business_day", value: 1 },
-            maximum: { unit: "business_day", value: 1 },
-          },
-        },
-      },
-    ],
     line_items: transformedItems,
     mode: "payment",
     success_url: `${process.env.PAYMENT}/success`,
@@ -61,3 +38,19 @@ exports.capturePayment = BigPromise(async (req, res, next) => {
     id: session.id,
   });
 });
+
+exports.handleStripeWebhook = async (req, res) => {
+  const sig = req.headers["stripe-signature"];
+  const webhookSecret = process.env.STRIPE_WEBHOOK_SECRET;
+
+  let event;
+
+  try {
+    event = stripe.webhooks.constructEvent(req.body, sig, webhookSecret);
+  } catch (err) {
+    // On error, log and return the error message
+    console.log(`❌ Error message: ${err.message}`);
+    res.status(400).send(`Webhook Error: ${err.message}`);
+    return;
+  }
+};

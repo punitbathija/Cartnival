@@ -27,7 +27,7 @@ exports.capturePayment = BigPromise(async (req, res, next) => {
       {
         shipping_rate_data: {
           type: "fixed_amount",
-          fixed_amount: { amount: 5000, currency: "inr" },
+          fixed_amount: { amount: 50000, currency: "inr" },
           display_name: "Standard Delivery",
           delivery_estimate: {
             minimum: { unit: "business_day", value: 5 },

@@ -22,18 +22,32 @@ app.use(
   })
 );
 
+app.use(bodyParser.raw({ type: "application/json" }));
+
 // Importing all routes
 const customer = require("./routes/customer");
 const product = require("./routes/product");
 const order = require("./routes/order");
 const payment = require("./routes/payment");
-const stripe = require("./routes/stripe");
+const bodyParser = require("body-parser");
 
 // Router middleware
 app.use("/api/v1", customer);
 app.use("/api/v1", product);
 app.use("/api/v1", order);
 app.use("/api/v1", payment);
-app.use("/api/v1", stripe);
+
+// function maybe(fn) {
+//   return function (req, res, next) {
+//     if (
+//       req.path === "/webhook" ||
+//       (req.path === "/api/v1/webhook" && req.method === "POST")
+//     ) {
+//       next();
+//     } else {
+//       fn(req, res, next);
+//     }
+//   };
+// }
 
 module.exports = app;

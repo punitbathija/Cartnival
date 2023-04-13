@@ -27,13 +27,11 @@ const customer = require("./routes/customer");
 const product = require("./routes/product");
 const order = require("./routes/order");
 const payment = require("./routes/payment");
-const stripe = require("./routes/stripe");
 
 // Router middleware
 app.use("/api/v1", customer);
 app.use("/api/v1", product);
 app.use("/api/v1", order);
 app.use("/api/v1", payment);
-app.use("/api/v1", stripe);
 
 module.exports = app;

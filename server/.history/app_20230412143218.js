@@ -4,7 +4,6 @@ const cors = require("cors");
 const app = express();
 const cookieParser = require("cookie-parser");
 const fileUpload = require("express-fileupload");
-
 // Defining Middlewares
 
 // Express middlewares.
@@ -13,6 +12,8 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 // Cookies & file upload middlewares
+
+app.use(bodyParser.json());
 
 app.use(cookieParser());
 app.use(
@@ -27,13 +28,12 @@ const customer = require("./routes/customer");
 const product = require("./routes/product");
 const order = require("./routes/order");
 const payment = require("./routes/payment");
-const stripe = require("./routes/stripe");
+const bodyParser = require("body-parser");
 
 // Router middleware
 app.use("/api/v1", customer);
 app.use("/api/v1", product);
 app.use("/api/v1", order);
 app.use("/api/v1", payment);
-app.use("/api/v1", stripe);
 
 module.exports = app;

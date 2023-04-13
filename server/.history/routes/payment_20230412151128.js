@@ -3,15 +3,12 @@ const router = express.Router();
 
 const {
   capturePayment,
-  handleStripeWebhook,
+  // handleStripeWebhook,
 } = require("../controllers/paymentController");
 const { isLoggedin } = require("../middlewares/customer");
-const bodyParser = require("body-parser");
 
 router.route("/create-checkout-session").post(isLoggedin, capturePayment);
-// router.post(
-//   "/webhook",
-//   bodyParser.raw({ type: "application/json" }),
-//   handleStripeWebhook
-// );
+// router
+//   .route("/webhook", express.raw({ type: "application/json" }))
+//   .post(handleStripeWebhook);
 module.exports = router;
