@@ -17,7 +17,7 @@ exports.capturePayment = BigPromise(async (req, res, next) => {
     quantity: 1,
   }));
 
-  const stringItems = JSON.stringify(items);
+  const itemsToSting = items.toString();
 
   const session = await stripe.checkout.sessions.create({
     payment_method_types: ["card"],
@@ -54,7 +54,7 @@ exports.capturePayment = BigPromise(async (req, res, next) => {
     success_url: `${process.env.PAYMENT}/success`,
     cancel_url: `${process.env.PAYMENT}/fail`,
     metadata: {
-      stringItems,
+      itemsToSting,
       customer_id: id,
       email,
       images: JSON.stringify(items.map((item) => item.photo)),

@@ -8,7 +8,6 @@ const router = express.Router();
 let endpointSecret;
 
 const createOrder = async (data, lineItems) => {
-  let itemId = JSON.parse(stringItems).map((item) => item.id);
   const newOrder = new Order({
     shippingInfo: {
       address: data.customer_details.address.line1,
@@ -25,7 +24,7 @@ const createOrder = async (data, lineItems) => {
         name: lineItems.description,
         quantity: lineItems.quantity,
         price: lineItems.amount_total / 100,
-        product: itemId,
+        product: data.metadata.JSON.parse(stringItems).map((item) => item.id),
       },
     ],
     paymentInfo: {
@@ -83,7 +82,7 @@ router.post(
         `${data.id}`
       );
       console.log(lineItems);
-      createOrder(data, lineItems);
+      createOrder();
     }
     // Return a 200 res to acknowledge receipt of the event
     res.send().end();

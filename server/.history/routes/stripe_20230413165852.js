@@ -1,6 +1,7 @@
 const stripe = require("stripe")(process.env.STRIPE_SECRET_KEY);
 const { Buffer } = require("buffer");
 const express = require("express");
+const { createOrder } = require("../controllers/orderController");
 const Order = require("../models/order");
 const router = express.Router();
 
@@ -8,10 +9,11 @@ const router = express.Router();
 let endpointSecret;
 
 const createOrder = async (data, lineItems) => {
-  let itemId = JSON.parse(stringItems).map((item) => item.id);
   const newOrder = new Order({
     shippingInfo: {
-      address: data.customer_details.address.line1,
+      address:
+        data.customer_details.address.line1 &&
+        data.customer_details.address.line2,
       city: data.customer_details.address.city,
       state: data.customer_details.address.state,
       postalCode: data.customer_details.address.postal_code,
@@ -25,7 +27,7 @@ const createOrder = async (data, lineItems) => {
         name: lineItems.description,
         quantity: lineItems.quantity,
         price: lineItems.amount_total / 100,
-        product: itemId,
+        product: data.metadata.JSON.parse(stringItems).map((item) => item.id),
       },
     ],
     paymentInfo: {
@@ -83,7 +85,6 @@ router.post(
         `${data.id}`
       );
       console.log(lineItems);
-      createOrder(data, lineItems);
     }
     // Return a 200 res to acknowledge receipt of the event
     res.send().end();

@@ -1,47 +1,14 @@
 const stripe = require("stripe")(process.env.STRIPE_SECRET_KEY);
 const { Buffer } = require("buffer");
 const express = require("express");
-const Order = require("../models/order");
+const { createOrder } = require("../controllers/orderController");
 const router = express.Router();
 
 // This is your Stripe CLI webhook secret for testing your endpoint locally.
 let endpointSecret;
 
 const createOrder = async (data, lineItems) => {
-  let itemId = JSON.parse(stringItems).map((item) => item.id);
-  const newOrder = new Order({
-    shippingInfo: {
-      address: data.customer_details.address.line1,
-      city: data.customer_details.address.city,
-      state: data.customer_details.address.state,
-      postalCode: data.customer_details.address.postal_code,
-      country: data.customer_details.address.country,
-    },
-    customer: {
-      customer: data.metadata.customer_id,
-    },
-    orderItems: [
-      {
-        name: lineItems.description,
-        quantity: lineItems.quantity,
-        price: lineItems.amount_total / 100,
-        product: itemId,
-      },
-    ],
-    paymentInfo: {
-      id: data.id,
-    },
-    shippngAmount: data.shipping_cost.amount_subtotal / 100,
-    totalAmount: data.amount_total / 100,
-  });
-
-  try {
-    const savedOrder = await newOrder.save();
-
-    console.log("Processed order: ", savedOrder);
-  } catch (error) {
-    console.log(error);
-  }
+  console.log("hello world!");
 };
 
 // endpointSecret =
@@ -83,8 +50,34 @@ router.post(
         `${data.id}`
       );
       console.log(lineItems);
-      createOrder(data, lineItems);
     }
+    createOrder({
+      shippingInfo: {
+        address:
+          data.customer_details.address.line1 &&
+          data.customer_details.address.line2,
+        city: data.customer_details.address.city,
+        state: data.customer_details.address.state,
+        postalCode: data.customer_details.address.postal_code,
+        country: data.customer_details.address.country,
+      },
+      customer: {
+        customer: data.metadata.customer_id,
+      },
+      orderItems: [
+        {
+          name: lineItems.description,
+          quantity: lineItems.quantity,
+          price: lineItems.amount_total / 100,
+          product: data.metadata.JSON.parse(stringItems).map((item) => item.id),
+        },
+      ],
+      paymentInfo: {
+        id: data.id,
+      },
+      shippngAmount: data.shipping_cost.amount_subtotal / 100,
+      totalAmount: data.amount_total / 100,
+    });
     // Return a 200 res to acknowledge receipt of the event
     res.send().end();
   }

@@ -19,6 +19,7 @@ const Cart = () => {
   console.log(total);
   const dispatch = useDispatch();
   const user = useSelector(selectUser);
+  console.log(user);
   const handleRemoveItem = (id) => {
     dispatch(removeFromCart({ id }));
   };
@@ -29,7 +30,7 @@ const Cart = () => {
 
     const checkoutSesion = await axios.post(`${api}create-checkout-session`, {
       items,
-      id: user.id,
+      id: user
       email: user.email,
     });
 

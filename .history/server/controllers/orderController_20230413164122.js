@@ -4,13 +4,20 @@ const BigPromise = require("../middlewares/BigPromise");
 const CustomError = require("../utils/customError");
 
 exports.createOrder = BigPromise(async (req, res, next) => {
-  const { shippingInfo, orderItems, paymentInfo, shippingAmount, totalAmount } =
-    req.body;
+  const {
+    shippingInfo,
+    orderItems,
+    paymentInfo,
+
+    shippingAmount,
+    totalAmount,
+  } = req.body;
 
   const order = await Order.create({
     shippingInfo,
     orderItems,
     paymentInfo,
+
     shippingAmount,
     totalAmount,
     customer: req.customer._id,
