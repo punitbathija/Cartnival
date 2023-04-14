@@ -37,7 +37,6 @@ const UpdateUser = () => {
             type="text"
             className="border-2 p-2 dark:text-black my-2"
             onChange={(e) => setName(e.target.value)}
-            placeholder="Enter name"
           />
           <p className="md:text-2xl">
             Email<span className="text-red-500">*</span>
@@ -46,7 +45,6 @@ const UpdateUser = () => {
             type="text"
             className="border-2 p-2 dark:text-black my-2"
             onChange={(e) => setEmail(e.target.value)}
-            placeholder="Enter email"
           />
           <br />
           <button

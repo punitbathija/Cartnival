@@ -15,7 +15,7 @@ const Success = () => {
         />
         <h1 className="md:text-xl text-lg ">
           Congratulations<span className="text-cyan-500"> {user.name} </span>
-          your Purchase was Successfull🎁
+          your Purchase was Successfull
         </h1>
         <br />
         <h1 className="md:text-lg">

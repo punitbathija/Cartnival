@@ -47,7 +47,6 @@ const Signup = () => {
             className="border-2 p-2 dark:text-black"
             onChange={(e) => setName(e.target.value)}
             value={name}
-            placeholder="Enter name"
           />
 
           <p className="md:text-2xl">
@@ -58,7 +57,6 @@ const Signup = () => {
             className="border-2 p-2 dark:text-black"
             onChange={(e) => setEmail(e.target.value)}
             email={email}
-            placeholder="Enter email"
           />
           <p className="md:text-2xl ">
             Password<span className="text-red-500">*</span>
@@ -68,12 +66,11 @@ const Signup = () => {
             className="border-2 p-2 dark:text-black"
             onChange={(e) => setPassword(e.target.value)}
             value={password}
-            placeholder="Enter password"
           />
           <br />
           <button
             className="flex gap-2 bg-cyan-700 shadow-lg p-2 rounded-md hover:scale-110 hover:drop-shadow-xl text-center m-auto my-4"
-            onClick={handleSignup}
+            onClick={(e) => handleSignup}
           >
             Sign Up
           </button>

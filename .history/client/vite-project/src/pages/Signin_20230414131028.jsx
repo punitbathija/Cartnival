@@ -73,7 +73,6 @@ const Signin = () => {
             type="text"
             className="border-2 p-2 dark:text-black"
             onChange={(e) => setEmail(e.target.value)}
-            placeholder="Enter email"
           />
           <p className="md:text-2xl ">
             Password<span className="text-red-500">*</span>
@@ -82,7 +81,6 @@ const Signin = () => {
             type="password"
             className="border-2 p-2 dark:text-black"
             onChange={(e) => setPassword(e.target.value)}
-            placeholder="Enter password"
           />
           <br />
           <button

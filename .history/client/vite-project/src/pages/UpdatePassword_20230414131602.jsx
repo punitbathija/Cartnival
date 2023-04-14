@@ -1,57 +1,59 @@
 import React, { useState } from "react";
 import axios from "axios";
 
-const UpdateUser = () => {
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
+const UpdatePassword = () => {
+  const [oldPassword, setOldPassword] = useState("");
+  const [password, setPassword] = useState("");
   const [tokenData, setTokenData] = useState("");
   const [error, setError] = useState("");
   const api = import.meta.env.VITE_REACT_APP_BACKEND;
 
-  const handleUpdateUser = async (e) => {
+  const handleUpdatePassword = async (e) => {
     e.preventDefault();
     await axios
-      .post(`${api}myprofile/update`, {
-        name,
-        email,
+      .post(`${api}myprofile/password/update`, {
+        oldPassword: oldPassword,
+        password: password,
       })
       .then((res) => {
         console.log(res);
-        setTokenData("User details successfully updated");
+        setTokenData("Password successfully updated");
       })
       .catch((error) => {
-        setError("Error occured please sign in and try again");
+        setError("Old password does not match our records");
         console.log(error);
       });
+
+    setPassword("");
+    setOldPassword("");
   };
 
   return (
     <div className="md:flex p-24 justify-center gap-36 text-center align-middle justify-items-center m-auto dark:bg-neutral-800 dark:text-white ease-in duration-200 font-mono h-[85.5vh]">
       <div className="">
-        <h1 className="text-3xl py-6 text-cyan-500">Update User Details</h1>
-        <form onSubmit={handleUpdateUser} method="post">
+        <h1 className="text-3xl py-6 text-cyan-500">Update Password</h1>
+        <form onSubmit={handleUpdatePassword} method="post">
           <p className="md:text-2xl">
-            Name<span className="text-red-500">*</span>
+            Old Password<span className="text-red-500">*</span>
           </p>
           <input
-            type="text"
+            type="password"
             className="border-2 p-2 dark:text-black my-2"
-            onChange={(e) => setName(e.target.value)}
-            placeholder="Enter name"
+            onChange={(e) => setOldPassword(e.target.value)}
+            placeholder="Enter password"
           />
           <p className="md:text-2xl">
-            Email<span className="text-red-500">*</span>
+            Update Password<span className="text-red-500">*</span>
           </p>
           <input
-            type="text"
+            type="password"
             className="border-2 p-2 dark:text-black my-2"
-            onChange={(e) => setEmail(e.target.value)}
-            placeholder="Enter email"
+            onChange={(e) => setPassword(e.target.value)}
           />
           <br />
           <button
             className="flex gap-2 bg-cyan-700 shadow-lg p-2 rounded-md hover:scale-110 hover:drop-shadow-xl text-center m-auto my-4"
-            onClick={handleUpdateUser}
+            onClick={handleUpdatePassword}
           >
             GO
           </button>
@@ -63,4 +65,4 @@ const UpdateUser = () => {
   );
 };
 
-export default UpdateUser;
+export default UpdatePassword;

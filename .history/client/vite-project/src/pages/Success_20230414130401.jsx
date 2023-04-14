@@ -1,6 +1,5 @@
 import React from "react";
 import ReactConfetti from "react-confetti";
-import { Link } from "react-router-dom";
 
 const Success = () => {
   const user = JSON.parse(localStorage.getItem("user"));
@@ -13,17 +12,14 @@ const Success = () => {
           width={900}
           height={900}
         />
-        <h1 className="md:text-xl text-lg ">
+        <h1 className="md:text-xl text-lg justify-center justify-items-center align-middle text-center m-auto ">
           Congratulations<span className="text-cyan-500"> {user.name} </span>
-          your Purchase was Successfull🎁
+          your Purchase was Successfull
         </h1>
         <br />
         <h1 className="md:text-lg">
-          Please{" "}
-          <Link to="/signin">
-            <span className="text-cyan-500">signin</span>
-          </Link>{" "}
-          again to view your orders
+          Please <span className="text-cyan-500">signin</span> again to view
+          your orders
         </h1>
       </div>
     )

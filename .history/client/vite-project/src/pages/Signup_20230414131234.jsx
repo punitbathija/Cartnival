@@ -68,7 +68,6 @@ const Signup = () => {
             className="border-2 p-2 dark:text-black"
             onChange={(e) => setPassword(e.target.value)}
             value={password}
-            placeholder="Enter password"
           />
           <br />
           <button
