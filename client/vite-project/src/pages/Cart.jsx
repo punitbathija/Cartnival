@@ -32,6 +32,7 @@ const Cart = () => {
       id: user.id,
       email: user.email,
     });
+    0;
 
     const result = await stripe.redirectToCheckout({
       sessionId: checkoutSesion.data.id,
