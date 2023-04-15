@@ -20,7 +20,7 @@ const createOrder = async (data, lineItems) => {
   const newOrder = new Order({
     shippingInfo: {
       address:
-        data.customer_details.address.line1 +
+        data.customer_details.address.line1 &&
         data.customer_details.address.line2,
       city: data.customer_details.address.city,
       state: data.customer_details.address.state,

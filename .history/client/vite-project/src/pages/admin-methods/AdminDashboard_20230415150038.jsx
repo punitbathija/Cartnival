@@ -6,7 +6,6 @@ import FetchSingleUser from "./FetchSingleUser";
 import AddProduct from "./AddProduct";
 import FetchSingleProduct from "./FetchSingleProduct";
 import FetchAllProducts from "./FetchAllProducts";
-import FetchAllOrders from "./FetchAllOrders";
 
 export const AdminDashboard = () => {
   const user = useSelector(selectUser);

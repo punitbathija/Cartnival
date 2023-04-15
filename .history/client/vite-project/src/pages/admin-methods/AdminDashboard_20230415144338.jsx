@@ -6,7 +6,6 @@ import FetchSingleUser from "./FetchSingleUser";
 import AddProduct from "./AddProduct";
 import FetchSingleProduct from "./FetchSingleProduct";
 import FetchAllProducts from "./FetchAllProducts";
-import FetchAllOrders from "./FetchAllOrders";
 
 export const AdminDashboard = () => {
   const user = useSelector(selectUser);
@@ -16,7 +15,6 @@ export const AdminDashboard = () => {
   const [showAddProduct, setShowAddProduct] = useState(false);
   const [showSingleProduct, setShowSingleProduct] = useState(false);
   const [showAllProducts, setShowAllProducts] = useState(false);
-  const [showFetchAllOrders, setShowFetchAllOrders] = useState(false);
 
   const handleFetchAllUsers = () => {
     setShowFetchAllUsers(true);
@@ -59,11 +57,7 @@ export const AdminDashboard = () => {
   };
 
   const handleFetchAllOrders = () => {
-    setShowFetchAllOrders(true);
-  };
-
-  const closeFetchAllOrders = () => {
-    setShowFetchAllOrders(false);
+    setShowAllProducts(true);
   };
 
   return (
@@ -87,7 +81,7 @@ export const AdminDashboard = () => {
           Manage Product by Id
         </button>
         <button className="text-xl" onClick={handleFetchAllOrders}>
-          Fetch All Orders
+          FetchAllOrders
         </button>
       </div>
       <div className="flex">
@@ -183,25 +177,6 @@ export const AdminDashboard = () => {
           </svg>
         )}
         {showAllProducts && <FetchAllProducts />}
-
-        {showFetchAllOrders && (
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            fill="none"
-            viewBox="0 0 24 24"
-            strokeWidth={1.5}
-            stroke="currentColor"
-            className="w-6 h-6 cursor-pointer"
-            onClick={closeFetchAllOrders}
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              d="M6 18L18 6M6 6l12 12"
-            />
-          </svg>
-        )}
-        {showFetchAllOrders && <FetchAllOrders />}
       </div>
     </div>
   );

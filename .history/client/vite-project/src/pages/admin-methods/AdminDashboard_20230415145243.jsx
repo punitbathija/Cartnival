@@ -16,7 +16,8 @@ export const AdminDashboard = () => {
   const [showAddProduct, setShowAddProduct] = useState(false);
   const [showSingleProduct, setShowSingleProduct] = useState(false);
   const [showAllProducts, setShowAllProducts] = useState(false);
-  const [showFetchAllOrders, setShowFetchAllOrders] = useState(false);
+  const [showhandleFetchAllOrders, setShowhandleFetchAllOrders] =
+    useState(false);
 
   const handleFetchAllUsers = () => {
     setShowFetchAllUsers(true);
@@ -59,11 +60,11 @@ export const AdminDashboard = () => {
   };
 
   const handleFetchAllOrders = () => {
-    setShowFetchAllOrders(true);
+    setShowhandleFetchAllOrders(true);
   };
 
   const closeFetchAllOrders = () => {
-    setShowFetchAllOrders(false);
+    setShowhandleFetchAllOrders(false);
   };
 
   return (
@@ -87,7 +88,7 @@ export const AdminDashboard = () => {
           Manage Product by Id
         </button>
         <button className="text-xl" onClick={handleFetchAllOrders}>
-          Fetch All Orders
+          FetchAllOrders
         </button>
       </div>
       <div className="flex">
@@ -184,8 +185,9 @@ export const AdminDashboard = () => {
         )}
         {showAllProducts && <FetchAllProducts />}
 
-        {showFetchAllOrders && (
-          <svg
+        {setShowhandleFetchAllOrders &&
+          {
+            /* <svg
             xmlns="http://www.w3.org/2000/svg"
             fill="none"
             viewBox="0 0 24 24"
@@ -199,9 +201,9 @@ export const AdminDashboard = () => {
               strokeLinejoin="round"
               d="M6 18L18 6M6 6l12 12"
             />
-          </svg>
-        )}
-        {showFetchAllOrders && <FetchAllOrders />}
+          </svg> */
+          }}
+        {showhandleFetchAllOrders && <FetchAllOrders />}
       </div>
     </div>
   );
