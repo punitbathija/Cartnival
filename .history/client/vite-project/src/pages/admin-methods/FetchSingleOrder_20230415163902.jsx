@@ -121,7 +121,7 @@ const FetchSingleOrder = () => {
               className="text-xl border-2 p-1.5 bg-cyan-700 w-[50%] m-auto"
               onClick={handleDeleteSingleOrder}
             >
-              Delete Order
+              Delete User
             </button>
           </div>
         )}
