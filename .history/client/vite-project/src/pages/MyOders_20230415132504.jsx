@@ -27,7 +27,7 @@ const MyOrders = () => {
           orderData.map((order) => {
             return (
               <div
-                className="border-2 my-4 h-96 w-96  cursor-pointer flex justify-center justify-items-center align-middle m-auto"
+                className="border-2 my-4 h-96 w-96  cursor-pointer justify-center align-middle m-auto"
                 key={order._id}
               >
                 <h1>{order.orderItems[0].name}</h1>

@@ -27,10 +27,10 @@ const MyOrders = () => {
           orderData.map((order) => {
             return (
               <div
-                className="border-2 my-4 h-96 w-96  cursor-pointer flex justify-center justify-items-center align-middle m-auto"
+                className="border-2 my-4 h-96 w-96 m-auto cursor-pointer"
                 key={order._id}
               >
-                <h1>{order.orderItems[0].name}</h1>
+                <h1>{order.orderItems.name}</h1>
               </div>
             );
           })}
