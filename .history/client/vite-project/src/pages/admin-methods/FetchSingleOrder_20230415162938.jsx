@@ -26,7 +26,7 @@ const FetchSingleOrder = () => {
     const order = searchQuery;
     e.preventDefault();
     await axios
-      .post(`${api}markorder/order/${order}`, {
+      .put(`${api}markorder/order/${order}`, {
         orderStatus,
       })
       .then((res) => {

@@ -26,7 +26,7 @@ const FetchSingleOrder = () => {
     const order = searchQuery;
     e.preventDefault();
     await axios
-      .post(`${api}markorder/order/${order}`, {
+      .put(`${api}admin/user/${order}`, {
         orderStatus,
       })
       .then((res) => {
@@ -101,7 +101,6 @@ const FetchSingleOrder = () => {
               </option>
             </select>
 
-            <br />
             <button
               className="my-4 text-xl border-2 p-1.5 bg-cyan-700 w-[50%] m-auto"
               onClick={handleModifyOrderStatus}

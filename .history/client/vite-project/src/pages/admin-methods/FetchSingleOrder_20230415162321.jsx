@@ -26,7 +26,7 @@ const FetchSingleOrder = () => {
     const order = searchQuery;
     e.preventDefault();
     await axios
-      .post(`${api}markorder/order/${order}`, {
+      .put(`${api}admin/user/${order}`, {
         orderStatus,
       })
       .then((res) => {
@@ -85,28 +85,21 @@ const FetchSingleOrder = () => {
             <select
               className="border-2 text-black text-xl"
               value={orderStatus}
-              onChange={(e) => setOrderStatus(e.target.value)}
+              onChange={(e) => setRole(e.target.value)}
             >
-              <option className="border-2" value="processing">
-                processing
+              <option className="border-2" value="admin">
+                admin
               </option>
-              <option className="border-2" value="cancelled">
-                cancelled
-              </option>
-              <option className="border-2" value="shipped">
-                shipped
-              </option>
-              <option className="border-2" value="delivered">
-                delivered
+              <option className="border-2" value="customer">
+                customer
               </option>
             </select>
 
-            <br />
             <button
               className="my-4 text-xl border-2 p-1.5 bg-cyan-700 w-[50%] m-auto"
-              onClick={handleModifyOrderStatus}
+              onClick={handleModifyRole}
             >
-              Modify Order Status
+              Modify Role
             </button>
           </div>
         )}

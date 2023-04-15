@@ -3,7 +3,6 @@ import axios from "axios";
 
 const FetchSingleOrder = () => {
   const [tokenData, setTokenData] = useState("");
-  const [orderStatus, setOrderStatus] = useState("");
   const [error, setError] = useState("");
   const [searchQuery, setSearchQuery] = useState("");
   const api = import.meta.env.VITE_REACT_APP_BACKEND;
@@ -19,18 +18,6 @@ const FetchSingleOrder = () => {
       })
       .catch((error) => {
         setError("Cannot find any order's");
-      });
-  };
-
-  const handleModifyOrderStatus = async (e) => {
-    const order = searchQuery;
-    e.preventDefault();
-    await axios
-      .post(`${api}markorder/order/${order}`, {
-        orderStatus,
-      })
-      .then((res) => {
-        console.log(res);
       });
   };
 
@@ -68,46 +55,10 @@ const FetchSingleOrder = () => {
         {error && <p>{error}</p>}
 
         {tokenData && (
-          <div className="p-6 border-2 py-4 flex-col text-center justify-center justify-items-center align-middle m-auto">
+          <div className="py-4">
             <h1>Order Id:- {tokenData._id}</h1>
-            <h1>Customer Name:- {tokenData.customer.name}</h1>
-            <h1>Customer Email:- {tokenData.customer.email}</h1>
-            <h1>Customer Order Items:- {tokenData.orderItems[0].name}</h1>
-            <h1>
-              Customer Shipping Address:-{tokenData.shippingInfo.address}
-              <br />
-              City:- {tokenData.shippingInfo.city}
-              <br />
-              State:- {tokenData.shippingInfo.state}
-              <br />
-              Country:- {tokenData.shippingInfo.country}
-            </h1>
-            <select
-              className="border-2 text-black text-xl"
-              value={orderStatus}
-              onChange={(e) => setOrderStatus(e.target.value)}
-            >
-              <option className="border-2" value="processing">
-                processing
-              </option>
-              <option className="border-2" value="cancelled">
-                cancelled
-              </option>
-              <option className="border-2" value="shipped">
-                shipped
-              </option>
-              <option className="border-2" value="delivered">
-                delivered
-              </option>
-            </select>
-
-            <br />
-            <button
-              className="my-4 text-xl border-2 p-1.5 bg-cyan-700 w-[50%] m-auto"
-              onClick={handleModifyOrderStatus}
-            >
-              Modify Order Status
-            </button>
+            <h1>Order Id:- {tokenData.customer.name}</h1>
+            <h1>Order Id:- {tokenData.customer.email}</h1>
           </div>
         )}
       </div>
