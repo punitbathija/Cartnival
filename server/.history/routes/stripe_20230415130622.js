@@ -14,8 +14,7 @@ const createOrder = async (data, lineItems) => {
   let itemPrice = JSON.parse(stringItems).map((item) => item.price);
   let imageLink = JSON.parse(data.metadata.images);
   let image = imageLink[0];
-
-  console.log(itemName, itemPrice);
+  let itemDetails = lineItems.data;
 
   const newOrder = new Order({
     shippingInfo: {
@@ -42,17 +41,16 @@ const createOrder = async (data, lineItems) => {
     shippingAmount: data.shipping_cost.amount_subtotal / 100,
     totalAmount: data.amount_total / 100,
   });
-
-  try {
-    const savedOrder = await newOrder.save({
-      validateBeforeSave: false,
-    });
-
-    console.log("Processed order: ", savedOrder);
-  } catch (error) {
-    console.log(error);
-  }
 };
+try {
+  const savedOrder = await newOrder.save({
+    validateBeforeSave: false,
+  });
+
+  console.log("Processed order: ", savedOrder);
+} catch (error) {
+  console.log(error);
+}
 
 // endpointSecret =
 //   "whsec_8678088aefdd2a482a03c6d3475949a8c4c8ce0c7b3bf8f42d1f99a5d2e53d2d";

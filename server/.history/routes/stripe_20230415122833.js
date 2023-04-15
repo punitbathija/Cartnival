@@ -7,15 +7,16 @@ const router = express.Router();
 // This is your Stripe CLI webhook secret for testing your endpoint locally.
 let endpointSecret;
 
-const createOrder = async (data, lineItems) => {
+const createOrder = async (data, lineItems, description, price, quantity) => {
   const stringItems = data.metadata.stringItems;
   let itemId = JSON.parse(stringItems).map((item) => item.id);
-  let itemName = JSON.parse(stringItems).map((item) => item.name);
-  let itemPrice = JSON.parse(stringItems).map((item) => item.price);
   let imageLink = JSON.parse(data.metadata.images);
   let image = imageLink[0];
+  let itemDetails = lineItems.data;
 
-  console.log(itemName, itemPrice);
+  itemDetails.map((item) => {
+    const { description, price, quantity } = item;
+  });
 
   const newOrder = new Order({
     shippingInfo: {
@@ -29,10 +30,10 @@ const createOrder = async (data, lineItems) => {
     customer: data.metadata.customer_id,
     orderItems: [
       {
-        name: itemName[0],
+        name: description,
         photo: image,
-        quantity: 1,
-        price: itemPrice[0],
+        quantity: quantity,
+        price: price,
         product: itemId,
       },
     ],

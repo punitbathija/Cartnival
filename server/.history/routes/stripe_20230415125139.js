@@ -14,6 +14,7 @@ const createOrder = async (data, lineItems) => {
   let itemPrice = JSON.parse(stringItems).map((item) => item.price);
   let imageLink = JSON.parse(data.metadata.images);
   let image = imageLink[0];
+  let itemDetails = lineItems.data;
 
   console.log(itemName, itemPrice);
 
@@ -29,10 +30,10 @@ const createOrder = async (data, lineItems) => {
     customer: data.metadata.customer_id,
     orderItems: [
       {
-        name: itemName[0],
+        name: itemName,
         photo: image,
         quantity: 1,
-        price: itemPrice[0],
+        price: itemPrice,
         product: itemId,
       },
     ],
@@ -88,7 +89,7 @@ router.post(
     // Handle the event
 
     if (eventType === "checkout.session.completed") {
-      // console.log("data:", data);
+      console.log("data:", data);
       const lineItems = await stripe.checkout.sessions.listLineItems(
         `${data.id}`
       );

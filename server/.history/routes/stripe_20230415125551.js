@@ -14,6 +14,7 @@ const createOrder = async (data, lineItems) => {
   let itemPrice = JSON.parse(stringItems).map((item) => item.price);
   let imageLink = JSON.parse(data.metadata.images);
   let image = imageLink[0];
+  let itemDetails = lineItems.data;
 
   console.log(itemName, itemPrice);
 

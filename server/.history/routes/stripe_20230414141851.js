@@ -10,13 +10,8 @@ let endpointSecret;
 const createOrder = async (data, lineItems) => {
   const stringItems = data.metadata.stringItems;
   let itemId = JSON.parse(stringItems).map((item) => item.id);
-  let itemName = JSON.parse(stringItems).map((item) => item.name);
-  let itemPrice = JSON.parse(stringItems).map((item) => item.price);
   let imageLink = JSON.parse(data.metadata.images);
   let image = imageLink[0];
-
-  console.log(itemName, itemPrice);
-
   const newOrder = new Order({
     shippingInfo: {
       address: data.customer_details.address.line1,
@@ -29,10 +24,10 @@ const createOrder = async (data, lineItems) => {
     customer: data.metadata.customer_id,
     orderItems: [
       {
-        name: itemName[0],
+        name: lineItems.data.description,
         photo: image,
-        quantity: 1,
-        price: itemPrice[0],
+        quantity: lineItems.data.quantity,
+        price: lineItems.data.amount_total / 100,
         product: itemId,
       },
     ],
@@ -92,7 +87,7 @@ router.post(
       const lineItems = await stripe.checkout.sessions.listLineItems(
         `${data.id}`
       );
-      // console.log(lineItems);
+      console.log(lineItems);
       createOrder(data, lineItems);
     }
     // Return a 200 res to acknowledge receipt of the event

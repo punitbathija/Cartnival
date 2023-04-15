@@ -10,12 +10,17 @@ let endpointSecret;
 const createOrder = async (data, lineItems) => {
   const stringItems = data.metadata.stringItems;
   let itemId = JSON.parse(stringItems).map((item) => item.id);
-  let itemName = JSON.parse(stringItems).map((item) => item.name);
-  let itemPrice = JSON.parse(stringItems).map((item) => item.price);
   let imageLink = JSON.parse(data.metadata.images);
   let image = imageLink[0];
+  let itemDetails = lineItems.data;
 
-  console.log(itemName, itemPrice);
+  let itemData = itemDetails.forEach((item) => {
+    name = item.description;
+    price = item.amount_subtotal;
+    quantity = item.quantity;
+  });
+
+  console.log(itemData);
 
   const newOrder = new Order({
     shippingInfo: {
@@ -29,10 +34,10 @@ const createOrder = async (data, lineItems) => {
     customer: data.metadata.customer_id,
     orderItems: [
       {
-        name: itemName[0],
+        // name: itemData.name,
         photo: image,
-        quantity: 1,
-        price: itemPrice[0],
+        // quantity: itemData.quantity,
+        // price: itemData.price,
         product: itemId,
       },
     ],

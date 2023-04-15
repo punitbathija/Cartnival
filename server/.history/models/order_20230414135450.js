@@ -2,10 +2,10 @@ const mongoose = require("mongoose");
 
 const orderSchema = new mongoose.Schema({
   shippingInfo: {
-    mobile: {
-      type: String,
-      required: true,
-    },
+    // mobile: {
+    //   type: String,
+    //   required: true,
+    // },
     address: {
       type: String,
       required: true,
@@ -38,12 +38,12 @@ const orderSchema = new mongoose.Schema({
         type: String,
         required: true,
       },
-      quantity: {
-        type: Number,
+      photo: {
+        type: String,
         required: true,
       },
-      image: {
-        type: String,
+      quantity: {
+        type: Number,
         required: true,
       },
       price: {
@@ -62,10 +62,10 @@ const orderSchema = new mongoose.Schema({
       type: String,
     },
   },
-  taxAmount: {
-    type: Number,
-    required: true,
-  },
+  // taxAmount: {
+  //   type: Number,
+  //   required: true,
+  // },
   shippingAmount: {
     type: Number,
     required: true,
@@ -79,9 +79,9 @@ const orderSchema = new mongoose.Schema({
     required: true,
     default: "processing",
     enum: {
-      values: ["processing", "cancelled", "delivered"],
+      values: ["processing", "cancelled", "shipped", "delivered"],
       message:
-        "Please select categories from (short-sleeves, long-sleeves, polo-shirts, hoodies, sweat-shirts)",
+        "Please select categories from (processing, cancelled, delivered, shipped)",
     },
   },
   deliveredAt: {

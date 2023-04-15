@@ -10,39 +10,45 @@ let endpointSecret;
 const createOrder = async (data, lineItems) => {
   const stringItems = data.metadata.stringItems;
   let itemId = JSON.parse(stringItems).map((item) => item.id);
-  let itemName = JSON.parse(stringItems).map((item) => item.name);
-  let itemPrice = JSON.parse(stringItems).map((item) => item.price);
+  // let itemName = JSON.parse(stringItems).map((item) => item.name);
+  // let itemPrice = JSON.parse(stringItems).map((item) => item.price);
   let imageLink = JSON.parse(data.metadata.images);
   let image = imageLink[0];
+  let itemDetails = lineItems.data;
 
-  console.log(itemName, itemPrice);
+  for (i = 0; i < itemDetails.length; i++) {
+    let itemName = itemDetails.description[i];
+    let itemPrice = itemDetails.amount_subtotal[i];
+    let itemQuantity = itemDetails.quantity[i];
 
-  const newOrder = new Order({
-    shippingInfo: {
-      address: data.customer_details.address.line1,
-      city: data.customer_details.address.city,
-      state: data.customer_details.address.state,
-      postalCode: data.customer_details.address.postal_code,
-      country: data.customer_details.address.country,
-    },
+    console.log(itemName, itemPrice);
 
-    customer: data.metadata.customer_id,
-    orderItems: [
-      {
-        name: itemName[0],
-        photo: image,
-        quantity: 1,
-        price: itemPrice[0],
-        product: itemId,
+    const newOrder = new Order({
+      shippingInfo: {
+        address: data.customer_details.address.line1,
+        city: data.customer_details.address.city,
+        state: data.customer_details.address.state,
+        postalCode: data.customer_details.address.postal_code,
+        country: data.customer_details.address.country,
       },
-    ],
-    paymentInfo: {
-      id: data.id,
-    },
-    shippingAmount: data.shipping_cost.amount_subtotal / 100,
-    totalAmount: data.amount_total / 100,
-  });
 
+      customer: data.metadata.customer_id,
+      orderItems: [
+        {
+          name: itemName,
+          photo: image,
+          quantity: itemQuantity,
+          price: itemPrice,
+          product: itemId,
+        },
+      ],
+      paymentInfo: {
+        id: data.id,
+      },
+      shippingAmount: data.shipping_cost.amount_subtotal / 100,
+      totalAmount: data.amount_total / 100,
+    });
+  }
   try {
     const savedOrder = await newOrder.save({
       validateBeforeSave: false,
