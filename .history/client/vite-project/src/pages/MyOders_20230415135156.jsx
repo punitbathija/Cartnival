@@ -19,16 +19,16 @@ const MyOrders = () => {
   }, []);
 
   return (
-    <div className="flex-col justify-center gap-36 text-center align-middle justify-items-center m-auto dark:bg-neutral-800 dark:text-white ease-in duration-200 font-mono min-h-[85.5vh] overflow-hidden">
+    <div className="flex-col justify-center gap-36 text-center align-middle justify-items-center m-auto dark:bg-neutral-800 dark:text-white ease-in duration-200 font-mono min-h-[85.5vh] ">
       <h1 className="text-3xl text-cyan-500">My Orders</h1>
 
-      <div className="md:flex flex-wrap justify-center justify-items-center align-middle m-auto my-2">
+      <div className="my-2">
         {error && <p>{error}</p>}
         {orderData &&
           orderData.map((order) => {
             return (
               <div
-                className="border-2 my-4 h-106 w-86 cursor-default text-center flex flex-col gap-2 mx-4"
+                className="border-2 my-4 h-106 w-96 cursor-default text-center flex flex-col gap-2 mx-4"
                 key={order._id}
               >
                 <h1>

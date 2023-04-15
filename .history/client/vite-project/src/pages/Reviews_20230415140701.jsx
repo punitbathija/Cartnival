@@ -33,6 +33,18 @@ const Reviews = () => {
         setRating();
       });
   };
+
+  const handleDeleteReview = async () => {
+    await axios
+      .delete(`${api}review/${id}`)
+      .then((res) => {
+        console.log(res);
+      })
+      .catch((error) => {
+        setError("Please signin and try again");
+      });
+  };
+
   useEffect(() => {
     const handleFetchReviews = async () => {
       await axios
@@ -77,6 +89,7 @@ const Reviews = () => {
           >
             Submit
           </button>
+
           <p className="py-2 text-red-600">{error}</p>
         </div>
         <h1 className="text-2xl  text-cyan-500 my-8">All reviews</h1>
