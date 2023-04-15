@@ -4,20 +4,13 @@ const BigPromise = require("../middlewares/BigPromise");
 const CustomError = require("../utils/customError");
 
 exports.createOrder = BigPromise(async (req, res, next) => {
-  const {
-    shippingInfo,
-    orderItems,
-    paymentInfo,
-    taxAmount,
-    shippingAmount,
-    totalAmount,
-  } = req.body;
+  const { shippingInfo, orderItems, paymentInfo, shippingAmount, totalAmount } =
+    req.body;
 
   const order = await Order.create({
     shippingInfo,
     orderItems,
     paymentInfo,
-    taxAmount,
     shippingAmount,
     totalAmount,
     customer: req.customer._id,
@@ -59,7 +52,7 @@ exports.getLoggedinCustomerOrders = BigPromise(async (req, res, next) => {
 });
 
 exports.adminGetAllOrders = BigPromise(async (req, res, next) => {
-  const orders = await Order.find().populate("user", "name email");
+  const orders = await Order.find().populate("customer", "name email");
 
   if (!orders) {
     return next(new CustomError("No orders to display", 401));
@@ -80,8 +73,8 @@ exports.adminUpdateOrder = BigPromise(async (req, res, next) => {
 
   order.orderStatus = req.body.orderStatus;
 
-  order.orderItems.forEach(async (prod) => {
-    await updateProductStock(prod.product, prod.quantity);
+  order.orderItems.forEach(async (odr) => {
+    await updateProductStock(odr.product, odr.quantity);
   });
 
   await order.save();
@@ -102,7 +95,7 @@ exports.adminDeleteOrder = BigPromise(async (req, res, next) => {
     await adjustProductStockOnDelete(prod.product, prod.quantity);
   });
 
-  await order.remove();
+  await order.deleteOne();
   res.status(200).json({
     success: true,
     order,
@@ -111,12 +104,12 @@ exports.adminDeleteOrder = BigPromise(async (req, res, next) => {
 
 async function updateProductStock(productId, quantity) {
   const product = await Product.findById(productId);
-  product.stock = product.stock - quantity;
+  product.quantity = product.quantity - quantity;
   await product.save({ validateBeforeSave: false });
 }
 
 async function adjustProductStockOnDelete(productId, quantity) {
   const product = await Product.findById(productId);
-  product.stock = product.stock + quantity;
+  product.quantity = product.quantity + quantity;
   await product.save({ validateBeforeSave: false });
 }
