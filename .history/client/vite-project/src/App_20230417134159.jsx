@@ -80,7 +80,6 @@ function App() {
           <Route exact path="/payment/fail" Component={Failure} />
           <Route exact path="/myorders" Component={MyOrders} />
         </Routes>
-        <Footer />
       </Router>
     </>
   );

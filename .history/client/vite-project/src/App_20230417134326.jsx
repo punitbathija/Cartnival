@@ -26,7 +26,6 @@ import Cart from "./pages/Cart";
 import Success from "./pages/Success";
 import Failure from "./pages/Failure";
 import MyOrders from "./pages/MyOders";
-import Footer from "./Footer";
 
 function App() {
   const user = useSelector(selectUser);
@@ -80,7 +79,6 @@ function App() {
           <Route exact path="/payment/fail" Component={Failure} />
           <Route exact path="/myorders" Component={MyOrders} />
         </Routes>
-        <Footer />
       </Router>
     </>
   );
