@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 function Footer() {
   return (
-    <div className="border-t-2 bg-gray-50 text-center text-goodwhite md:text-2xl w-full py-5  dark:bg-neutral-800 dark:text-white ease-in duration-200 font-mono z-10 cursor-default">
+    <div className="border-t-2 bg-gray-50 text-center text-goodwhite md:text-2xl w-full py-5  dark:bg-neutral-800 dark:text-white ease-in duration-200 font-mono z-10">
       <div className="px-4 md:flex my-4 text-center justify-between align-middle mx-auto">
         <h1 className="text-2xl">Cartnival</h1>
         <ul className="md:flex gap-4 text-lg my-3 mx-28 text-cyan-500">
