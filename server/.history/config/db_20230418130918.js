@@ -3,7 +3,7 @@ const mongoose = require("mongoose");
 const connectWithDB = () => {
   // mongoose.set("strictQuery", false);
   mongoose
-    .connect(process.env.MONGO_DB_LOCAL, {
+    .connect(process.env.MONGO_DB_URL, {
       useNewUrlParser: true,
       useUnifiedTopology: true,
     })
@@ -15,3 +15,9 @@ const connectWithDB = () => {
 };
 
 module.exports = connectWithDB;
+const uri = process.env.MONGO_DB_URL;
+
+mongoose
+  .connect(uri, { useNewUrlParser: true })
+  .then(() => console.log("Connected to MongoDB"))
+  .catch((err) => console.error("Failed to connect to MongoDB", err));
