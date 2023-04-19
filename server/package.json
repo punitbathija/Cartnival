@@ -3,10 +3,6 @@
   "version": "1.0.0",
   "description": "this is an api to power cartnival store",
   "main": "index.js",
-  "scripts": {
-    "start": "node index.js",
-    "dev": "nodemon index.js"
-  },
   "author": "Punit Bathija",
   "license": "ISC",
   "dependencies": {
