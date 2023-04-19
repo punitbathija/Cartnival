@@ -18,7 +18,7 @@ const AllProducts = () => {
       const result = await axios
         .get(`${api}products`)
         .then((res) => {
-          console.log(res.data.products);
+          // console.log(res.data.products);
           setProductData(res.data.products);
         })
         .catch((error) => setError("something went wrong please refresh"));

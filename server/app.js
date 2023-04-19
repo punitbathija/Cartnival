@@ -7,8 +7,12 @@ const fileUpload = require("express-fileupload");
 
 // Defining Middlewares
 
+const corsOptions = {
+  origin: "https://cartnival.onrender.com",
+};
+
 // Express middlewares.
-app.use(cors());
+app.use(cors(corsOptions));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
