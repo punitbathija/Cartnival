@@ -18,7 +18,7 @@ const HomeAndKitchen = () => {
           const filteredData = res.data.products.filter(
             (item) => item.category === "Home and Kitchen"
           );
-          console.log(filteredData);
+          // console.log(filteredData);
 
           setProductData(filteredData);
         })

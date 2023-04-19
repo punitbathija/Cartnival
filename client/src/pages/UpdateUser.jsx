@@ -16,12 +16,12 @@ const UpdateUser = () => {
         email,
       })
       .then((res) => {
-        console.log(res);
+        // console.log(res);
         setTokenData("User details successfully updated");
       })
       .catch((error) => {
         setError("Error occured please sign in and try again");
-        console.log(error);
+        // console.log(error);
       });
   };
 

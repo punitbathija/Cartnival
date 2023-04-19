@@ -18,12 +18,12 @@ const ResetPassword = () => {
         confirmPassword: confirmPassword,
       })
       .then((res) => {
-        console.log(res);
+        // console.log(res);
         setTokenData("Password successfully updated");
       })
       .catch((error) => {
         setError("Password & confirm password does not match");
-        console.log(error);
+        // console.log(error);
       });
 
     setPassword("");

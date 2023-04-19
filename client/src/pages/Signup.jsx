@@ -26,7 +26,7 @@ const Signup = () => {
       })
       .catch((error) => {
         setError("Please enter all the * fields");
-        console.log(error);
+        // console.log(error);
       });
 
     setEmail("");

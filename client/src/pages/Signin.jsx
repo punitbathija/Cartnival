@@ -21,7 +21,7 @@ const Signin = () => {
         password: password,
       })
       .then((res) => {
-        console.log(res);
+        // console.log(res);
         setSigninData(res.data.customer);
         setEmail("");
         setPassword("");
@@ -54,7 +54,7 @@ const Signin = () => {
       })
       .catch((error) => {
         setError("Invalid credentials");
-        console.log(error);
+        // console.log(error);
       });
   };
 

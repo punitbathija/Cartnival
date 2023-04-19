@@ -14,12 +14,12 @@ const ForgotPassword = () => {
         email: email,
       })
       .then((res) => {
-        console.log(res);
+        // console.log(res);
         setTokenData("Please check your inbox for futher assistance");
       })
       .catch((error) => {
         setError("Email id does not match our records");
-        console.log(error);
+        // console.log(error);
       });
 
     setEmail("");

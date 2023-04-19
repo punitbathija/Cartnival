@@ -24,16 +24,14 @@ const Header = () => {
 
   const signOut = async (e) => {
     e.preventDefault();
-    axios
-      .get(`${api}signout`)
-      .then((res) => {
-        console.log(res);
-        axios.defaults.headers.common["Authorization"] = null;
-        document.cookie =
-          "token=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
-        dispatch(signout());
-      })
-      .then((err) => console.log(err));
+    axios.get(`${api}signout`).then((res) => {
+      // console.log(res);
+      axios.defaults.headers.common["Authorization"] = null;
+      document.cookie =
+        "token=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+      dispatch(signout());
+    });
+    // .then((err) => console.log(err));
   };
 
   useEffect(() => {

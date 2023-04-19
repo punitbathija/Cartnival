@@ -11,7 +11,7 @@ const FetchAllProducts = () => {
       const result = await axios
         .get(`${api}products`)
         .then((res) => {
-          console.log(res.data.products);
+          // console.log(res.data.products);
           setTokenData(res.data.products);
         })
         .catch((error) => setError("This link is strictly resticted to Admin"));

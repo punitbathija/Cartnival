@@ -11,7 +11,7 @@ const MyOrders = () => {
         .get(`${api}myorders`)
         .then((res) => {
           setOrderData(res.data.order);
-          console.log(res.data.order);
+          // console.log(res.data.order);
         })
         .catch((error) => setError("Cannot fetch any order's"));
     }

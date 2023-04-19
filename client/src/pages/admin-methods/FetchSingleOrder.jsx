@@ -14,7 +14,7 @@ const FetchSingleOrder = () => {
     await axios
       .get(`${api}/order/${order}`)
       .then((res) => {
-        console.log(res.data.order);
+        // console.log(res.data.order);
         setTokenData(res.data.order);
       })
       .catch((error) => {

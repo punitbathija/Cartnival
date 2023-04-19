@@ -13,10 +13,10 @@ const stripePromise = loadStripe(
 
 const Cart = () => {
   const cartItems = useSelector(selectItems);
-  console.log(cartItems);
+  // console.log(cartItems);
   const items = cartItems;
   const total = useSelector(selectTotal);
-  console.log(total);
+  // console.log(total);
   const dispatch = useDispatch();
   const user = useSelector(selectUser);
   const handleRemoveItem = (id) => {

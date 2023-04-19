@@ -18,7 +18,7 @@ const Electronics = () => {
           const filteredData = res.data.products.filter(
             (item) => item.category === "Electronics"
           );
-          console.log(filteredData);
+          // console.log(filteredData);
 
           setProductData(filteredData);
         })
