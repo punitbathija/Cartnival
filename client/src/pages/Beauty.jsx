@@ -18,7 +18,7 @@ const Beauty = () => {
           const filteredData = res.data.products.filter(
             (item) => item.category === "Beauty"
           );
-          console.log(filteredData);
+          // console.log(filteredData);
 
           setProductData(filteredData);
         })

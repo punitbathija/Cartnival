@@ -17,7 +17,7 @@ const ProductPage = () => {
       await axios
         .get(`${api}product/${id}`)
         .then((res) => {
-          console.log(res.data.product);
+          // console.log(res.data.product);
           setProductData(res.data.product);
         })
         .catch((error) => {

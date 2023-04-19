@@ -16,12 +16,12 @@ const UpdatePassword = () => {
         password: password,
       })
       .then((res) => {
-        console.log(res);
+        // console.log(res);
         setTokenData("Password successfully updated");
       })
       .catch((error) => {
         setError("Old password does not match our records");
-        console.log(error);
+        // console.log(error);
       });
 
     setPassword("");
