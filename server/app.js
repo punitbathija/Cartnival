@@ -19,7 +19,6 @@ app.use(history());
 app.use(cors(corsOptions));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-app.use(express.static("dist"));
 app.use(express.static(path.join(__dirname, "client", "dist")));
 
 // Cookies & file upload middlewares
