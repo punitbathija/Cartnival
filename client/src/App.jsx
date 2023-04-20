@@ -35,50 +35,50 @@ function App() {
       <Router>
         <Header />
         <Routes>
-          <Route exact path="" Component={Home} />
-          <Route exact path="/signin" Component={Signin} />
-          <Route exact path="/signup" Component={Signup} />
-          <Route exact path="/admin/signin" Component={AdminSignin} />
-          <Route exact path="/admin/dashboard" Component={AdminDashboard} />
-          <Route exact path="/products/:id" Component={ProductPage} />
-          <Route exact path="/products/:id/reviews" Component={Reviews} />
-          <Route exact path="/forgotpassword" Component={ForgotPassword} />
+          <Route exact path="" component={Home} />
+          <Route exact path="/signin" component={Signin} />
+          <Route exact path="/signup" component={Signup} />
+          <Route exact path="/admin/signin" component={AdminSignin} />
+          <Route exact path="/admin/dashboard" component={AdminDashboard} />
+          <Route exact path="/products/:id" component={ProductPage} />
+          <Route exact path="/products/:id/reviews" component={Reviews} />
+          <Route exact path="/forgotpassword" component={ForgotPassword} />
           <Route
             exact
             path="/password/reset/:token"
-            Component={ResetPassword}
+            component={ResetPassword}
           />
-          <Route exact path="/myprofile" Component={MyProfile} />
+          <Route exact path="/myprofile" component={MyProfile} />
           <Route
             exact
             path="/myprofile/updatepassword"
-            Component={UpdatePassword}
+            component={UpdatePassword}
           />
           <Route
             exact
             path="/myprofile/updateuserdetails"
-            Component={UpdateUser}
+            component={UpdateUser}
           />
-          <Route exact path="/categories" Component={Categories} />
-          <Route exact path="/products" Component={AllProducts} />
-          <Route exact path="/products/electronics" Component={Electronics} />
+          <Route exact path="/categories" component={Categories} />
+          <Route exact path="/products" component={AllProducts} />
+          <Route exact path="/products/electronics" component={Electronics} />
           <Route
             exact
             path="/products/homeandkitchen"
-            Component={HomeAndKitchen}
+            component={HomeAndKitchen}
           />
           <Route
             exact
             path="/products/clothingandaccessories"
-            Component={ClothingAndAccessories}
+            component={ClothingAndAccessories}
           />
 
-          <Route exact path="/products/beauty" Component={Beauty} />
-          <Route exact path="/products/toysandgames" Component={ToysAndGames} />
-          <Route exact path="/cart" Component={Cart} />
-          <Route exact path="/payment/success" Component={Success} />
-          <Route exact path="/payment/fail" Component={Failure} />
-          <Route exact path="/myorders" Component={MyOrders} />
+          <Route exact path="/products/beauty" component={Beauty} />
+          <Route exact path="/products/toysandgames" component={ToysAndGames} />
+          <Route exact path="/cart" component={Cart} />
+          <Route exact path="/payment/success" component={Success} />
+          <Route exact path="/payment/fail" component={Failure} />
+          <Route exact path="/myorders" component={MyOrders} />
         </Routes>
         <Footer />
       </Router>
