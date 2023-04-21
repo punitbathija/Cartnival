@@ -9,7 +9,7 @@ const path = require("path");
 // Defining Middlewares
 
 const corsOptions = {
-  origin: "https://cartnival.netlify.app/",
+  origin: "https://cartnival.netlify.app",
 };
 
 // History Api
