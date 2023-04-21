@@ -32,7 +32,7 @@ function App() {
   const user = useSelector(selectUser);
   return (
     <>
-      <Router>
+      <Router basename="/Cartnival">
         <Header />
         <Routes>
           <Route exact path="" Component={Home} />
