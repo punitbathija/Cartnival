@@ -9,7 +9,7 @@
 - This project has an integrated payment processor Stripe to make payments to this app under test mode.
 - This project also has a dark mode theme where you can switch the website from light mode to dark mode or vice-a-versa.
 - This project is completly responsive it looks awesome even on mobile phones, desktop's and even tablets.
-- Technologies used to design the webpage
+- Technologies used to design the application
 
 ![JavaScript](https://img.shields.io/badge/javascript-%23323330.svg?style=for-the-badge&logo=javascript&logoColor=%23F7DF1E)
 
