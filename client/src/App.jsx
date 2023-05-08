@@ -1,3 +1,4 @@
+import React, { useState } from "react";
 import "./App.css";
 import Header from "./Header";
 import Signin from "./pages/Signin";
@@ -27,13 +28,43 @@ import Success from "./pages/Success";
 import Failure from "./pages/Failure";
 import MyOrders from "./pages/MyOders";
 import Footer from "./Footer";
+import Alert from "@mui/material/Alert";
+import IconButton from "@mui/material/IconButton";
+import CloseIcon from "@mui/icons-material/Close";
+import Box from "@mui/material/Box";
+import Collapse from "@mui/material/Collapse";
+import Button from "@mui/material/Button";
 
 function App() {
+  const [open, setOpen] = React.useState(true);
   const user = useSelector(selectUser);
   return (
     <>
       <Router>
         <Header />
+        <Box sx={{ width: "100%" }}>
+          <Collapse in={open}>
+            <Alert
+              severity="warning"
+              action={
+                <IconButton
+                  aria-label="close"
+                  color="inherit"
+                  size="small"
+                  onClick={() => {
+                    setOpen(false);
+                  }}
+                >
+                  <CloseIcon fontSize="inherit" />
+                </IconButton>
+              }
+              sx={{ mb: 2 }}
+            >
+              The deployed api server is a bit slow please wait for the products
+              to load!
+            </Alert>
+          </Collapse>
+        </Box>
         <Routes>
           <Route exact path="" Component={Home} />
           <Route exact path="/signin" Component={Signin} />
